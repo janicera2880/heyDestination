@@ -1,0 +1,2 @@
+class ActivityLocation < ApplicationRecord
+end
