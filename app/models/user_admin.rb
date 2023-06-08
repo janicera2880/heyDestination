@@ -2,7 +2,7 @@ class UserAdmin < ApplicationRecord
     has_secure_password # Provided by the bcrypt gem to handle secure password storage and authentication.
 
     has_many :villas
-	has_many :inquiries, through: :villas
+    has_many :inquiries, through: :villas
 	
     validates :first_name, :last_name, presence: true # Validates presence of first_name and last_name
     validates :email, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i } # Validates presence and format of email using a regular expression
