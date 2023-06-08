@@ -1,8 +1,9 @@
 class Inquiry < ApplicationRecord
 
-    belongs_to :villa
-    has_one :user, through: :villa
-    belongs_to :location
+  belongs_to :villa
+  has_one :user, through: :villa
+  belongs_to :location
+  
 
     # Validations
     validates :arrival, :departure, presence: true

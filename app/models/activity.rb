@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
     # Has a one-to-many association with the ActivityLocation model. 
     # This means that an activity can have multiple activity locations.
     has_many :activity_locations
-	has_many :locations, through: :activity_locations
+    has_many :locations, through: :activity_locations
     # Specifies a many-to-many association between the Activity model and the Location model through the ActivityLocation model.
     # This association allows an activity to be associated with multiple locations indirectly through the activity_locations table.
     

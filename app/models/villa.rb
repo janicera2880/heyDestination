@@ -2,8 +2,8 @@ class Villa < ApplicationRecord
 
     # Associations
     belongs_to :user
-	belongs_to :location
-	has_many :inquiries
+    belongs_to :location
+    has_many :inquiries
 
     # Validations
     # Ensures length is correct and presence of attributes
