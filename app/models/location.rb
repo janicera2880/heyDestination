@@ -7,7 +7,7 @@ class Location < ApplicationRecord
 
     # Validations
     validates :city, :state, :country, presence: true, length: { maximum: 50 }
-    validates :description, length: { maximum: 500 }
+    validates :description, length: { minimum: 500 }
     validates :image, presence: true
     validate :validate_state_belongs_to_country
 
