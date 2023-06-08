@@ -1,5 +1,5 @@
 class UserAdminsController < ApplicationController
-    before_action :authorize, except: [:create]
+  skip_before_action :authorize, only: [:create], raise: false
 
     # GET /user_admins
     def index
