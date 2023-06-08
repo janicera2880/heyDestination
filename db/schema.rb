@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_225935) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "channels", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "inquiries", force: :cascade do |t|
     t.date "arrival"
     t.date "departure"
@@ -63,16 +56,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_225935) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.string "image"
-    t.text "content"
-    t.integer "user_id"
-    t.integer "channel_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "user_admins", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -80,16 +63,6 @@ ActiveRecord::Schema.define(version: 2023_06_06_225935) do
     t.string "email"
     t.integer "phone"
     t.boolean "admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "image_url"
-    t.text "bio"
-    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
