@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         # If the user admin exists and the password is authenticated
         if user_admin&.authenticate(params[:password])
           session[:user_admin_id] = user_admin.id
-          render json: user_admin, status: :ok
+          render json: user_admin, status: :created
         else
         # Render error message if email or password is invalid
           render json: { error: ["Invalid Email or Password"] }, status: :unauthorized

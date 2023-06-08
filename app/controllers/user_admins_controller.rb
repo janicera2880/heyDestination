@@ -28,22 +28,22 @@ class UserAdminsController < ApplicationController
         end
     end
 
-      private
+    private
       
-      # Strong parameters for creating a new user admin
-      def user_admin_params
+    # Strong parameters for creating a new user admin
+    def user_admin_params
         params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :phone, :admin)
-      end
+    end
 
-      # Find a user admin by ID
-      def find_user_admin
+    # Find a user admin by ID
+    def find_user_admin
         UserAdmin.find_by(params[:id])
-      end
+    end
 
-      # Check if the user is authorized
-      def authorize
+    # Check if the user is authorized
+    def authorize
         unless session[:user_admin_id]
           render json: { error: 'Unauthorized' }, status: :unauthorized
         end
-      end
+    end
 end
