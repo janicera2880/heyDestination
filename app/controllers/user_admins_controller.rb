@@ -1,5 +1,5 @@
 class UserAdminsController < ApplicationController
-  skip_before_action :authorize, only: [:create], raise: false
+  skip_before_action :authorize, only: [:create, :index], raise: false
 
   # GET /user_admins
   def index
@@ -41,9 +41,9 @@ class UserAdminsController < ApplicationController
   end
 
   # Check if the user is authorized
-  def authorize
-    unless session[:user_admin_id]
-      render json: { error: 'Unauthorized' }, status: :unauthorized
-    end
-  end
+  #def authorize
+    #unless session[:user_admin_id]
+      #render json: { error: 'Unauthorized' }, status: :unauthorized
+   # end
+ # end
 end
