@@ -14,5 +14,4 @@ class InquiriesController < ApplicationController
       def inquiry_params
         params.require(:inquiry).permit(:arrival, :departure, :guests, :full_name, :email, :phone, :message)
       end
-    end
 end
