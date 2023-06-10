@@ -23,9 +23,9 @@ class LocationsController < ApplicationController
 
     private
 
-    # Permit only specific parameters (city, state, country, image, description) for security.
+    # Permit only specific parameters for security.
     def location_params
-        params.permit(:city, :state, :country, :image, :description)
+        params.permit(:city, :country, :image, :description)
     end
 
     # Find a location based on the ID provided in the request parameters.

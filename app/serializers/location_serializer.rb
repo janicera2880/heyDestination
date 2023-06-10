@@ -1,5 +1,5 @@
 class LocationSerializer < ActiveModel::Serializer
-  attributes :id, :city, :state, :country, :description, :image
+  attributes :id, :city, :country, :description, :image
 
   has_many :villas
   has_many :inquiries
