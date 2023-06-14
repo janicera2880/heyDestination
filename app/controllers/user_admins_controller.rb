@@ -33,7 +33,7 @@ class UserAdminsController < ApplicationController
 
   # Strong parameters for creating a new user admin
   def user_admin_params
-    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :phone, :admin)
+    params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :phone, :admin,:profile_pic)
   end
 
   # Find a user admin by ID
