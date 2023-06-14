@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import UserAdminProvider from './Contexts/UserAdminContext';
-import VillasProvider from './Contexts/VillasContext';
+import { UserAdminProvider } from './Contexts/UserAdminContext';
+import { VillasProvider } from './Contexts/VillasContext';
 
 ReactDOM.render(
   <React.StrictMode>

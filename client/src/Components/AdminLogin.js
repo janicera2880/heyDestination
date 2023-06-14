@@ -9,13 +9,14 @@ const AdminLogin = () => {
         password: '',
     };
     const [formData, setFormData] = useState(initialState);
-    const {setUserAdmin} = useContext(UserAdmminContext);
+    const { setUserAdmin } = useContext(UserAdmminContext);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     //This function handles the change event of a form input element.
     const handleChange = (e) => {
+        // logs the name and value of a form input element when it changes, and updates the formData object with the new value.
         console.log('handleChange', e.target.name, e.target.value);
         setFormData({...formData, [e.target.name]: e.target.value});
     };
@@ -25,7 +26,8 @@ const AdminLogin = () => {
         setLoading(true);
 
         console.log('handleSubmit', formData);
-
+        
+        //sends an HTTP POST request to the "/login" endpoint of the server
         fetch("/login", {
             method: "POST",
             headers: {
@@ -52,6 +54,7 @@ const AdminLogin = () => {
                 console.error("Error:", error);
                 setLoading(false);
             });
+            //resets the form data object
         setFormData(initialState);
     }
 
