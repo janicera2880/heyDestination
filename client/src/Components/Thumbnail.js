@@ -12,7 +12,7 @@ function Thumbnail() {
 
   return (
     // Render a thumbnail with user's profile photo
-    <div>
+    <div className="thumbnail">
       {userAdmin.profilePhoto && (
         <img
           src={userAdmin.profilePhoto.url}

@@ -2,6 +2,7 @@ import './App.css';
 import { useContext, useEffect } from 'react';
 import { UserAdminContext } from './Contexts/UserAdminContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Header from './Components/Header';
 import AdminLogin from './Components/AdminLogin';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <BrowserRouter>
     
     <div className="App">
+      <Header />
       <Routes>
       <Route path="/login" element={<AdminLogin />} />
       
