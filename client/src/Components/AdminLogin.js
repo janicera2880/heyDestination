@@ -1,5 +1,5 @@
 import {useState, useContext} from 'react';
-import {UserAdmminContext} from '../Context/UserAdmminContext';
+import {UserAdminContext} from '../Contexts/UserAdminContext';
 import {useNavigate} from 'react-router-dom';
 
 //Renders a component for the admin login form.
@@ -9,7 +9,7 @@ const AdminLogin = () => {
         password: '',
     };
     const [formData, setFormData] = useState(initialState);
-    const { setUserAdmin } = useContext(UserAdmminContext);
+    const { setUserAdmin } = useContext(UserAdminContext);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
