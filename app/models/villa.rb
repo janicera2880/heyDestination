@@ -1,7 +1,7 @@
 class Villa < ApplicationRecord
 
     # Associations
-    belongs_to :user
+    belongs_to :user_admin
     belongs_to :location
     has_many :inquiries
     has_many_attached :images

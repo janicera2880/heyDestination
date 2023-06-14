@@ -1,7 +1,7 @@
 class Inquiry < ApplicationRecord
 
   belongs_to :villa
-  has_one :user, through: :villa
+  has_one :user_admin, through: :villa
   belongs_to :location
   
 
