@@ -3,10 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import UserAdminProvider from './Context/UserAdminContext';
+import VillasProvider from './Context/VillasContext';
 
 ReactDOM.render(
   <React.StrictMode>
+    <UserAdminProvider>
+    <VillasProvider>
     <App />
+    </VillasProvider>
+    </UserAdminProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
