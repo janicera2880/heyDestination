@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-/*
- * Creates a UserAdminContext provider component that wraps its child components.
+/* Creates a UserAdminContext provider component that wraps its child components.
  * @param {Object} props - The props object.
  * @param {ReactNode} props.children - The child components to render.
  * @return {JSX.Element} - The UserAdminContext.Provider component.
