@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+ get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   resources :inquiries, only: [:create]
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   resources :villas, only: [:index, :show]
   resources :activities, only: [:index, :show]
-  resource :activity_location, only: [:show]
+  resource :activity_locations, only: [:index, :show]
   
   post "/signup", to: "user_admins#create" # Route to handle the signup request specifically for admin users.
   post "/login", to: "sessions#create" # Route to handle admin user login/authentication.

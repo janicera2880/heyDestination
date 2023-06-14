@@ -5,7 +5,7 @@ class VillasController < ApplicationController
 
     # GET /villas
     def index
-        villas = Villas.all
+        villas = Villa.all
         render json: villas, include: ['locations.activity_locations']
     end
     # GET /villas/:id
@@ -18,7 +18,7 @@ class VillasController < ApplicationController
     def create
         user_admin = find_user_admin
         if authorized_user?(user_admin)
-        new_villa = user_admin.villas.create!(villa_params)
+        new_villa = user_admin.villa.create!(villa_params)
         render json: new_villa, status: :created
         else
             render json: { errors: user_admin.errors.full_messages }, status: :unprocessable_entity

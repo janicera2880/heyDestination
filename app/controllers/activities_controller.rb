@@ -5,18 +5,18 @@ class ActivitiesController < ApplicationController
 
     # GET /activities
     def index
-        activities = Activities.all
+        activities = Activity.all
         render json: activities
-    end
+      end
     # GET /activities/:id
     def show
-        activity = Activities.find(params[:id])
+        activity = Activity.find(params[:id])
         render json: activity
-    end
+      end
 
     # POST /activities
     def create
-        activity = Activities.create!(activity_params)
+        activity = Activity.create!(activity_params)
         render json: activity, status: :created
     end
 
