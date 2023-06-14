@@ -13,18 +13,20 @@ class Villa < ApplicationRecord
     validates :highlights, :features, :services, presence: true, length: { minimum: 200 }
     validates :overview, :features, :amenities, presence: true, length: { minimum: 300 }
     validates :rate, :capacity, :bedroom, :bathroom, presence: true, numericality: { greater_than_or_equal_to: 0 }
-    validate :acceptable_image
+    validate :acceptable_images
 
-    def acceptable_image
+    def acceptable_images
         return unless images.attached?
       
-        unless main_image.blob.byte_size <= 1.megabyte
-          errors.add(:images, "file too big")
-        end
-
-        acceptable_types = ["image/jpeg", "image/png"]
-        unless acceptable_types.include?(images.content_type)
-        errors.add(:images, "must be a JPEG or PNG")
+        images.each do |image|
+          if image.blob.byte_size > 1.megabyte
+            errors.add(:images, "file is too big")
+          end
+    
+          acceptable_types = ["image/jpeg", "image/png"]
+          unless acceptable_types.include?(image.blob.content_type)
+            errors.add(:images, "must be a JPEG or PNG")
+          end
         end
       end
 
