@@ -44,7 +44,7 @@ const UserLoginLogout = () => {
     } else {
       return (
         <div>
-          <button onClick={handleLogin}>Login</button>
+          <button onClick={handleLogin}>Admin Login</button>
         </div>
       );
     }

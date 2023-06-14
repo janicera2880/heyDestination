@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import { useContext, useEffect } from 'react';
+import { UserAdminContext } from './Contexts/UserAdminContext';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AdminLogin from './Components/AdminLogin';
 
 function App() {
+  const { setUserAdmin } = useContext(UserAdminContext);
+
+  useEffect (() => {
+    fetch("/me").then( (r) => {
+      if (r.ok) {
+        r.json().then((userAdmin) => {
+          setUserAdmin(userAdmin);
+        });
+      }
+    })
+    }, [setUserAdmin]);
+  
   return (
+    <BrowserRouter>
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+      <Route path="/login" element={<AdminLogin />} />
+      
+
+      </Routes>
     </div>
-  );
+    </BrowserRouter>
+    );
 }
 
 export default App;
