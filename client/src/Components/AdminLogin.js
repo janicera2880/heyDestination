@@ -10,7 +10,7 @@ const AdminLogin = () => {
     };
     const [formData, setFormData] = useState(initialState);
     const { setUserAdmin } = useContext(UserAdminContext);
-    const [error, setError] = useState('');
+    const [error, setError] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
