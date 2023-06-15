@@ -13,9 +13,9 @@ function Thumbnail() {
   return (
     // Render a thumbnail with user's profile photo
     <div className="thumbnail">
-      {userAdmin.profilePhoto && (
+      {userAdmin.profilePic && (
         <img
-          src={userAdmin.profilePhoto.url}
+          src={userAdmin.profilePic.url}
           alt="Profile"
           onClick={handleClick}
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
