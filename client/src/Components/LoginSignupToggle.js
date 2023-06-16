@@ -3,6 +3,9 @@ import { UserAdminContext } from '../Contexts/UserAdminContext';
 import AdminLogin from './AdminLogin';
 import SignupForm from './SignupForm';
 
+/*A function component that toggles between a login and signup form,
+ and allows a logged in user to logout. Uses React's state and context hooks to manage state.
+ form and a signup button or a signup form and a login button. Also renders a logout button if a user is logged in. */
 const LoginSignupToggle = () => {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
