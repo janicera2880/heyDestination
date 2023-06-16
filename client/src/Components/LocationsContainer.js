@@ -7,7 +7,7 @@ import { UserAdminContext } from '../Contexts/UserAdminContext';
 // Returns a container component that displays a list of locations.
 const LocationsContainer = () => {
   const { locations } = useContext(LocationsContext);
-  const { user } = useContext(UserContext);
+  const { user } = useContext(UserAdminContext);
 
   const isUserAdmin = user && user.role === 'admin';
 
