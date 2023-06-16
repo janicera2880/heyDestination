@@ -3,7 +3,7 @@
 }
 body {
   text-align: center;
-  background-color: rgb(238, 233, 203);
+  background-color: rgb(218, 201, 175);
   font-style: sans-serif;
   font-weight: lighter;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -16,7 +16,7 @@ body {
 .header {
   background-color: #f1f1f1;
   padding: 0px;
-  display: flex;
+  display: center;
   align-items: flex-start;
 }
 
@@ -26,34 +26,28 @@ body {
   clear:both;
   overflow:auto;
 }
-.logo img{
-  width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
-}
+
 nav ul {
   list-style-type:none;
   display:list-item;
   padding: 10px 0;
-  background-size: 200% 200%;
-  background-image: linear-gradient(-45deg, #8d8871, #e7dcab, #dfd87a, #f0dc2c,#dde011);
+  background-size: 150% 100%;
+  background-image: linear-gradient(-40deg, #4fe0c1, #177c5b, #83ece7, #7cee9e,#41a179);
   animation: 12s myGradient infinite;
-  border-radius: 30px;
-  box-shadow: 3px 3px 20px #d8d515;
-  border-top-left-radius: 0px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 20px #dbb96e;
+  border-top-left-radius: 5px;
   border-bottom-right-radius: 0px;
 }
 
 nav ul li {
   display: inline-block;
-  margin-right: 70px;
+  margin-right: 80px;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: #0f1314;
+  color: #0f2429;
   padding: 5px;
 }
 

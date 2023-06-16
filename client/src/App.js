@@ -4,7 +4,7 @@ import { UserAdminContext } from './Contexts/UserAdminContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LoginSignupToggle from './Components/LoginSignupToggle';
 import Navigation from './Components/Navigation';
-
+import Header from './Components/Header';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
@@ -23,7 +23,7 @@ function App() {
     <BrowserRouter>
     
     <div className="App">
-    
+      <Header />
       <Navigation />
       <Routes>
       <Route path="/" element={<LoginSignupToggle />} />
