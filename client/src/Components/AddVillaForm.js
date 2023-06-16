@@ -122,16 +122,16 @@ const AddVillaForm = () => {
   };
 
   return (
-    <div className="villa-form">
-      <h2>Create a Villa</h2>
-      {errors.length > 0 && (
-        <ul className="error-list">
-          {errors.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
+  
+<div className="villa-form">
+    <h2>Create a Villa</h2>
+    {errors.length > 0 && (
+      <ul className="error-list">
+        {errors.map((error, index) => (
+          <li key={index}>{error}</li>))}
+      </ul>
       )}
-     <form onSubmit={handleSubmit}>
+<form onSubmit={handleSubmit}>
   <label htmlFor="name">Name:</label>
   <input
     type="text"
@@ -141,12 +141,12 @@ const AddVillaForm = () => {
   />
 
   <label htmlFor="highlights">Highlights:</label>
-  <input
+  <textarea
     type="text"
     name="highlights"
     value={formData.highlights}
     onChange={handleChange}
-  />
+    ></textarea>
 
   <label htmlFor="overview">Overview:</label>
   <textarea
@@ -155,7 +155,58 @@ const AddVillaForm = () => {
     onChange={handleChange}
   ></textarea>
 
-  {/* Add other form fields here */}
+  <label htmlFor="overview">Features:</label>
+  <textarea
+    name="features"
+    value={formData.features}
+    onChange={handleChange}
+  ></textarea>
+
+  <label htmlFor="overview">Amenities:</label>
+  <textarea
+    name="amenities"
+    value={formData.amenities}
+    onChange={handleChange}
+  ></textarea>
+
+  <label htmlFor="images">Rate:</label>
+  <input
+    type="number"
+    name="rate"
+    value={formData.rate}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="images">Capacity:</label>
+  <input
+    type="number"
+    name="capacity"
+    value={formData.capacity}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="images">Bedroom:</label>
+  <input
+    type="number"
+    name="bedroom"
+    value={formData.bedroom}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="images">Bathroom:</label>
+  <input
+    type="number"
+    name="bathroom"
+    value={formData.bathroom}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="services">Services:</label>
+  <textarea
+    name="services"
+    value={formData.services}
+    onChange={handleChange}
+  ></textarea>
 
   <label htmlFor="images">Images:</label>
   <input
@@ -174,10 +225,10 @@ const AddVillaForm = () => {
     </ul>
   )}
 
-  <button type="submit">Submit</button>
+  <button className="primary" type="submit">{isLoading ? "Submitting..." : "Submit"}</button>
 </form>
 
-    </div>
+</div>
   );
 };
 
