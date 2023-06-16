@@ -13,7 +13,7 @@ const addLocation = (newLocation) => {
 
   // Context provider component
     return(
-        <LocationsContext.Provider value={{locations, addLocation}}>
+        <LocationsContext.Provider value={{locations, addLocation, setLocations}}>
             {children}
         </LocationsContext.Provider>
     );

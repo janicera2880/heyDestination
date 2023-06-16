@@ -21,7 +21,7 @@ const LocationsCard = () => {
           <img src={location.image} alt={location.city} />
           <p>{location.description}</p>
           <br></br>      
-        <Link className="viewLink" to={`/locations/${id}`}>View More</Link>      
+        <Link className="viewLink" to={`/locations/`}>View More</Link>      
         </div>
       ))}
     </div>

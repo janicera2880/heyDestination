@@ -75,7 +75,7 @@ const AddLocationForm = () => {
   };
 
   return (
-    <div>
+    <div className='add-location'>
       <h2>Add Location</h2>
       {errors.length > 0 && (
         <ul style={{ color: 'red' }}>
