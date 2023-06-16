@@ -5,12 +5,12 @@ import { InquiriesContext } from '../contexts/InquiriesContext';
 const InquireForm = () => {
   const { addInquiry } = useContext(InquiriesContext);
   const [formData, setFormData] = useState({
-    arrivalDate: '',
-    departureDate: '',
-    numberOfGuests: '',
-    fullName: '',
+    arrival: '',
+    departure: '',
+    guests: '',
+    full_name: '',
     email: '',
-    phoneNumber: '',
+    phone: '',
     message: ''
   });
   const [errors, setErrors] = useState([]);
@@ -27,12 +27,14 @@ const InquireForm = () => {
   //Submits a form data to the server and handles the response accordingly.
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    fetch('/channels', {
+// Perform a POST request to the '/inquiries' endpoint
+    fetch('/inquiries', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+       
+        // clear the errors and add the new inquiry to the list of inquiries
       body: JSON.stringify(formData),
     })
       .then((r) => {
@@ -40,22 +42,24 @@ const InquireForm = () => {
           setErrors([]);
           r.json().then((newInquiry) => addInquiry(newInquiry));
         } else {
+            // parse the response JSON and set the errors state variable
           r.json().then((err) => setErrors(err.errors));
         }
       })
       .catch((error) => {
+        // If there's a network error or server error, catch the error and set an error message
         console.error('Error:', error);
         setErrors(['An error occurred. Please try again later.']);
       });
 
     setFormData({
-      arrivalDate: '',
-      departureDate: '',
-      numberOfGuests: '',
-      fullName: '',
-      email: '',
-      phoneNumber: '',
-      message: ''
+        arrival: '',
+        departure: '',
+        guests: '',
+        full_name: '',
+        email: '',
+        phone: '',
+        message: ''
     });
   };
 
@@ -73,7 +77,7 @@ const InquireForm = () => {
 
       <form className="inquire-form__form" onSubmit={handleSubmit}>
         <label>
-          Arrival:
+          Arrival Date:
           <input
             type="date"
             name="arrivalDate"
@@ -83,7 +87,7 @@ const InquireForm = () => {
         </label>
 
         <label>
-          Departure:
+          Departure Date:
           <input
             type="date"
             name="departureDate"
@@ -93,11 +97,11 @@ const InquireForm = () => {
         </label>
 
         <label>
-          Guests:
+          Number of Guests:
           <input
             type="number"
             name="numberOfGuests"
-            value={formData.numberOfGuests}
+            value={formData.guests}
             onChange={handleChange}
           />
         </label>
@@ -107,7 +111,7 @@ const InquireForm = () => {
           <input
             type="text"
             name="fullName"
-            value={formData.fullName}
+            value={formData.full_name}
             onChange={handleChange}
           />
         </label>
@@ -127,7 +131,7 @@ const InquireForm = () => {
           <input
             type="text"
             name="phoneNumber"
-            value={formData.phoneNumber}
+            value={formData.phone}
             onChange={handleChange}
           />
         </label>

@@ -7,6 +7,7 @@ import { UserAdminProvider } from './Contexts/UserAdminContext';
 import { VillasProvider } from './Contexts/VillasContext';
 import { LocationsProvider } from './Contexts/LocationsContext';
 import { InquiriesProvider } from './Contexts/InquiriesContext';
+import { ActivitiesProvider } from './Contexts/ActivitiesContext';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ ReactDOM.render(
       <LocationsProvider>
        <VillasProvider>
        <InquiriesProvider>
+       <ActivitiesProvider>
     <App />
+       </ActivitiesProvider>
        </InquiriesProvider>
        </VillasProvider>
       </LocationsProvider>
