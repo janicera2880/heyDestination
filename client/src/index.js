@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { UserAdminProvider } from './Contexts/UserAdminContext';
 import { VillasProvider } from './Contexts/VillasContext';
 import { LocationsProvider } from './Contexts/LocationsContext';
+import { InquiriesProvider } from './Contexts/InquiriesContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <UserAdminProvider>
       <LocationsProvider>
-    <VillasProvider>
+       <VillasProvider>
+       <InquiriesProvider>
     <App />
-    </VillasProvider>
-    </LocationsProvider>
+       </InquiriesProvider>
+       </VillasProvider>
+      </LocationsProvider>
     </UserAdminProvider>
   </React.StrictMode>,
   document.getElementById('root')
