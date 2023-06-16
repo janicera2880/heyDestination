@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { InquiriesContext } from '../contexts/InquiriesContext';
+import { InquiriesContext } from '../Contexts/InquiriesContext';
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //Creates a form component for users to make inquiries and sends form data to the server.
 const InquireForm = () => {
@@ -15,6 +17,11 @@ const InquireForm = () => {
   });
   const [errors, setErrors] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { id } = useParams();
+  const villaId = parseInt(id);
+  const navigate = useNavigate();
 
 //Updates the form data state with a new key-value pair, where the key is the name of the form field and the value is the value of the form field.
 
@@ -28,8 +35,9 @@ const InquireForm = () => {
   //Submits a form data to the server and handles the response accordingly.
   const handleSubmit = (event) => {
     event.preventDefault();
+    setIsLoading(true);
 // Perform a POST request to the '/inquiries' endpoint
-    fetch('/inquiries', {
+  fetch(`villas/${villaId}/inquiries`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,6 +51,7 @@ const InquireForm = () => {
           setErrors([]);
           setSuccessMessage('Thank you for your interest! Please allow 1-3 business days for an agent to contact you.');
           r.json().then((newInquiry) => addInquiry(newInquiry));
+          navigate(`/villas/${villaId}`);
         } else {
             // parse the response JSON and set the errors state variable
           r.json().then((err) => setErrors(err.errors));
@@ -68,6 +77,7 @@ const InquireForm = () => {
   return (
     <div className="inquire-form">
       <h2>Inquire Here</h2>
+      <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
 
       {errors.length > 0 && (
         <ul className="error-list">
@@ -142,7 +152,7 @@ const InquireForm = () => {
         </label>
 
         <label>
-          Message:
+        Tell us about your group, your budget, and any other information to help curate your stay.
           <textarea
             name="message"
             value={formData.message}
@@ -150,7 +160,9 @@ const InquireForm = () => {
           ></textarea>
         </label>
 
-        <button type="submit">Submit</button>
+        <button className="primary" type="submit">
+        {isLoading ? "Submitting..." : "Submit"}
+        </button>
       </form>
     </div>
   );

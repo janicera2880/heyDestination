@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LoginSignupToggle from './Components/LoginSignupToggle';
 import Navigation from './Components/Navigation';
 import LocationsContainer from './Components/LocationsContainer';
+import InquireForm from './Components/InquireForm';
 //import Header from './Components/Header';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <Routes>
       <Route path="/" element={<LoginSignupToggle />} />
       <Route path="/locations" element={<LocationsContainer/>} />
+      <Route path="/inquiries" element={<InquireForm/>} />
 
       </Routes>
     </div>
