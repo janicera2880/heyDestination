@@ -14,6 +14,7 @@ const InquireForm = () => {
     message: ''
   });
   const [errors, setErrors] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
 //Updates the form data state with a new key-value pair, where the key is the name of the form field and the value is the value of the form field.
 
@@ -40,6 +41,7 @@ const InquireForm = () => {
       .then((r) => {
         if (r.ok) {
           setErrors([]);
+          setSuccessMessage('Thank you for your interest! Please allow 1-3 business days for an agent to contact you.');
           r.json().then((newInquiry) => addInquiry(newInquiry));
         } else {
             // parse the response JSON and set the errors state variable
@@ -74,6 +76,9 @@ const InquireForm = () => {
           ))}
         </ul>
       )}
+      {successMessage && (
+    <div className="success-message">{successMessage}</div>
+  )}
 
       <form className="inquire-form__form" onSubmit={handleSubmit}>
         <label>
