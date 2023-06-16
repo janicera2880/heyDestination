@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 
-export const ActivitiesContext = createContext();
+const ActivitiesContext = createContext();
 
-const ActivitiesContextProvider = ({ children }) => {
+const ActivitiesProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
 
   const addActivity = (newActivity) => {
@@ -20,4 +20,4 @@ const ActivitiesContextProvider = ({ children }) => {
   );
 };
 
-export default ActivitiesContextProvider;
+export {ActivitiesContext, ActivitiesProvider};
