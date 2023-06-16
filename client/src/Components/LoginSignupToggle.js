@@ -1,20 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { UserAdminContext } from '../Contexts/UserAdminContext';
-import AdminLogin  from './AdminLogin';
+import AdminLogin from './AdminLogin';
 import SignupForm from './SignupForm';
 
-const UserLoginLogout = () => {
+const LoginSignupToggle = () => {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const [showLoginForm, setShowLoginForm] = useState(true);
-
-  const handleLogin = () => {
-    setShowLoginForm(true);
-  };
-
-  const handleSignup = () => {
-    setShowLoginForm(false);
-  };
+  const [toggleForms, setToggleForms] = useState(true);
 
   const handleLogout = () => {
     setShowLogoutPopup(true);
@@ -48,13 +40,27 @@ const UserLoginLogout = () => {
     );
   } else {
     return (
-      <div>
-        {showLoginForm ? <AdminLogin /> : <SignupForm />}
-        <button onClick={handleLogin}>Employee Login</button>
-        <button onClick={handleSignup}>Employee Signup</button>
+      <div className="login-portal">
+        {toggleForms ? (
+          <>
+            <AdminLogin />
+            <p>
+              Don't have an account? &nbsp;
+              <button onClick={() => setToggleForms(false)}>Signup Here</button>
+            </p>
+          </>
+        ) : (
+          <>
+            <SignupForm />
+            <p>
+              Already have an account? &nbsp;
+              <button onClick={() => setToggleForms(true)}>Click to Login</button>
+            </p>
+          </>
+        )}
       </div>
     );
   }
 };
 
-export default UserLoginLogout;
+export default LoginSignupToggle;

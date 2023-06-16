@@ -7,6 +7,7 @@ function Navigation() {
 
   return (
     <div className="navigation">
+     
       <nav>
         <ul>
           
@@ -15,22 +16,10 @@ function Navigation() {
               DESTINATIONS
             </NavLink>
           </li>
-          <li className="dropdown">
-            <span className="dropdown-btn">THINGS TO DO</span>
-            <div className="dropdown-content">
-              <NavLink to="/activities/sports" activeClassName="active">
-                Sports
-              </NavLink>
-              <NavLink to="/activities/lifestyle" activeClassName="active">
-                Lifestyle
-              </NavLink>
-              <NavLink to="/activities/events" activeClassName="active">
-                Events
-              </NavLink>
-              <NavLink to="/activities/unique" activeClassName="active">
-                Unique
-              </NavLink>
-            </div>
+          <li>
+            <NavLink to="/activities" activeClassName="active">
+             THINGS TO DO
+            </NavLink>
           </li>
           <li>
             <NavLink to="/inquiries" activeClassName="active">

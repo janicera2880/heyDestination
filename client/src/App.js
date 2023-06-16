@@ -2,8 +2,7 @@ import './App.css';
 import { useContext, useEffect } from 'react';
 import { UserAdminContext } from './Contexts/UserAdminContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import UserLoginLogout from './Components/UserLoginLogout';
-import Header from './Components/Header';
+import LoginSignupToggle from './Components/LoginSignupToggle';
 import Navigation from './Components/Navigation';
 
 
@@ -24,10 +23,10 @@ function App() {
     <BrowserRouter>
     
     <div className="App">
-      <Header />
+    
       <Navigation />
       <Routes>
-      <Route path="/" element={<UserLoginLogout />} />
+      <Route path="/" element={<LoginSignupToggle />} />
       
 
       </Routes>
