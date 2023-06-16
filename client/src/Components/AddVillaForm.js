@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { VillasContext } from "../Contexts/VillasContext";
+import { VillasContext } from "../contexts/VillasContext";
 
 const AddVillaForm = () => {
   const { id } = useParams();
   const locationId = parseInt(id);
   const navigate = useNavigate();
-  
+
   const { addVilla } = useContext(VillasContext);
 
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const AddVillaForm = () => {
     bedroom: 0,
     bathroom: 0,
     services: "",
-    //location_id: channelId, // Set location_id based on the channel ID
+    images: [] // Array to store the uploaded images
   });
 
   const [errors, setErrors] = useState([]);
@@ -36,23 +36,42 @@ const AddVillaForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+  
     const newVilla = {
       ...formData,
+      location_id: locationId,
     };
-
-    fetch("/user_admin/${locationId}/villas", {
+  
+    // Convert the image data to Blob objects
+    const imageBlobs = formData.images.map((imageData) => {
+      const byteCharacters = atob(imageData.split(",")[1]);
+      const byteArrays = [];
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteArrays.push(byteCharacters.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(byteArrays)], { type: "image/jpeg" });
+    });
+  
+    // Create a FormData object to send the image files
+    const formDataWithImages = new FormData();
+    formDataWithImages.append("villa[name]", newVilla.name);
+    // Append other villa data to the FormData object
+    // ...
+  
+    // Append the image files to the FormData object
+    imageBlobs.forEach((imageBlob, index) => {
+      formDataWithImages.append(`villa[images][]`, imageBlob, `image${index + 1}.jpg`);
+    });
+  
+    fetch("/user_admin/villas", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newVilla),
+      body: formDataWithImages,
     })
       .then((response) => {
         if (response.ok) {
           setErrors([]);
           response.json().then((newVilla) => {
-            addVilla(newVilla); // Use the addVilla function from VillasContext
+            addVilla(newVilla);
             navigate("/villas");
           });
         } else {
@@ -73,6 +92,34 @@ const AddVillaForm = () => {
         setIsLoading(false);
       });
   };
+  const handleImageChange = (event) => {
+    const files = event.target.files;
+    const imageFiles = Array.from(files).slice(0, 8); // Limit the selection to 8 images
+  
+    const imagePromises = imageFiles.map((file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          resolve(event.target.result);
+        };
+        reader.onerror = (error) => {
+          reject(error);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  
+    Promise.all(imagePromises)
+      .then((results) => {
+        setFormData({
+          ...formData,
+          images: results,
+        });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <div className="villa-form">
@@ -84,9 +131,52 @@ const AddVillaForm = () => {
           ))}
         </ul>
       )}
-      <form onSubmit={handleSubmit}>
-        {/* Form fields */}
-      </form>
+     <form onSubmit={handleSubmit}>
+  <label htmlFor="name">Name:</label>
+  <input
+    type="text"
+    name="name"
+    value={formData.name}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="highlights">Highlights:</label>
+  <input
+    type="text"
+    name="highlights"
+    value={formData.highlights}
+    onChange={handleChange}
+  />
+
+  <label htmlFor="overview">Overview:</label>
+  <textarea
+    name="overview"
+    value={formData.overview}
+    onChange={handleChange}
+  ></textarea>
+
+  {/* Add other form fields here */}
+
+  <label htmlFor="images">Images:</label>
+  <input
+    type="file"
+    name="images"
+    accept="image/*"
+    multiple
+    onChange={handleImageChange}
+  />
+
+  {errors.length > 0 && (
+    <ul className="error-list">
+      {errors.map((error, index) => (
+        <li key={index}>{error}</li>
+      ))}
+    </ul>
+  )}
+
+  <button type="submit">Submit</button>
+</form>
+
     </div>
   );
 };
