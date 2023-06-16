@@ -21,7 +21,8 @@ function Thumbnail() {
           style={{ width: "100px", height: "100px", borderRadius: "50%" }}
         />
       )}
-      <p>Welcome, {userAdmin.first_name}</p>
+      <p>Welcome, {userAdmin.first_name}{userAdmin.last_name}</p>
+      <p>{userAdmin.email} | {userAdmin.phone}</p>
     </div>
   );
 }
