@@ -7,9 +7,25 @@ function VillasProvider({ children }) {
     const [villas, setVillas] = useState(null);
     const [userVillas, setUserVillas] = useState(null);
 
+    const addVilla = (villa) => {
+        setVillas([...villas, villa]);
+      };
+    
+      const removeVilla = (villaId) => {
+        setVillas(villas.filter((villa) => villa.id !== villaId));
+      };
+    
+      const updateVilla = (updatedVilla) => {
+        setVillas((prevVillas) =>
+          prevVillas.map((villa) =>
+            villa.id === updatedVilla.id ? updatedVilla : villa
+          )
+        );
+      };
+
     // Return component with VillasContext.Provider and values of its state
     return (
-        <VillasContext.Provider value={{ villas, setVillas, userVillas, setUserVillas }}>
+        <VillasContext.Provider value={{ villas, setVillas, userVillas, setUserVillas, addVilla, removeVilla, updateVilla }}>
             {children}
         </VillasContext.Provider>
     );

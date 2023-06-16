@@ -9,7 +9,7 @@ const AddActivityForm = () => {
   const [highlights, setHighlights] = useState('');
   const [image, setImage] = useState('');
   const [details, setDetails] = useState('');
-  const [categories, setCategories] = useState('sports'); // Default category value is 'sports'
+  const [categories, setCategories] = useState('Sports'); // Default category value is 'sports'
 
 
   //On submit, sends a POST request to add a new activity to the server and updates the activities list using the addActivity function from the ActivitiesContext. 
