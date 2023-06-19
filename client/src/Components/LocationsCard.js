@@ -10,15 +10,15 @@ const LocationsCard = () => {
 
   return (
     <div className="locations-card">
-      <h2>Locations</h2>
+     
       {userAdmin && (
-        <Link className="viewLink" to={`/locations`}>Manage Locations</Link> 
+        <Link className="viewLink" to={`/locations-form`}>Manage Locations</Link> 
       )}
       {locations.map((location) => (
         <div key={location.id}>
           <h3>{location.city}</h3>
           <p>{location.country}</p>
-          <img src={location.image} alt={location.city} />
+          <img src={location.image} width="400" height="400" alt={location.city} />
           <p>{location.description}</p>
           <br></br>      
         <Link className="viewLink" to={`/locations/${location.id}`}>View More</Link>      
