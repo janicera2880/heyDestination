@@ -1,4 +1,4 @@
-cclass UserAdminSerializer < ActiveModel::Serializer
+class UserAdminSerializer < ActiveModel::Serializer
 attributes :id, :first_name, :last_name, :email, :phone, :admin, :profile_pic_url
 
 has_many :villas
