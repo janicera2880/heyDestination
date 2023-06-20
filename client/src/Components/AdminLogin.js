@@ -60,18 +60,19 @@ const AdminLogin = () => {
 
     return (
         <div className='Login'>
-            <h1>Admin Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
-                <label>Password</label>
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
-                <button type="submit" disabled={loading}>Submit</button>
-                {error.map((err, index) => (
-                    <li style={{ color: "black" }} key={index}>{err}</li>
-                ))}
-            </form>
-        </div>
+        <h1>Admin Login</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Email</label>
+          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          <label>Password</label>
+          <input type="password" name="password" value={formData.password} onChange={handleChange} />
+          <button type="submit" disabled={loading}>Submit</button>
+          {Array.isArray(error) && error.map((err, index) => (
+            <li style={{ color: "black" }} key={index}>{err}</li>
+          ))}
+        </form>
+      </div>
+      
     );
 }
 export default AdminLogin;
