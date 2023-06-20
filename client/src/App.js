@@ -59,9 +59,12 @@ function App() {
     <BrowserRouter>
     
     <div className="App">
-    
-      <Navigation />
+      
       <Header />
+      <Navigation />
+      <br></br>
+      <br></br>
+      <br></br>
       <Routes>
       <Route path="/" element={<LoginSignupToggle />} />
       <Route path="/locations" element={<LocationsContainer/>} />

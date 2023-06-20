@@ -15,33 +15,34 @@ const LocationsContainer = () => {
   const isUserAdmin = userAdmin && userAdmin.admin === 'true';
 
   useEffect(() => {
-    fetch(`/locations?page=1`)
-      .then((r) => r.json())
+    fetch(`/locations?page=${page}`)
+      .then((response) => response.json())
       .then((data) => {
         setLocations(data);
       })
       .catch((error) => {
         console.error('Error fetching locations:', error);
       });
-  }, [setLocations]);
+  }, [page, setLocations]);
 
   const viewMorePage = async () => {
-    const response = await fetch(`/locations?page=${page + 1}`);
+    const nextPage = page + 1;
+    const response = await fetch(`/locations?page=${nextPage}`);
     const data = await response.json();
     console.log("Locations API response:", data);
     if (data.length > 0) {
       setLocations((prevLocations) => [...prevLocations, ...data]);
-      setPage((prevPage) => prevPage + 1);
+      setPage(nextPage);
     } else {
       setHasMore(false); // No more data available
     }
   };
   
   return (
-    <div>
+    <div className="locations-container">
       {isUserAdmin && <AddLocationForm />}
       <InfiniteScroll
-        dataLength={locations.length || 0}
+        dataLength={locations.length}
         next={viewMorePage}
         hasMore={hasMore}
         loader={<h4>Loading...</h4>}

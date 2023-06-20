@@ -73,8 +73,8 @@ nav ul li a:hover {
 /*Locations Cards*/
 .locations-card {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
   width: 95%;
   padding: 10px;
   box-sizing:content-box;
@@ -89,18 +89,13 @@ nav ul li a:hover {
   border-radius: 1px;
   box-shadow: 2px  5px 20px #162d6b;
 }
-.location-card {
-  border-radius: 4px;
-  box-shadow: 10px 5px #2da792;
-  border: 5px solid #251f1f;
-  padding: 0px;
-}
+
 .locations-card div:hover {
   transform: scale(1.1);
 }
 
 .locations-card p {
-  margin: 30;
+  margin: 10;
   
 }
 
@@ -125,6 +120,15 @@ nav ul li a:hover {
  text-size-adjust: 80%;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.locations-container {
+  height: 1200px; /* Adjust the height as per your requirement */
+  width: 80%;
+  max-width: 1500px; /* Adjust the value as needed */
+  margin: 0 auto;
+  
+}
+
 
 /*Inquire Form*/
 
@@ -246,4 +250,9 @@ nav ul li a:hover {
 .activity-card h4 span {
   font-family:monospace;
   font-weight: bold;
+}
+.activity-container p{
+font-family: monospace;
+font-weight: bold;
+font-size: 16px;
 }

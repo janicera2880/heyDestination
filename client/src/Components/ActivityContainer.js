@@ -10,11 +10,12 @@ const ActivityContainer = () => {
   const { activities, userAdmin } = useContext(ActivitiesContext);
 
   return (
-    <div>
+    <div className='activity-container'>
       {userAdmin && <AddActivityForm />}
-      <p>Discover and indulge in a wide array of captivating activities that we offer. Whether you seek solace in serene moments or desire exhilarating adventures, our collection has something for everyone. Embark on a journey of exploration and create unforgettable memories with your loved ones.
+      <p>Discover and indulge in a wide array of captivating activities that we offer.</p>
+        <p>Whether you seek solace in serene moments or desire exhilarating adventures, our collection has something for everyone.</p>
+        <p>Embark on a journey of exploration and create unforgettable memories with your loved ones.</p>
 
-</p>
       {activities.map((activity) => (
         <ActivityCard key={activity.id} activity={activity} />
       ))}
