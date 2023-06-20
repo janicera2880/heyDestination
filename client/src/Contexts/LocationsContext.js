@@ -11,9 +11,14 @@ const addLocation = (newLocation) => {
     setLocations([...locations, newLocation]);
   };
 
+  // Function to get location by ID
+  const getLocationById = (location_id) => {
+    return locations.find((location) => location.id === location_id);
+  };
+
   // Context provider component
     return(
-        <LocationsContext.Provider value={{locations, addLocation, setLocations}}>
+        <LocationsContext.Provider value={{locations, addLocation, setLocations, getLocationById}}>
             {children}
         </LocationsContext.Provider>
     );

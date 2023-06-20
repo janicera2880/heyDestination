@@ -17,6 +17,11 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/villas" activeClassName="active">
+              LUXURY VILLAS
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/activities" activeClassName="active">
              THINGS TO DO
             </NavLink>
@@ -33,7 +38,7 @@ function Navigation() {
           </li>
           <li>
             <NavLink exact to="/" activeClassName="active">
-              EMPLOYEE PORTAL
+              OUR SERVICES
             </NavLink>
           </li>
          
