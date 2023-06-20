@@ -2,7 +2,6 @@ import './App.css';
 import { useContext, useEffect } from 'react';
 import { ActivitiesContext } from './Contexts/ActivitiesContext';
 import { VillasContext } from './Contexts/VillasContext';
-import { LocationsContext } from './Contexts/LocationsContext';
 import { UserAdminContext } from './Contexts/UserAdminContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import LoginSignupToggle from './Components/LoginSignupToggle';
@@ -15,7 +14,6 @@ import Header from './Components/Header';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
-  const { setLocations } = useContext(LocationsContext);
   const { setVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
 
@@ -32,17 +30,6 @@ function App() {
         console.error('Error fetching user:', error);
       });
   }, [setUserAdmin]);
-
-  useEffect(() => {
-    fetch("/locations")
-      .then((r) => r.json())
-      .then((data) => {
-        setLocations(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching locations:', error);
-      });
-  }, [setLocations]);
 
   useEffect(() => {
     fetch("/villas")

@@ -11,9 +11,7 @@ const ActivityCard = ({ activity }) => {
 
   return (
     <div className="activity-card">
-      <p>Discover and indulge in a wide array of captivating activities that we offer. Whether you seek solace in serene moments or desire exhilarating adventures, our collection has something for everyone. Embark on a journey of exploration and create unforgettable memories with your loved ones.
-
-</p>
+      
        <br></br>
        <br></br>
       <img src={image} width="600" height="400" alt={name} />

@@ -5,7 +5,11 @@ class LocationsController < ApplicationController
 
     # Fetch all locations from the database and order them by ID.
     def index
-        locations = Location.all.order(:id)
+
+        page = params[:page].to_i.positive? ? params[:page].to_i : 1
+        per_page = 6
+
+        locations = Location.order('lower(city)').offset((page - 1) * per_page).limit(per_page)
         render json: locations, include: ['villas', 'activity_locations']
     end
 
