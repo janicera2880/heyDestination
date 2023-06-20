@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Lato:wght@300&family=Montserrat:wght@200&family=Mr+Dafoe&family=Roboto&display=swap');
+
 .App {
   text-align: center;
 }
+
 body {
   text-align: center;
   background-color: rgb(201, 219, 187);
-  font-style: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
   font-weight: lighter;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-right: auto;
   width: 100%;
   max-width: 1500px; /* Adjust the value as needed */
 }
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
 /*Header*/
 .header {
   background-color: #f1f1f1;

@@ -12,12 +12,24 @@ const ActivitiesProvider = ({ children }) => {
   const removeActivity = (activityId) => {
     setActivities(activities.filter((activity) => activity.id !== activityId));
   };
+// Modify the activities data to include the locations array
+const activitiesData = [
+  {
+    id: 1,
+    name: 'Activity 1',
+    highlights: '...',
+    image: '...',
+    details: '...',
+    categories: ['...'],
+    locations: [{ id: 1, name: 'Location 1' }, { id: 2, name: 'Location 2' }],
+  },
+];
 
-  return (
-    <ActivitiesContext.Provider value={{ activities, addActivity, removeActivity }}>
-      {children}
-    </ActivitiesContext.Provider>
-  );
+return (
+  <ActivitiesContext.Provider value={{ activities: activitiesData, addActivity, removeActivity }}>
+    {children}
+  </ActivitiesContext.Provider>
+);
 };
 
 export {ActivitiesContext, ActivitiesProvider};

@@ -13,7 +13,7 @@ function Navigation() {
           
           <li>
             <NavLink to="/locations" activeClassName="active">
-              DESTINATIONS
+              DESTINATIONS 
             </NavLink>
           </li>
           <li>
@@ -23,7 +23,7 @@ function Navigation() {
           </li>
           <li>
             <NavLink to="/activities" activeClassName="active">
-             THINGS TO DO
+             EXPLORE
             </NavLink>
           </li>
           <li>
