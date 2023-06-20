@@ -11,6 +11,7 @@ function VillasProvider({ children }) {
         setVillas([...villas, villa]);
       };
     
+    
       const removeVilla = (villaId) => {
         setVillas(villas.filter((villa) => villa.id !== villaId));
       };
@@ -22,12 +23,22 @@ function VillasProvider({ children }) {
           )
         );
       };
+      const [villa, setVilla] = useState(null);
 
+      const value = {
+        villas,
+        setVillas,
+        userVillas,
+        setUserVillas,
+        addVilla,
+        removeVilla,
+        updateVilla,
+        villa, // Include the villa state in the context value
+        setVilla, // Include the setter function for the villa state
+      };
     // Return component with VillasContext.Provider and values of its state
     return (
-        <VillasContext.Provider value={{ villas, setVillas, userVillas, setUserVillas, addVilla, removeVilla, updateVilla }}>
-            {children}
-        </VillasContext.Provider>
+      <VillasContext.Provider value={value}>{children}</VillasContext.Provider>
     );
 }
 export { VillasContext, VillasProvider };

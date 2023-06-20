@@ -9,6 +9,10 @@ function VillasCard() {
   const { location_id } = useParams();
   const { getLocationById } = useContext(LocationsContext);
 
+  if (!villa) {
+    // Render a loading state or return null if the villa data is not available yet
+    return null;
+  }
 // Fetches data from a context called VillasContext and extracts properties from it.
   const {
     name,
@@ -40,7 +44,7 @@ function VillasCard() {
             src={image.url}
             width="400"
             height="300"
-            alt={`Villa Image ${index}`}
+            alt={`Villa  ${index}`}
           />
         ))}
       </div>
