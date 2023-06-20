@@ -21,40 +21,36 @@ u1 = UserAdmin.create!(
   last_name: "Alecha",
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
-  phone: "832-814-6203",
   admin: true
 )
-u1.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "profile_pic1.jpg")), filename: "profile_pic1.jpg", content_type: "image/jpg")
+
 
 u2 = UserAdmin.create!(
   first_name: "Genevieve",
   last_name: "Lopez",
   password: "admingene",
   email: "genlopez05@gmail.com",
-  phone: "713-829-4351",
   admin: true
 )
-u2.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "profile_pic2.jpg")), filename: "profile_pic2.jpg", content_type: "image/jpg")
+
 
 u3 = UserAdmin.create!(
   first_name: "Claire",
   last_name: "Smith",
   password: "adminclaire",
   email: "clairesmith95@gmail.com",
-  phone: "631-789-4262",
-  admin: true
+  admin: true 
 )
-u3.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "profile_pic3.jpg")), filename: "profile_pic3.jpg", content_type: "image/jpg")
+
 
 u4 = UserAdmin.create!(
   first_name: "Jessa",
   last_name: "Stone",
   password: "adminjess",
   email: "jessastone00@gmail.com",
-  phone: "607-893-7145",
-  admin: true
+  admin: true,
 )
-u4.profile_pic.attach(io: File.open(Rails.root.join("app", "assets", "images", "profile_pic4.png")), filename: "profile_pic4.png", content_type: "image/jpg")
+
 
 
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")
