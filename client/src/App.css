@@ -6,7 +6,7 @@
 
 body {
   text-align: center;
-  background-color: rgb(201, 219, 187);
+  background-color: #c9dadf;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: lighter;
@@ -17,12 +17,9 @@ body {
 
 /*Header*/
 .header {
-  background-color: #f1f1f1;
-  padding: 0px;
   display: center;
   align-items: flex-start;
 }
-
 
 /*Navigation*/
 .navigation {
@@ -33,12 +30,12 @@ body {
 nav ul {
   list-style-type:none;
   display:list-item;
-  padding: 28px 0;
-  background-size: 150% 100%;
-  background-image: linear-gradient(-40deg, #4fe0c1, #177c5b, #83ece7, #7cee9e,#41a179);
-  animation: 12s myGradient infinite;
+  padding: 13px 0;
+  background-size: 140% 110%;
+  background-image: linear-gradient(-40deg, #313636, #181e38, #8eb7d3, #79abcc,#879da5);
+  animation: 15s myGradient infinite;
   border-radius: 95px;
-  box-shadow: 5px 5px 20px #183505;
+  box-shadow: 5px 5px 20px #2c5ba3;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -50,7 +47,7 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #0f2429;
+  color: #080808;
   padding: 5px;
 }
 
@@ -73,7 +70,54 @@ nav ul li a:hover {
   margin-top: -100px;
 }
 
+/*Locations Cards*/
+.locations-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  width: 95%;
+  padding: 10px;
+  box-sizing:content-box;
+  margin: 0 auto;
 
+}
+
+.locations-card div {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.30s;
+  border-radius: 0px;
+  box-shadow: 2px  5px 20px #162d6b;
+}
+.location-card {
+  border-radius: 4px;
+  box-shadow: 10px 5px #2da792;
+  border: 5px solid #251f1f;
+  padding: 0px;
+}
+.locations-card div:hover {
+  transform: scale(1.1);
+}
+
+.locations-card p {
+  margin: 20;
+}
+
+.locations-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.viewLink {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 50px;
+  background-color: rgb(199, 217, 224);
+  text-decoration: none;
+  color: rgb(32, 29, 41);
+  font-weight: bold;
+}
 
 
 

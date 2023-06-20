@@ -11,7 +11,7 @@ import LocationsContainer from './Components/LocationsContainer';
 import InquireForm from './Components/InquireForm';
 import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
-//import Header from './Components/Header';
+import Header from './Components/Header';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
@@ -72,6 +72,7 @@ function App() {
     <div className="App">
     
       <Navigation />
+      <Header />
       <Routes>
       <Route path="/" element={<LoginSignupToggle />} />
       <Route path="/locations" element={<LocationsContainer/>} />

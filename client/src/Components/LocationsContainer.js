@@ -4,6 +4,7 @@ import LocationsCard from './LocationsCard';
 import AddLocationForm from './AddLocationForm';
 import { UserAdminContext } from '../Contexts/UserAdminContext';
 
+
 // Returns a container component that displays a list of locations.
 const LocationsContainer = () => {
   const { locations } = useContext(LocationsContext);
@@ -13,7 +14,7 @@ const LocationsContainer = () => {
 
   return (
     <div>
-      <h2>Manage Locations</h2>
+      
       {isUserAdmin && <AddLocationForm />}
       {locations.map((location) => (
         <LocationsCard key={location.id} location={location} />
