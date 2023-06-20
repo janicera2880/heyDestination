@@ -32,7 +32,7 @@ const LocationsCard = () => {
           <img src={location.image} width="400" height="400" alt={location.city} />
           <ReactMarkdown
             className="description"
-            renderers={renderers}
+            components={renderers}
             children={location.description}
           />
           <br></br>      

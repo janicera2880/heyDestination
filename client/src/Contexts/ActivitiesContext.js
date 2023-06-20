@@ -14,7 +14,7 @@ const ActivitiesProvider = ({ children }) => {
   };
 
   return (
-    <ActivitiesContext.Provider value={{ activities, addActivity, removeActivity }}>
+    <ActivitiesContext.Provider value={{ activities, addActivity, removeActivity, setActivities }}>
       {children}
     </ActivitiesContext.Provider>
   );

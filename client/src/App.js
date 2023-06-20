@@ -17,7 +17,7 @@ function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
   const { setLocations } = useContext(LocationsContext);
   const { setVillas } = useContext(VillasContext);
-  const { setActivities } = useContext(ActivitiesContext);
+  const { activities, setActivities } = useContext(ActivitiesContext);
 
   useEffect(() => {
     fetch("/me")
@@ -59,12 +59,14 @@ function App() {
     fetch("/activities")
       .then((r) => r.json())
       .then((data) => {
+        console.log('Fetched activities:', data);
         setActivities(data);
       })
       .catch((error) => {
         console.error('Error fetching activities:', error);
       });
   }, [setActivities]);
+  
   
   return (
     <BrowserRouter>
@@ -78,7 +80,7 @@ function App() {
       <Route path="/locations" element={<LocationsContainer/>} />
       <Route path="/villas" element={<VillasContainer/>} />
       <Route path="/inquiries" element={<InquireForm/>} />
-      <Route path="/activities" element={<ActivityContainer/>} />
+      <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
 
       </Routes>
     </div>
