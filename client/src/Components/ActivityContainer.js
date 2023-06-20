@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ActivityCard from './ActivityCard';
-import AddActivityForm from './AddActivityForm';
-import { ActivitiesContext } from '../contexts/ActivitiesContext';
+import AddActivityForm from './AddActivityForm'; 
+import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 
 
 //A React component that renders a container of activities and an optional form to add new activities.

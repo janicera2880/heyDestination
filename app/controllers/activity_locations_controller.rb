@@ -9,7 +9,7 @@ class ActivityLocationsController < ApplicationController
     end
 
     def show
-        activity_location = ActivityLocation.find(params[:id])
+        activity_location = ActivityLocation.find(params[:id])  
         render json: activity_location
     end
 

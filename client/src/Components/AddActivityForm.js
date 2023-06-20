@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ActivitiesContext } from '../contexts/ActivitiesContext';
+import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 
 
 //Renders an add activity form with input fields for name, highlights, image, details, and category. 
