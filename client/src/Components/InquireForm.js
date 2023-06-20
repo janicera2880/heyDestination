@@ -76,9 +76,10 @@ const InquireForm = () => {
 
   return (
     <div className="inquire-form">
-      <h2>Inquire Here</h2>
+     
       <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
-
+      <br></br>
+      <br></br>
       {errors.length > 0 && (
         <ul className="error-list">
           {errors.map((error, index) => (
@@ -96,7 +97,7 @@ const InquireForm = () => {
           <input
             type="date"
             name="arrivalDate"
-            value={formData.arrivalDate}
+            value={formData.arrival}
             onChange={handleChange}
           />
         </label>
@@ -106,7 +107,7 @@ const InquireForm = () => {
           <input
             type="date"
             name="departureDate"
-            value={formData.departureDate}
+            value={formData.departure}
             onChange={handleChange}
           />
         </label>

@@ -24,14 +24,14 @@ body {
 /*Navigation*/
 .navigation {
   clear:both;
-  overflow:auto;
+  overflow: hidden;
 }
 
 nav ul {
   list-style-type:none;
   display:list-item;
-  padding: 13px 0;
-  background-size: 140% 110%;
+  padding: 15px ;
+  background-size: 150% 100%;
   background-image: linear-gradient(-40deg, #313636, #181e38, #8eb7d3, #79abcc,#879da5);
   animation: 15s myGradient infinite;
   border-radius: 95px;
@@ -74,7 +74,7 @@ nav ul li a:hover {
 .locations-card {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 70px;
+  gap: 40px;
   width: 95%;
   padding: 10px;
   box-sizing:content-box;
@@ -85,8 +85,8 @@ nav ul li a:hover {
 .locations-card div {
   position: relative;
   overflow: hidden;
-  transition: transform 0.30s;
-  border-radius: 0px;
+  transition: transform 0.20s;
+  border-radius: 1px;
   box-shadow: 2px  5px 20px #162d6b;
 }
 .location-card {
@@ -100,7 +100,8 @@ nav ul li a:hover {
 }
 
 .locations-card p {
-  margin: 20;
+  margin: 30;
+  
 }
 
 .locations-card img {
@@ -111,14 +112,89 @@ nav ul li a:hover {
 
 .viewLink {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 5px;
   padding: 10px 50px;
   background-color: rgb(199, 217, 224);
   text-decoration: none;
   color: rgb(32, 29, 41);
+  font-style: oblique;
+}
+
+.description {
+  text-align: center;
+ text-size-adjust: 80%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*Inquire Form*/
+
+.inquire-form {
+  background-color: #c2d4da;
+  padding: 5px 50px;
+  border-radius: 0px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.inquire-form h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.inquire-form p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.error-list {
+  color: #ff0000;
+  list-style: none;
+  padding: 0;
+}
+
+.inquire-form__form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
   font-weight: bold;
 }
 
+.inquire-form__form input,
+.inquire-form__form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
 
+.inquire-form__form textarea {
+  height: 100px;
+}
 
+.primary {
+  background-color: #007bff;
+  color: #d0d9df;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.primary:hover {
+  background-color: #addbe4;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
 

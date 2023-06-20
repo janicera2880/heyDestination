@@ -9,6 +9,16 @@ const LocationsCard = () => {
   const { locations } = useContext(LocationsContext);
   const { userAdmin } = useContext(UserAdminContext);
 
+  const renderers = {
+    paragraph: ({ children }) => <p className="justified">{children}</p>,
+    text: ({ value }) => (
+      <span>
+        <strong>{value.split(' ')[0]}</strong>{' '}
+        {value.split(' ').slice(1).join(' ')}
+      </span>
+    ),
+  };
+
   return (
     <div className="locations-card">
      
@@ -19,10 +29,14 @@ const LocationsCard = () => {
         <div key={location.id}>
           <h4>{location.city}</h4><p>{location.country}</p>
           
-          <img src={location.image} width="400" height="300" alt={location.city} />
-          <ReactMarkdown className="description" children={location.description} />
+          <img src={location.image} width="400" height="400" alt={location.city} />
+          <ReactMarkdown
+            className="description"
+            renderers={renderers}
+            children={location.description}
+          />
           <br></br>      
-        <Link className="viewLink" to={`/locations/${location.id}`}>View More</Link>      
+        <Link className="viewLink" to={`/locations/${location.id}`}>click here to explore...</Link>      
         </div>
       ))}
     </div>
