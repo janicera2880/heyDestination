@@ -11,7 +11,6 @@ const SignupForm = () => {
         email: '',
         password: '',
         confirmation_password: '',
-        phone: '',
         admin: true,
         profile_pic: null,
   });
@@ -125,20 +124,8 @@ const SignupForm = () => {
         <input
           type="password"
           name="confirmation_password"
-          placeholder="Must match password.."
+          placeholder="Must match password..."
           value={formData.confirmation_password}
-          onChange={handleInputChange}
-        />
-      </label>
-      <br />
-
-      <label>
-        Phone:
-        <input
-          type="text"
-          name="phone"
-          placeholder="Should be 10 digits..."
-          value={formData.phone}
           onChange={handleInputChange}
         />
       </label>
