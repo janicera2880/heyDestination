@@ -22,7 +22,7 @@ u1 = UserAdmin.create!(
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
   admin: true,
-  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215844/CAPSTONE_PROJECT/profile_pic2_wd4rw7.jpg"
+  profile_image: "https://fashionterest.com/wp-content/uploads/2019/01/Top-female-models-in-the-world-6-766x1024.jpg"
 )
 
 
@@ -32,7 +32,7 @@ u2 = UserAdmin.create!(
   password: "admingene",
   email: "genlopez05@gmail.com",
   admin: true,
-  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215791/CAPSTONE_PROJECT/profile_pic3_pil2yq.jpg"
+  profile_image: "https://pbs.twimg.com/profile_images/1472792284458532866/PS1qng6P_400x400.jpg"
 )
 
 
@@ -42,7 +42,7 @@ u3 = UserAdmin.create!(
   password: "adminclaire",
   email: "clairesmith95@gmail.com",
   admin: true,
-  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215443/CAPSTONE_PROJECT/profile_pic4_xpgjvj.png" 
+  profile_image: "https://www.janairmodels.in/wp-content/uploads/2022/12/KELLY-Janair-Models-2-380x380.jpg" 
 )
 
 
@@ -52,7 +52,7 @@ u4 = UserAdmin.create!(
   password: "adminjess",
   email: "jessastone00@gmail.com",
   admin: true,
-  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215998/CAPSTONE_PROJECT/profile_pic1_oqhpiw.jpg"
+  profile_image: "https://www.modellingagenciesmumbai.com/blog/wp-content/uploads/2016/09/prachi-desai.jpg"
 )
 
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")

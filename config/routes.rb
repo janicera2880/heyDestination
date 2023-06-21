@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
  #get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  resources :inquiries, only: [:create]
-
   resources :user_admins, only: [:index, :show] do
     resources :villas
     resources :activities
+    resources :locations
     resources :inquiries, only: [:index, :show]
   end
 
@@ -17,7 +16,9 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :show]
   end
   
-  resources :villas, only: [:index, :show]
+  resources :villas, only: [:index, :show] do
+    resources :inquiries, only: [:create]
+  end
   resources :activities, only: [:index, :show]
   resource :activity_locations, only: [:index, :show]
   

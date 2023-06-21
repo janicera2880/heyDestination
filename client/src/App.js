@@ -11,6 +11,7 @@ import InquireForm from './Components/InquireForm';
 import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
 import Header from './Components/Header';
+import AdminPortal from './Components/AdminPortal';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
@@ -18,7 +19,7 @@ function App() {
   const { activities, setActivities } = useContext(ActivitiesContext);
 
   useEffect(() => {
-    fetch("/me")
+    fetch("/admin")
       .then((r) => {
         if (r.ok) {
           r.json().then((userAdmin) => {
@@ -69,6 +70,7 @@ function App() {
       <Route path="/" element={<LoginSignupToggle />} />
       <Route path="/locations" element={<LocationsContainer/>} />
       <Route path="/villas" element={<VillasContainer/>} />
+      <Route path="/admin" element={<AdminPortal/>} />
       <Route path="/inquiries" element={<InquireForm/>} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
 

@@ -8,24 +8,22 @@ const AdminPortal = () => {
 
   return (
     <div className="admin-portal">
+      <div className="admin-portal__header">
+      <h2>Welcome to hey-Destination Admin Portal!</h2>
+      <div className="admin-portal__thumbnail">
+        <Thumbnail userAdmin={userAdmin} />
+      </div>
       
-      <Thumbnail userAdmin={userAdmin} />
-      <div className="links">
-        <h2>Welcome to hey-Destination Admin Portal!</h2>
-
-        <p>This section allows you to handle incoming inquiries from potential clients. You can review and respond to inquiries promptly, ensuring excellent customer service.</p>
-        <Link to="/incoming-inquiries">Incoming Inquiries</Link>
-
-        <p>Click on this option to easily create and add new villa listings to our database. You can provide detailed information or update about each villa. This empowers you to showcase the best accommodation options to our valued customers.</p>
-        <Link to="/user-admin-villas">Manage Villas</Link>
-
-        <p>Take control of our travel destinations by managing locations. You can add new locations, update existing ones, and ensure accurate information is available to clients. By maintaining an up-to-date and comprehensive list of locations, you enhance the overall travel experience for our customers.</p>
-        <Link to="/manage-locations">Manage Locations</Link>
-
-        <p>This feature enables you to curate and organize a wide range of activities and experiences for our clients. You can add new activities, specify details such as duration, pricing, and availability, and make necessary updates as required. By offering diverse and exciting activities, we enhance the overall itinerary and ensure memorable travel experiences for our customers.</p>
-        <Link to="/manage-activities">Manage Activities</Link>
+      </div>
+    
+      <div className="admin-portal__links">
+        <Link to="/incoming-inquiries" className="link-button">Incoming Inquiries</Link>
+        <Link to="/user-admin-villas" className="link-button">Manage Villas</Link>
+        <Link to="/manage-locations" className="link-button">Manage Locations</Link>
+        <Link to="/manage-activities"className="link-button">Manage Activities</Link>
       </div>
     </div>
   );
 };
+
 export default AdminPortal;

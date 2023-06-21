@@ -30,7 +30,7 @@ const LoginSignupToggle = () => {
 
   if (userAdmin) {
     return (
-      <div>
+      <div className='logout'>
         <button onClick={handleLogout}>Logout</button>
         {showLogoutPopup && (
           <div className="popup">

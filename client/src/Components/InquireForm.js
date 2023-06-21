@@ -15,9 +15,11 @@ const InquireForm = () => {
     phone: '',
     message: ''
   });
-  const [errors, setErrors] = useState([]);
+  
   const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+
 
   const { id } = useParams();
   const villaId = parseInt(id);
@@ -51,7 +53,7 @@ const InquireForm = () => {
           setErrors([]);
           setSuccessMessage('Thank you for your interest! Please allow 1-3 business days for an agent to contact you.');
           r.json().then((newInquiry) => addInquiry(newInquiry));
-          navigate(`/villas/${villaId}`);
+          navigate("/locations");
         } else {
             // parse the response JSON and set the errors state variable
           r.json().then((err) => setErrors(err.errors));
@@ -78,8 +80,7 @@ const InquireForm = () => {
     <div className="inquire-form">
      
       <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
-      <br></br>
-      <br></br>
+    
       {errors.length > 0 && (
         <ul className="error-list">
           {errors.map((error, index) => (
@@ -96,7 +97,7 @@ const InquireForm = () => {
           Arrival Date:
           <input
             type="date"
-            name="arrivalDate"
+            name="arrival"
             value={formData.arrival}
             onChange={handleChange}
           />
@@ -106,7 +107,7 @@ const InquireForm = () => {
           Departure Date:
           <input
             type="date"
-            name="departureDate"
+            name="departure"
             value={formData.departure}
             onChange={handleChange}
           />
@@ -116,7 +117,7 @@ const InquireForm = () => {
           Number of Guests:
           <input
             type="number"
-            name="numberOfGuests"
+            name="guests"
             value={formData.guests}
             onChange={handleChange}
           />
@@ -126,7 +127,7 @@ const InquireForm = () => {
           Full Name:
           <input
             type="text"
-            name="fullName"
+            name="full_name"
             value={formData.full_name}
             onChange={handleChange}
           />
@@ -146,7 +147,7 @@ const InquireForm = () => {
           Phone Number:
           <input
             type="text"
-            name="phoneNumber"
+            name="phone"
             value={formData.phone}
             onChange={handleChange}
           />

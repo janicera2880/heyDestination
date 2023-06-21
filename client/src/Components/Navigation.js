@@ -31,14 +31,12 @@ function Navigation() {
               INQUIRE
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/search" activeClassName="active">
+         <li>
+            <NavLink exact to="/" activeClassName="active">
               SEARCH
             </NavLink>
-          </li>
-          <li>
-            <NavLink exact to="/" activeClassName="active">
-              OUR SERVICES
+            <NavLink exact to="/admin" activeClassName="active">
+              ADMIN PORTAL
             </NavLink>
           </li>
          

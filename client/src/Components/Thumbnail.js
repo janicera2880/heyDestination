@@ -13,16 +13,15 @@ function Thumbnail() {
   return (
     // Render a thumbnail with user's profile photo
     <div className="thumbnail">
-      {userAdmin.profilePic && (
+      {userAdmin.profile_image && (
         <img
-          src={userAdmin.profilePic.url}
+          src={userAdmin.profile_image}
           alt="Profile"
           onClick={handleClick}
-          style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+          style={{ width: "100px", height: "100px", borderRadius: "60%"}}
         />
       )}
-      <p>Welcome, {userAdmin.first_name}{userAdmin.last_name}</p>
-      <p>{userAdmin.email} | {userAdmin.phone}</p>
+      <p>Hello, {userAdmin.first_name} {userAdmin.last_name}</p>
     </div>
   );
 }
