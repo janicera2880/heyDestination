@@ -16,74 +16,35 @@ Inquiry.destroy_all
 ActivityLocation.destroy_all
 
 
-u1 = UserAdmin.new(
+u1 = UserAdmin.create!(
   first_name: "Janice",
   last_name: "Alecha",
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
-  admin: true
-)
-u1.save(validate: false) # Skip validations temporarily
-profile_pic_file = File.open(Rails.root.join('db/images/profile_pic2.jpg'))
-# Create the Active Storage blob
-profile_pic_blob = ActiveStorage::Blob.create_after_upload!(
-  io: profile_pic_file,
-  filename: 'profile_pic2.jpg',
-  content_type: 'image/jpeg' # Update the content type accordingly if it's a PNG
+  admin: true,
+  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215844/CAPSTONE_PROJECT/profile_pic2_wd4rw7.jpg"
 )
 
-# Associate the blob with the user
-u1.profile_pic.attach(profile_pic_blob)
 
-u1.save! # Save the record with the attached profile picture
-
-profile_pic_file.close # Close the file after attaching
-
-u2 = UserAdmin.new(
+u2 = UserAdmin.create!(
   first_name: "Genevieve",
   last_name: "Lopez",
   password: "admingene",
   email: "genlopez05@gmail.com",
-  admin: true
-)
-u2.save(validate: false) # Skip validations temporarily
-profile_pic_file = File.open(Rails.root.join('db/images/profile_pic1.jpg'))
-# Create the Active Storage blob
-profile_pic_blob = ActiveStorage::Blob.create_after_upload!(
-  io: profile_pic_file,
-  filename: 'profile_pic1.jpg',
-  content_type: 'image/jpeg' # Update the content type accordingly if it's a PNG
+  admin: true,
+  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215791/CAPSTONE_PROJECT/profile_pic3_pil2yq.jpg"
 )
 
-# Associate the blob with the user
-u2.profile_pic.attach(profile_pic_blob)
-
-u2.save! # Save the record with the attached profile picture
-
-profile_pic_file.close # Close the file after attaching
 
 u3 = UserAdmin.create!(
   first_name: "Claire",
   last_name: "Smith",
   password: "adminclaire",
   email: "clairesmith95@gmail.com",
-  admin: true 
-)
-u3.save(validate: false) # Skip validations temporarily
-profile_pic_file = File.open(Rails.root.join('db/images/profile_pic3.jpg'))
-# Create the Active Storage blob
-profile_pic_blob = ActiveStorage::Blob.create_after_upload!(
-  io: profile_pic_file,
-  filename: 'profile_pic3.jpg',
-  content_type: 'image/jpeg' # Update the content type accordingly if it's a PNG
+  admin: true,
+  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215443/CAPSTONE_PROJECT/profile_pic4_xpgjvj.png" 
 )
 
-# Associate the blob with the user
-u3.profile_pic.attach(profile_pic_blob)
-
-u3.save! # Save the record with the attached profile picture
-
-profile_pic_file.close # Close the file after attaching
 
 u4 = UserAdmin.create!(
   first_name: "Jessa",
@@ -91,23 +52,8 @@ u4 = UserAdmin.create!(
   password: "adminjess",
   email: "jessastone00@gmail.com",
   admin: true,
+  profile_image: "https://res.cloudinary.com/dggmk93at/image/upload/v1687215998/CAPSTONE_PROJECT/profile_pic1_oqhpiw.jpg"
 )
-u4.save(validate: false) # Skip validations temporarily
-profile_pic_file = File.open(Rails.root.join('db/images/profile_pic4.png'))
-# Create the Active Storage blob
-profile_pic_blob = ActiveStorage::Blob.create_after_upload!(
-  io: profile_pic_file,
-  filename: 'profile_pic4.png',
-  content_type: 'image/png' # Update the content type accordingly if it's a PNG
-)
-
-# Associate the blob with the user
-u4.profile_pic.attach(profile_pic_blob)
-
-u4.save! # Save the record with the attached profile picture
-
-profile_pic_file.close # Close the file after attaching
-
 
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")
 l2 = Location.create!(city: "Loire Valley", country: "France", image: "https://cdn.britannica.com/87/687-050-06103996/chateau-Villandry-gardens-Tours-France-Loire-Valley-1532.jpg", description: "The Loire Valley, spanning 280 kilometres, is a valley located in the middle stretch of the Loire river in central France, in both the administrative regions Pays de la Loire and Centre-Val de Loire. The area of the Loire Valley comprises about 800 square kilometres.")
