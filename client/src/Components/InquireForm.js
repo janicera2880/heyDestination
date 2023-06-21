@@ -81,13 +81,7 @@ const InquireForm = () => {
      
       <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
     
-      {errors.length > 0 && (
-        <ul className="error-list">
-          {errors.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
-      )}
+    
       {successMessage && (
     <div className="success-message">{successMessage}</div>
   )}
@@ -165,6 +159,13 @@ const InquireForm = () => {
         <button className="primary" type="submit">
         {isLoading ? "Submitting..." : "Submit"}
         </button>
+        {errors.length > 0 && (
+        <ul className="error-list">
+          {errors.map((error, index) => (
+            <li key={index}>{error}</li>
+          ))}
+        </ul>
+      )}
       </form>
     </div>
   );

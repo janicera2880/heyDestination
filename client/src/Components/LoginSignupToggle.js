@@ -7,38 +7,13 @@ import SignupForm from './SignupForm';
  and allows a logged in user to logout. Uses React's state and context hooks to manage state
  form and a signup button or a signup form and a login button. Also renders a logout button if a user is logged in. */
 const LoginSignupToggle = () => {
-  const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
-  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const { userAdmin} = useContext(UserAdminContext);
   const [toggleForms, setToggleForms] = useState(true);
-
-  const handleLogout = () => {
-    setShowLogoutPopup(true);
-  };
-
-  const confirmLogout = () => {
-    fetch('/logout', {
-      method: 'DELETE',
-    }).then(() => {
-      setUserAdmin(null);
-      setShowLogoutPopup(false);
-    });
-  };
-
-  const cancelLogout = () => {
-    setShowLogoutPopup(false);
-  };
 
   if (userAdmin) {
     return (
-      <div className='logout'>
-        <button onClick={handleLogout}>Logout</button>
-        {showLogoutPopup && (
-          <div className="popup">
-            <p>Are you sure you want to logout?</p>
-            <button onClick={confirmLogout}>Yes</button>
-            <button onClick={cancelLogout}>No</button>
-          </div>
-        )}
+      <div className="login-user">
+        <p>Logged in as {userAdmin.email}</p>
       </div>
     );
   } else {

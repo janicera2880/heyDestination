@@ -32,7 +32,7 @@ nav ul {
   display:list-item;
   padding: 15px ;
   background-size: 150% 100%;
-  background-image: linear-gradient(-40deg, #313636, #181e38, #8eb7d3, #79abcc,#879da5);
+  background-image: linear-gradient(-40deg, #060808, #181e38, #81b8da, #79abcc,#758c94);
   animation: 15s myGradient infinite;
   border-radius: 95px;
   box-shadow: 5px 5px 20px #2c5ba3;
@@ -381,7 +381,7 @@ font-size: 16px;
 /*admin-portal*/
 
 .admin-portal {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -415,7 +415,7 @@ font-size: 16px;
 }
 
 .admin-portal__links a:hover {
-  color: #a3dee6;
+  color: #0f5ec5;
 }
 
 .link-button {
@@ -431,4 +431,43 @@ font-size: 16px;
 
 .link-button:hover {
   background-color: #f2f2f2;
+}
+/*LOGOUT*/
+.logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.logout-button {
+  background-color: #0a2531;
+  color: white;
+  font-weight: bold;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.popup {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.popup p {
+  margin-right: 10px;
+}
+
+.popup button {
+  background-color: #0a2531;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
 }

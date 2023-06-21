@@ -4,7 +4,6 @@ import { ActivitiesContext } from './Contexts/ActivitiesContext';
 import { VillasContext } from './Contexts/VillasContext';
 import { UserAdminContext } from './Contexts/UserAdminContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import LoginSignupToggle from './Components/LoginSignupToggle';
 import Navigation from './Components/Navigation';
 import LocationsContainer from './Components/LocationsContainer';
 import InquireForm from './Components/InquireForm';
@@ -12,6 +11,7 @@ import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
 import Header from './Components/Header';
 import AdminPortal from './Components/AdminPortal';
+import About from './Components/About';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
@@ -67,10 +67,10 @@ function App() {
       <br></br>
       <br></br>
       <Routes>
-      <Route path="/" element={<LoginSignupToggle />} />
+      <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer/>} />
       <Route path="/villas" element={<VillasContainer/>} />
-      <Route path="/admin" element={<AdminPortal/>} />
+      <Route path="/user_admin" element={<AdminPortal/>} />
       <Route path="/inquiries" element={<InquireForm/>} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
 
