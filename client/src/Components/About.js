@@ -5,7 +5,7 @@ import LoginSignupToggle from "./LoginSignupToggle";
 import ReactMarkdown from "react-markdown";
 import villaPicture from "./Images/travel.png";
 
-
+//Renders the About Us page component that displays information about the luxury villa rental service.
 const AboutUs = () => {
   const { userAdmin } = useContext(UserAdminContext);
 
@@ -35,8 +35,7 @@ const AboutUs = () => {
 
       {!userAdmin ? (
         <div className="login-section">
-          <h3>Ready to book your villa?</h3>
-          <p>Sign up or log in to access exclusive offers and manage your bookings.</p>
+          <h3>Employee Login Here</h3>
           <LoginSignupToggle />
         </div>
       ) : (

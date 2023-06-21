@@ -60,7 +60,6 @@ const AdminLogin = () => {
 
     return (
         <div className='Login'>
-        <h1>Admin Login</h1>
         <form onSubmit={handleSubmit}>
           <label>Email</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} />
