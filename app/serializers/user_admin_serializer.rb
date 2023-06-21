@@ -1,5 +1,5 @@
 class UserAdminSerializer < ActiveModel::Serializer
-attributes :id, :first_name, :last_name, :email, :phone, :admin, :profile_pic_url
+attributes :id, :first_name, :last_name, :email, :admin, :profile_pic
 
 has_many :villas
 has_many :inquiries, through: :villas

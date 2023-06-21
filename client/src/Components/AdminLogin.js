@@ -41,7 +41,7 @@ const AdminLogin = () => {
                 r.json().then((userAdmin) => {
                     console.log('handleSubmit', userAdmin);
                     setUserAdmin(userAdmin);
-                    navigate("/")
+                    navigate("/user_admin")
                 });
             } else {
                 r.json().then((err) => {

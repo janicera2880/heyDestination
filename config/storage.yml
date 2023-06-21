@@ -8,7 +8,10 @@ local:
 
 cloudinary:
   service: Cloudinary
-  folder: CAPSTONE_PROJECT
+  cloud_name: <%= ENV['dggmk93at'] %>
+  api_key: <%= ENV['553712752648837'] %>
+  api_secret: <%= ENV['86xTYnj9XB8V-FOZe7KEsE2CfZU'] %>
+
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
