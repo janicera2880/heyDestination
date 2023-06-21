@@ -47,12 +47,12 @@ nav ul li {
 
 nav ul li a {
   text-decoration: none;
-  color: #080808;
+  color: #ece4e4;
   padding: 5px;
 }
 
 nav ul li a.active {
-  color: #504444;
+  color: rgb(66, 61, 61);
   text-decoration: none;
   padding: 40px 40px;
   font-family: verdana;
@@ -397,24 +397,25 @@ font-size: 16px;
 }
 
 .admin-portal__links {
-  background-color: #8fcfec;
+  background-color: #0a2531;
   padding: 20px;
 }
 
 .admin-portal__links p {
   margin-bottom: 10px;
+  color: white;
 }
 
 .admin-portal__links a {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #241e1e;
+  color: #f0e8e8;
   text-decoration: none;
 }
 
 .admin-portal__links a:hover {
-  color: #ccb8b8;
+  color: #a3dee6;
 }
 
 .link-button {
@@ -424,9 +425,8 @@ font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   text-decoration: none;
-  color: #333;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 .link-button:hover {
