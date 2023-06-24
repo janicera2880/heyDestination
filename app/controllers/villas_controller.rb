@@ -50,7 +50,7 @@ class VillasController < ApplicationController
     private
 
     def villa_params
-        params.permit(:name, :highlights, :services, :overview, :features, :amenities, :rate, :capacity, :bedroom, :bathroom, :image, :user_admin_id, :location_id)
+        params.permit(:name, :highlights, :services, :overview, :features, :amenities, :rate, :capacity, :bedroom, :bathroom, :user_admin_id, :location_id, :image1, :image2, :image3, :image4, :image5, :image6, :image7, :image8, :image9, :image10)
     end
 
     def find_villa

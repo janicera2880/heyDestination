@@ -13,6 +13,16 @@ class Villa < ApplicationRecord
     validates :highlights, :features, :services, presence: true, length: { minimum: 200 }
     validates :overview, :features, :amenities, presence: true, length: { minimum: 300 }
     validates :rate, :capacity, :bedroom, :bathroom, presence: true, numericality: { greater_than_or_equal_to: 0 }
+    validates :image1, presence: true
+    validates :image2, presence: true
+    validates :image3, presence: true
+    validates :image4, presence: true
+    validates :image5, presence: true
+    validates :image6, presence: true
+    validates :image7, presence: true
+    validates :image8, presence: true
+    validates :image9, presence: true
+    validates :image10, presence: true
     #validate :acceptable_images
 
     #def acceptable_images
