@@ -46,15 +46,6 @@ u3 = UserAdmin.create!(
 )
 
 
-u4 = UserAdmin.create!(
-  first_name: "Jessa",
-  last_name: "Stone",
-  password: "adminjess",
-  email: "jessastone00@gmail.com",
-  admin: true,
-  profile_image: "https://www.modellingagenciesmumbai.com/blog/wp-content/uploads/2016/09/prachi-desai.jpg"
-)
-
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")
 l2 = Location.create!(city: "Loire Valley", country: "France", image: "https://cdn.britannica.com/87/687-050-06103996/chateau-Villandry-gardens-Tours-France-Loire-Valley-1532.jpg", description: "The Loire Valley, spanning 280 kilometres, is a valley located in the middle stretch of the Loire river in central France, in both the administrative regions Pays de la Loire and Centre-Val de Loire. The area of the Loire Valley comprises about 800 square kilometres.")
 l3 = Location.create!(city: "Santorini", country: "Greece", image: "https://www.gannett-cdn.com/presto/2021/06/10/USAT/3d0222f3-5ccd-4e21-ab70-803ce1badd16-GettyImages-510967662.jpg?crop=2120%2C1193%2Cx0%2Cy211&width=1200", description: "Santorini is one of the Cyclades islands in the Aegean Sea. It was devastated by a volcanic eruption in the 16th century BC, forever shaping its rugged landscape. The whitewashed, cubiform houses of its 2 principal towns, Fira and Oia, cling to cliffs above an underwater caldera. They overlook the sea, small islands to the west and beaches made up of black, red and white lava pebbles.")
@@ -118,6 +109,306 @@ al24 = ActivityLocation.create!(location_id: l22.id, activity_id: a5.id)
 al25 = ActivityLocation.create!(location_id: l23.id, activity_id: a5.id)
 al26 = ActivityLocation.create!(location_id: l10.id, activity_id: a4.id)
 
+v1 = Villa.create!(name: "Pyrgos Estate", highlights: "**Pyrgos Estate** is a six-bedroom luxury mansion developed on three levels with infinite breathtaking views to the Aegean Sea and  Pyrgos Kallistis medieval Castle.", 
+features: "Pyrgos Estate rooms and living areas are designed with a way to offer comfortable high-quality accommodation. Functional & elegant, with discreet decoration, all overlooking the sea and bathed in natural light with the perfect equipment that meets the needs of every guest, promises an unforgettable stay. The warm earthy colors and the ambiance embrace the guest, offering a sense of relaxation.
+The infinity pool and spacious verandas with lounge area and the outdoor Jacuzzi inspire endless sunbathing, while the comfortable patio set up is the backdrop for the perfect romantic evenings.
+The villa offers high-security levels for all travelers looking for private moments during their vacations. Its location is privileged with unique characteristics combining discreet privacy and socialization at all times.", 
+overview:"All three levels have a separate entrance. This idyllic residence challenges conceptions of private living within the luxury and elegant environment on a 5,000 square.meter area.
+The levels referred to as pezoules in the local dialect, contribute an essential role in the traditional Santorinian life and represent one of its most nostalgic locations. The amphitheatrical levels structure of the Mansion produces many corners both in and out that support numerous daily activities and ultimate lifetime events.
+Privacy remains a key factor defining Pyrgos Estate where also fluidity and customization orchestrates a serendipitous framework for engaging with an everyday moment of life. It is ideal for families or couples and for lifetime social events due to its unique spatial and absolute private location", 
+amenities: "The amenities offered here are designed to enhance your stay and create unforgettable memories. Stay cool during hot summer days with air conditioning, and feel at ease knowing that children are warmly welcomed. The property is also accessible, providing convenience for all guests. 
+Stay connected with high-speed internet and indulge in ultimate relaxation with a soothing jacuzzi and a private pool. Stay in shape during your stay with access to a well-equipped fitness center. Each bathroom is stocked with luxurious amenities to cater to your needs. 
+Enjoy breathtaking ocean views from various vantage points on the property, including balconies and a library room adorned with beautiful artwork. A wine closet awaits wine enthusiasts, while gardens create a serene ambiance. Lounge by the pool on comfortable sun loungers, protected by sun umbrellas. 
+Rinse off in the refreshing outdoor shower after a dip in the pool. Parking is available for your convenience. Wake up to a delightful daily breakfast, and gather around the BBQ for delicious meals with loved ones. This vacation retreat offers an array of amenities to cater to your every desire, ensuring a truly memorable stay.", 
+rate: 800, capacity: 12, bedroom: 6, bathroom: 5, services: "Enjoy the luxury living of the villa’s main house in a discreet environment for valuable vacations with your closest family members. Escape from the Pyrgos Estates life with an eye from the top. Spoil yourself or share a moment with your loved ones and relax in the outdoor infinity view Jacuzzi, ideally built for privacy.
+The heartbeat of the mansion, this house which is located at the central level, is suitable for all-day activities and long nights by the swimming pool with direct views of the sea. The open plan design and the technical equipment of the main living areas of this accommodation are ideal for relaxed moments with consistent and safe kids supervision.", 
+image1: "https://photos.jamaicavillas.com/photos/poollevel_2.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/dsc_9287.jpg",
+image3: "https://photos.jamaicavillas.com/photos/dsc_9400.jpg",
+image4: "https://photos.jamaicavillas.com/photos/livingroom-mainhouse.jpg",
+image5: "https://photos.jamaicavillas.com/photos/dsc_8425.jpg",
+image6: "https://photos.jamaicavillas.com/photos/dsc_5281.jpg",
+image7: "https://photos.jamaicavillas.com/photos/dsc_9119.jpg",
+image8: "https://photos.jamaicavillas.com/photos/dsc_8677.jpg",
+image9: "https://photos.jamaicavillas.com/photos/dsc_5629.jpg",
+image10: "https://photos.jamaicavillas.com/photos/dsc_5892.jpg",
+location_id: l3.id, user_admin_id: u1.id)
+
+v2 = Villa.create!(name: "Bastide et Mas du Droy", highlights: "Bastide du Droy is a magnificent 100 acre estate consisting of a Bastide du Droy and an adjoining farmhouse with a park, swimming pool and tennis court.", 
+features: "The landscape in this region is particularly picturesque, encompassing rolling hills dotted with quaint hilltop villages and countless hiking trails, extensive sunflower fields, olive groves and a formidable area of vineyards. This region is steep with history with plenty of sites to visit
+Once in Mollèges, you will discover a village full of charm and character, narrow streets intersecting alongside the old houses, old wooden doors, flowery windows, shutters with colors faded by the sun. Its location is strategic and makes of this beautiful and peaceful Provence village an ideal place to discover the region.", 
+overview:"The villa is located 15 minutes from Saint Rémy de Provence, just outside the village of Molleges, within easy reach of Avignon and Aix-en-Provence, in very nice quiet and sunny surroundings. The property is fully enclosed with landscaped elegant gardens, lawns, an ornamental pond, orchards, and olive groves and 30 acres of mature wooded parkland. This entirely restored exceptional estate with a genuine spirit of a Provence, is decorated with great style and taste.
+The Bastide and the Mas have been beautifully restored, using traditional colors and paint techniques giving an authentic Provençal feel, while still enjoying all modern conveniences including air conditioning, WiFi, satellite TV, a gym, playroom for kids, 2 long and secured swimming pools and a tennis court. The Bastide and Mas together accommodate up to 20 guests.
+The Mas on two floors consists on ground floor of a lovely farmhouse-style kitchen, large living room with fireplace and door to courtyard and pool area.", 
+amenities: "To the south is the lively village of St Rémy de Provence just 12 kilometers away. It is a charming classical little town, capital of the Alpilles, with all the amenities, boulangeries, little boutiques, quaint pavement cafes and excellent restaurants. On its winding cobbled lanes you will discover the small squares, historic buildings, churches and museums, and on Wednesday the colorful weekly market will offer the opportunity to discover local products and handicrafts which is a must see. 
+Further south Les Baux de Provence is considered one of the most beautiful villages in France. Arles, Nîmes, Pont du Gard and Uzès and other towns can easily be visited in a day. At less than 45 minutes drive and to the east is the Luberon region and further south, Camargues unique wetland is populated by pink flamingos and wild horses
+The nearest airport is Avignon to the north with its UNESCO world heritage site, with its magnificent Palais du Papes, which is one of the architectural wonders of France is just 16 kilometers away and would make an ideal day trip. Just north of Avignon is the Châteauneuf-du-Pape region for wine lovers as well.", 
+rate: 1200, capacity: 16, bedroom: 10, bathroom: 6, services: "The landscape in this region is particularly picturesque, encompassing rolling hills dotted with quaint hilltop villages and countless hiking trails, extensive sunflower fields, olive groves and a formidable area of vineyards. This region is steep with history with plenty of sites to visit.
+The heartbeat of the mansion, this house which is located at the central level, is suitable for all-day activities and long nights by the swimming pool with direct views of the sea. The open plan design and the technical equipment of the main living areas of this accommodation are ideal for relaxed moments with consistent and safe kids supervision.", 
+image1: "https://photos.jamaicavillas.com/photos/1576591408-e7ef1772bc4f2f1ea8492ff69c919e2djpeg", 
+image2: "https://photos.jamaicavillas.com/photos/1576591410-fcc3fd48f8bd0a1b9c6aff6b760fbdfdjpeg",
+image3: "https://photos.jamaicavillas.com/photos/1576591409-e84cea755b6daf969da5ef90dc7fabd1jpeg",
+image4: "https://photos.jamaicavillas.com/photos/1576591400-54aac3baacdc6e6a7805dcb6909c5a6djpeg",
+image5: "https://photos.jamaicavillas.com/photos/1576591405-330985a05c54e4236d72563390ff4b67jpeg",
+image6: "https://photos.jamaicavillas.com/photos/1576591392-0db0fa78c49bb15f5bd3c4f0663ada5bjpeg",
+image7: "https://photos.jamaicavillas.com/photos/1576591396-3f3262de806888441210760c0295b35ajpeg",
+image8: "https://photos.jamaicavillas.com/photos/1576591407-ac862f604591fd1a2ca90151700c514cjpeg",
+image9: "https://photos.jamaicavillas.com/photos/1576591395-3b561efa9a6e1ace367908000b47b501jpeg",
+image10: "https://photos.jamaicavillas.com/photos/1576591394-2a94dafb85243c12e3d482270901f6f8jpeg",
+location_id: l2.id, user_admin_id: u1.id)
+
+v3 = Villa.create!(name: "Villa Estrella", highlights: "This all-inclusive villa is located in the exclusive beachside community of Ocotal, in the Guanacaste region of Costa Rica, overlooking the Gulf of Papagayo and the Pacific Ocean.", 
+features: "**Villa Estrella** is perfectly situated for guests to enjoy swimming, scuba diving, snorkeling, fishing, and sailing in the pristine waters of the Gulf of Papagayo. Villa does not have direct access to the beach but guests have access to the private beach club in Ocotal. It is a 15-minute walk down to the beach or the villa driver service can shuttle you back and forth at your leisure.", 
+overview:"**Villa Estrella** is just a few minutes south of the little beach village of Coco and only a 25-minute drive from Liberia International Airport. This gorgeous timeless villa is situated on a private hilltop that rises from the beach of Ocotal and offers breathtaking views of the Pacific to the west and volcanic mountains and jungles to the north, east, and south.
+Villa Estrellas outstanding Five Star rating service will start from the moment you begin planning your trip to Costa Rica to the final good-bye at the end of the trip. They are focused on anticipating and responding to your every need.", 
+amenities: "Breakfast: Listen to the sounds of parrots and monkeys waking up in the trees while you sip the best in Costa Rican coffee and local tropical juices. You will enjoy various egg dishes enhanced with Costa Rican breakfast meats, light spices, and salsas; or enjoy cereals, grains, waffles and pancakes layered with tasty yogurts and local fresh fruit! 
+Lunch: Lunches are on the lighter side giving you a mid-day boost without creating a heavy feeling. Along with re-energizing tropical drinks, you will enjoy refreshing Costa Rican fruit and vegetable ensaladas healthy sandwich selections; and of course you will have to try our tico beans/rice specialty dishes! 
+Dinner: Dinner begins in the late afternoon when Chef Alberto serves appetizers by the pool. Enjoy the tastes of ceviche, guacamole, pico de gallo, or homemade cheese straws before showering for dinner. The Villa Estrella dinner experience changes each night to include unique table settings and a three-course meal of a soup/salad, a fresh gourmet entrée, and homemade dessert. Fine dining al fresco with your own chef and a private waiter allows you to enjoy your family and friends.
+Villa Estrella is perfectly situated for guests to enjoy swimming, scuba diving, snorkeling, fishing, and sailing in the pristine waters of the Gulf of Papagayo. Villa does not have direct access to the beach but guests have access to the private beach club in Ocotal. It is a 15-minute walk down to the beach or the villa driver service can shuttle you back and forth at your leisure.", 
+rate: 1500, capacity: 22, bedroom: 12, bathroom: 9, services: "Enjoy the luxury living of the villas main house in a discreet environment for valuable vacations with your closest family members. Escape from the Villa Estrellas life with an eye from the top. Spoil yourself or share a moment with your loved ones and relax in the outdoor infinity view Jacuzzi, ideally built for privacy.
+The heartbeat of the mansion, this house which is located at the central level, is suitable for all-day activities and long nights by the swimming pool with direct views of the sea. The open plan design and the technical equipment of the main living areas of this accommodation are ideal for relaxed moments with consistent and safe kids supervision.", 
+image1: "https://photos.jamaicavillas.com/photos/1623956685-villa-estrella-sv-120.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1623956676-villa-estrella-sv-92.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1623956673-villa-estrella-sv-84.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1623956630-villa-estrella-sv-6.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1623956666-villa-estrella-sv-59.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1623956669-villa-estrella-sv-77.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1623956643-villa-estrella-sv-17.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1623956654-villa-estrella-sv-43.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1623956677-villa-estrella-sv-95.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1623956667-villa-estrella-sv-73.jpg",
+location_id: l1.id, user_admin_id: u1.id)
+
+v4 = Villa.create!(name: "Ambiance Sea Salt at the Tryall Club", highlights: "Ambiance Sea Salt is one of the most stylish villas in this collection. Exquisite classic Jamaican architecture defines 7,700 square feet of living, dining, entertaining, and relaxation spaces. Exteriors are lushly landscaped with native trees and a host of flowering plants.", 
+features: "Various living spaces, each quite private, are connected by landscaped walkways. The design includes textures of mahogany and Italian Flat screen cable televisions and wireless Internet throughout the villa. The state-of-the-art sound system features Sirius satellite radio.
+The arrangement of the bedrooms is a perfect combination for families and especially multi-generational families. En-suite bathrooms are glamorous; three open to outdoor showers.", 
+overview:"Welcome to the extraordinary open-air property, a truly glamorous and exclusive villa nestled within the renowned Tryall Club. This premier-rated 11,000-square-foot villa showcases exquisite interior design and architecture, situated on a private 5-acre site. The grandeur of this property is further elevated by its impressive amenities, 
+including a heated pool with mesmerizing fiber optic night lighting. Indulge in ultimate relaxation in the saltwater hot tub accompanied by a refreshing plunge pool. Gather around the outdoor firepit for cozy evenings under the stars. With multiple indoor and outdoor seating areas, as well as entertaining spaces, there is ample room to unwind and socialize. 
+The expansive lawn features a private putting green, providing golf enthusiasts with the perfect opportunity to practice their swing putters and balls are thoughtfully provided and a shuffleboard court for friendly competitions. Enjoy a range of activities such as ping pong, pool volleyball, and pool basketball. Entertainment options are plentiful with flat-screen TVs, cable television, a sound system, and Sirius satellite radio. 
+The dedicated staff, including a chef, butler, housekeeper, laundress, and gardeners, ensure that every aspect of your stay is taken care of. This villa is designed with families in mind and offers a child-friendly environment. Stay connected with wireless internet throughout the property. Explore the expansive Tryall Club with ease, as three complimentary golf carts are provided for your convenience. For those seeking indoor entertainment, a games room awaits. 
+Indulge in delightful dining experiences, whether indoors or outdoors. The villa offers four master suites with adjoining bedrooms, making it an ideal choice for families seeking both privacy and togetherness. Prepare to be captivated by the unparalleled luxury and amenities that await you at this remarkable villa.", 
+amenities: "The beach is well-planned for parents and children. Have lunch at the beach bar. Work out in the well-equipped gym. Jog the marked trails. Snorkeling, kayaking, hobie cat, and sunfish are complimentary. Glass bottom boats, charter fishing, a boat to the reef, and any captained craft attract various fees. Enjoy weekly events like the Managers Cocktail Party on Mondays, as well as Beach BBQ and Reggae Night beach parties for an additional fee.
+On the hill, enjoy the historic Great House for afternoon tea and a magnificent view from the terrace. Shop at the commissary and boutique, meet for happy hour at the bar, and browse a wealth of Jamaican, Haitian, and Cuban works and souvenirs in the Gallery of West Indian Art. And don’t miss the massive Tryall pool!", 
+rate: 1400, capacity: 12, bedroom: 10, bathroom: 6, services: "There may be occasions when some or all the facilities for the hotel may be closed for membership guest services due to a private hotel event. The Tryall Club reserves the right to change or alter its membership packages with no advance notice.
+Plan to pay your TMD fee at the Front Desk in the Great House when you register. They will also set up a charge account for you during your stay. If you plan to pay for your charge account in cash at the end of your stay, they will request a cash deposit. If you plan to pay for your charge account with a credit card, they will place a hold on your card to cover this amount.", 
+image1: "https://photos.jamaicavillas.com/photos/1616075968-21dsc-9868-aurorahdr2018-edit-edit.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1616075958-10dsc-9551-aurorahdr2018-edit-edit-edit.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1616075969-22dsc-9881-aurorahdr2018-edit-edit.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1616075967-20dsc-9826-aurorahdr2018-edit-edit.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1616075975-sea-salt-garrett-in-the-kitchen.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1616075957-9dsc-9526-aurorahdr2018-edit-edit.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1616075961-13dsc-9651-aurorahdr2018-edit-edit-edit.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1616075952-3dsc-9386-aurorahdr2018-edit-edit.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1616075962-15dsc-9696-aurorahdr2018-edit-edit.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1616075968-21dsc-9868-aurorahdr2018-edit-edit.jpg",
+location_id: l4.id, user_admin_id: u1.id)
+
+v5 = Villa.create!(name: "Water Villa with Pool at Joali", highlights: "Discover the enchantment of life on the water from this one-bedroom beauty, perfect for honeymoons.", 
+features: "Upon arrival at the Male Airport, guests will receive a warm welcome into the exclusive JOALI airport lounge, offering a private and serene environment to unwind and relax before their transfer to the resort. 
+The transfer itself is an enchanting 40-minute seaplane journey, providing breathtaking views and setting the stage for an unforgettable stay. For honeymooners and those celebrating their wedding anniversary, JOALI offers special benefits to enhance their romantic getaway. 
+Guests will receive a complimentary honeymoon or anniversary cake with turndown service on the first night of their stay, creating a sweet and memorable moment. Additionally, couples will indulge in a complimentary 60-minute couples massage at the luxurious JOALI Spa, immersing themselves in pure bliss and relaxation. 
+To make their stay even more special, a unique table setup will be arranged once during their time at the resort, creating an intimate and romantic atmosphere. To avail these benefits, honeymooners must have their honeymoon within six months of their wedding date, and a copy of the wedding certificate must be presented on or before arrival. 
+For wedding anniversaries, the date must occur within 30 days prior or after the arrival date, and a copy of the wedding certificate must also be presented on or before arrival. JOALI is dedicated to creating cherished moments and unforgettable experiences for couples celebrating their love.", 
+overview:"Unwind on the spacious sundeck, with the crystal clear waves of the Indian ocean beneath your feet, or dive into your private infinity pool again a backdrop of endless seascapes. With its state-of-the-art lighting and mood contract system, our 1076 sq. ft. Water Villas offer magical aquatic experiences day and night.
+Joali resides on the picture perfect Muravandhoo island in the Raa Atoll located in the northern Maldives. One of the largest and deepest atolls in the world, it is home to a myriad of sea life. Guests can expect brilliant blue waters and pristine white-sand beaches fringed by gently swaying coconut palms.
+The Maldives is the collective name for 1,190 tiny islands scattered across the Indian Ocean. Some are inhabited, while others are used largely for tourism and agriculture. Our host island of Muravandhoo is bordered by dreamy white beaches, a lush land of bountiful coconut palms and turquoise lagoons, brimming with exquisite marine life waiting to be discovered.", 
+amenities: "This exquisite property offers an array of amenities to ensure a truly luxurious and unforgettable stay. Immerse yourself in the refreshing waters of the private pool while enjoying the breathtaking waterfront views. For the adventurous souls, a variety of exciting watersports activities are available. 
+Experience the utmost convenience and personalized service with a fully staffed villa. Stay active and maintain your fitness routine in the well-equipped fitness center. Indulge in ultimate relaxation and rejuvenation at the spa facilities. This property is also perfect for hosting special events, creating unforgettable memories. 
+Each bathroom is stocked with premium amenities, while the bedrooms are elegantly furnished with luxurious comforts. Enjoy mesmerizing ocean views from various vantage points, including the property's stunning location. Discover a range of additional amenities provided, ensuring your comfort and enjoyment. Security features are in place to provide a safe and tranquil environment. 
+Entertainment amenities are available for your enjoyment, ensuring you're entertained throughout your stay. Sporting equipment is provided for those who wish to engage in outdoor activities. With an oceanfront location, you'll have direct access to the beautiful beach and captivating sea. Embrace the resort-like atmosphere with a wide range of amenities available to enhance your overall experience.", 
+rate: 900, capacity: 2, bedroom: 1, bathroom: 1, services: "There may be occasions when some or all the facilities for the hotel may be closed for membership guest services due to a private hotel event. The Tryall Club reserves the right to change or alter its membership packages with no advance notice.
+Plan to pay your TMD fee at the Front Desk in the Great House when you register. They will also set up a charge account for you during your stay. If you plan to pay for your charge account in cash at the end of your stay, they will request a cash deposit. If you plan to pay for your charge account with a credit card, they will place a hold on your card to cover this amount.", 
+image1: "https://photos.jamaicavillas.com/photos/1624380746-xhz-iu8c.jpeg", 
+image2: "https://photos.jamaicavillas.com/photos/1624380741-ecvgzffk.jpeg",
+image3: "https://photos.jamaicavillas.com/photos/1624380742-iedntgc0.jpeg",
+image4: "https://photos.jamaicavillas.com/photos/1624375163-ihdq7h-0.jpeg",
+image5: "https://photos.jamaicavillas.com/photos/1624375179-r6qsyjxm.jpeg",
+image6: "https://photos.jamaicavillas.com/photos/1624375191-xxptcotq.jpeg",
+image7: "https://photos.jamaicavillas.com/photos/1624375139-8zianue4.jpeg",
+image8: "https://photos.jamaicavillas.com/photos/1624375182-rlnvefik.jpeg",
+image9: "https://photos.jamaicavillas.com/photos/1624375158-geeeglmy.jpeg",
+image10: "https://photos.jamaicavillas.com/photos/1624375159-gjsp-jbm.jpeg",
+location_id: l5.id, user_admin_id: u1.id)
+
+v6 = Villa.create!(name: "Ani Thailand", highlights: "Located on the unspoiled island of Koh Yao Noi within two acres half a hectare of lush, well-tended gardens, Ani offers an entire, all-inclusive, private resort designed exclusively for a single group of guests.", 
+features: "With spellbinding oceanfront views, the resort can accommodate up to 20 guests across two Ocean Villas, two Family Villas, each with two guestrooms, and four Pool Suites, and offers direct access to a sandy beach overlooking the turquoise waters and limestone islands of Phang Nga Bay.", 
+overview:"Designed to maximize the propertys breathtaking views, the resort comprises gracious free-standing structures with distinctive, pointed rooflines inspired by Northern Thailands ancient Lanna architecture. The lofty Arrival Pavilion overlooking the resort and its verdant seaside setting is connected via stairs and elevator to the abundance of living and dining areas, 
+including the 2 Ocean Villas with their private terraces and two double daybeds, the four Pool Suites, and the four Villas set around the vast main swimming pool. Boasting vaulted ceilings, spacious bedrooms, and large bathrooms, all guest accommodations have a serene contemporary aesthetic with Thai teak touches. 
+The two Ocean Villas with their private terraces and double daybeds are positioned closest to the ocean, each with a two-bedroom Family Villa with shared living room positioned behind. The four Pool Suites overlook the resorts rolling lawns and out to sea, each claiming its own small private pool between the bedroom and the bathroom, and a double daybed on the front terrace.", 
+amenities: "Beyond Anis comprehensive inclusions, the expert local team can arrange any possible experience offered in Phang Nga Bay, ensuring that transportation is booked, and costs are clear. Rock climbing, scuba diving, and island-hopping cruises by longtail boat or private yacht can be easily organized, as can drawing lessons at the Àni Art Academies Thailand, Muay Thai Boxing training, private yoga sessions, and visits to the Phuket Ethical Elephant Sanctuary. 
+The region is renowned for its pristine natural beauty, and the island is part of Ao Phang Nga National Park, making it a sanctuary for wildlife including hornbills, sea otters, and green turtles.", 
+rate: 1000, capacity: 10, bedroom: 8, bathroom: 6, services: "Breakfast, lunch, and dinner are served each day in different settings across the resort, with every menu tailored according to guest preferences to surprise and delight. Free-flowing beverages including juices, premium spirits, cocktails, and wines can be enjoyed whenever a guest desires. Up to 10 spa treatments per day are included, as well as personal training, non-motorized watersports, guided cycling tours, movies by moonlight, 
+Thai cooking classes, cultural entertainment, and more. A complimentary roundtrip airport transfer makes traveling to Ani a breeze, and up to eight hours of complimentary babysitting and a daily childrens activity program keeps kids entertained. Ani offers every facility and service a group of guests could possibly desire desire during their stay. The glass-walled, air-conditioned Living Sala is complemented by an open-sided Dining Sala – both with incredible views of the bay. 
+There is also a double spa treatment room with jacuzzi, and a fully equipped gym. Open-air settings for dining and relaxation include a sunken lounge deck, a rooftop meditation area, the garden, and the beach, while the games area, childrens pool and waterslide, and in-pool chess and backgammon provide hours of enjoyment. The resort is discreet and dedicated team of 22 is available around the clock to tailor every detail – from special dining, cultural, and wellness moments, to kids activities and exploration of the region – to ensure a bespoke experience that defies expectations.", 
+image1: "https://photos.jamaicavillas.com/photos/1664213181-ani-thailand-resort-overview.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1664213178-ani-thailand-resort-living-sala-with-staff.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1664213153-ani-thailand-accommodation-pool-suite.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1664213148-ani-thailand-accommodation-ocean-villa-terrace.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1664213154-ani-thailand-dining-beach-dinner-4.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1664213151-ani-thailand-accommodation-pool-suite-terrace.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1664213175-ani-thailand-resort-arrival-pavilion-with-staff.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1664213144-ani-thailand-accommodation-family-villa-king.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1664213179-ani-thailand-resort-spa.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1664213185-ani-thailand-resort-swimming-pool.jpg",
+location_id: l6.id, user_admin_id: u1.id)
+
+v7 = Villa.create!(name: "Casa del Arco", highlights: "Perched right on the beach and surrounded by exquisite ocean views, Casa del Arco exudes the utmost in luxurious accommodations.", 
+features: "With walls of windows stretching from end to end, this waterfront retreat entertains with the promise of upscale amenities and top-notch finishes. The outdoor space is the real draw of this home, as you bask in the mist of ocean waves lapping near the edge of the sparkling pool. Spend your afternoons lounging on one of the various open-air patios and terraces or relaxing in the Jacuzzi that seemingly blends into the rocky beach below. ", 
+overview:"Easily entertain your guest with the help of Casa del Arcos numerous indoor and outdoor amenities. Inside you will find a spacious open-concept living and dining area where you can enjoy a candle-lit gourmet meal, overlooking stunning Lands End and the bustling Cabo San Lucas Harbor, or lounge on plush sofas in hues of blue, where you can enjoy breathtaking views of the Pacific through floor-to-ceiling sliding glass doors.
+Modern and comfortable, yet richly appointed with a blend of stone and woodwork, this luxury villa capitalizes on the charm of the nearby resort community, mixing neutral tones accented by pops of occasional color while being set against the backdrop of natures most impressive scenery.",
+amenities: "This graciously appointed home is private yet inviting, with an impressive location just a short walk away from attractions like The Cape, a new Thompson Hotel featuring the signature restaurant Manta. This location effortlessly tempts your taste buds with a rich blend of offerings from renowned chef Enrique Olvera.", 
+rate: 650, capacity: 8, bedroom: 4, bathroom: 5, services: "Be sure to also take advantage of the heated infinity pool, outdoor stereo and traditional Mexican palapa, as well as the gas barbecue. Other unique features of this property include both a swimmable beach for snorkeling and a surfing beach that are within approximately a 400 yards of Casa del Arco. An outdoor basketball net is also available.", 
+image1: "https://photos.jamaicavillas.com/photos/1607463836-casa-del-arco-cabo-san-lucas-9.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1607463873-casa-del-arco-cabo-san-lucas-51.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1607463841-casa-del-arco-cabo-san-lucas-13.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1607463877-casa-del-arco-cabo-san-lucas-58.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1607463848-casa-del-arco-cabo-san-lucas-18.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1607463863-casa-del-arco-cabo-san-lucas-35.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1607463838-casa-del-arco-cabo-san-lucas-11.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1607463845-casa-del-arco-cabo-san-lucas-16.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1607463874-casa-del-arco-cabo-san-lucas-54.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1607463877-casa-del-arco-cabo-san-lucas-58.jpg",
+location_id: l7.id, user_admin_id: u1.id)
+
+v8 = Villa.create!(name: "Four Peaks Estate", highlights: "There is a reason John Denver dubbed this place his snow-covered paradise. The majestic Rocky Mountain backdrop. The canopy of evergreens. The captivating mountain homes and winding roads.", 
+features: "Experience Starwood for yourself at Four Peaks Estate, a breathtaking five bedroom, six bathroom vacation home designed by rowlands. Starwood has maintained its off-the-beaten-path mystique, while also evolving into an exclusive setting for special events and celebrity vacations. Situated on three acres of land, Four Peaks Estate was once owned by Prince Badar, Saudi Arabias Ambassador to the United States. It is now available for rent for the first time ever.",
+overview: "Inside, you will fill experience kick-off-your-boots charm, with inviting chairs and couches huddled around warm fireplaces. Meanwhile, floor-to-ceiling windows showcase Aspens Four Peaks and ensure the mountain scenery is as much a part of this home as its luxury appointments.
+Designed for entertaining, Four Peaks Estate features a secondary catering kitchen with a waiter connected to the upper-level kitchen. Elevators allow guests to easily move between the first and second floors, and a heated patio is gorgeous across all seasons, as is its Jacuzzi tub. Each bedroom and living area offers access to the alpine paradise just outside.", 
+amenities: "Dine with ease, comfort and style at a round table with leather chairs. The dining area is on the upper level, just off of a gourmet-inspired kitchen with granite counter-tops and bar-style seating. The second catering kitchen can be found on the lower level. 
+Alfresco meals are something special at this Aspen home. An outdoor dining area features a wooden table and the snow capped peaks of the Rockies offer an ideal, John Denver-approved backdrop.", 
+rate: 1500, capacity: 10, bedroom: 5, bathroom: 6, services: "Rest in a king-sized bed with an intricately carved four-post frame. Glass doors offer sweeping views of the mountains and open onto a private deck. Blackout curtains create privacy and an intimate fireplace lends warmth. Enjoy an enormous walk-in closet and en-suite bath with a Jacuzzi tub. 
+This spacious room offers a king-sized bed with rustic wooden frame and television. An en-suite bath features a Jacuzzi tub for premier relaxation.", 
+image1: "https://photos.jamaicavillas.com/photos/mosteller_hires032.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/mosteller_hires004.jpg",
+image3: "https://photos.jamaicavillas.com/photos/mosteller_hires010.jpg",
+image4: "https://photos.jamaicavillas.com/photos/mosteller_hires016.jpg",
+image5: "https://photos.jamaicavillas.com/photos/mosteller_hires011.jpg",
+image6: "https://photos.jamaicavillas.com/photos/mosteller_hires023.jpg",
+image7: "https://photos.jamaicavillas.com/photos/mosteller_hires026.jpg",
+image8: "https://photos.jamaicavillas.com/photos/mosteller_hires025.jpg",
+image9: "https://photos.jamaicavillas.com/photos/mosteller_hires012.jpg",
+image10: "https://photos.jamaicavillas.com/photos/mosteller_hires002.jpg",
+location_id: l8.id, user_admin_id: u1.id)
+
+v9 = Villa.create!(name: "Arrecife Royale", highlights: "This massive nine bedroom villa is a landmark throughout the Caribbean, based on the following pillars: modernism, minimalism, and professionalism.", 
+features: "As you enter through the main entrance, a high-ceiling with a gentle wind coming from the garden welcomes you to a large and sober foyer with modern touches and governed by a minimalistic outlook. The wooden panels on the main window sprinkle a fresh and natural touch to the villa.
+Along with the villas horseshoe structure, every piece of decor and functional furniture was cleverly positioned all over seeking the ideal balance to offer a relaxed ambiance for all guests. Note the adage here is just to lay back and enjoy all its unique amenities, outstanding concierge service, and dining experience.", 
+overview:"When going upstairs to the second floor you will find seven of the nine bedrooms. There are three master bedrooms with a king bed and an en-suite bathroom each, including a hot tub on the terrace. Then, you have three double bedrooms with two queen beds and en-suite bathroom each and the seventh bedroom, ideal for families, has two queen beds and two twin bunk beds with its en-suite bathroom. 
+Finally, when going downstairs you will find the eighth bedroom, with a king bed and en-suite bathroom next to the last bedroom, with two queen beds and en-suite bathroom. Another option is to pump or simply keep your shape in one of the most advanced home gyms you will find in the Caribbean. This fitness room was equipped with the best dumbbells, barbells, treadmill, etc.", 
+amenities: "This beautiful villa is located in the exclusive gated community of Punta Cana Resort & Club, a 26-square mile paradise that is blessed with a temperate year-round climate, light rainfall, and soft ocean breezes. Its colorful coral reefs, calm crystalline waters and white-sand beaches are breathtaking. The Resort provides a matchless experience for all who visit this tropical paradise, and its tropically chic lifestyle is ideal for those who appreciate high standards of quality, comfort and aesthetics. As guests of the villa, you have access to all of the resort amenities and activities.", 
+rate: 1800, capacity: 14, bedroom: 8, bathroom: 9, services: "Prior to arrival you have to choose your days one and two meals. Going forward once you are onsite you just have to make your selection of meals with 48 hour anticipation and for a minimum of two days forward. 
+Activities available include golf, tennis, sailing, windsurfing, kite surfing, snorkeling, scuba diving, deep sea fishing, horseback riding, fitness center, spa, eco tours, and access to the club house.", 
+image1: "https://photos.jamaicavillas.com/photos/1592320954-hl-5340.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1592320958-hl-5380.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1592320994-living-room-12.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1592320950-hl-4840.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1592320959-hl-5424.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1592320989-kitchen-1.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1592320941-hl-4435.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1592320966-hl-5612.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1592320932-hl-4146.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1592320973-bar-2.jpg",
+location_id: l9.id, user_admin_id: u1.id)
+
+v10 = Villa.create!(name: "Paraiso De Royal", highlights: "One of the most exclusive beach front villa, located directly on the island most beautiful white sand beach. Including 10-en-suite bedrooms, two Jacuzzis, spa, award-winning infinity pool, sea-front dining, plus every luxury including full-time housekeeping staff and your own personal concierge.", 
+features: "Paraiso De Royal is a brand new private luxury beach villa, located in the center of El Nido, Palawans most beautiful white sand beach. The beach is picturesque and sheltered, and is therefore one of the select few beaches in Palawan that offer you 365 days a year swimming. Western coast beaches are all closed for most of the period from May thru Nov, plus closed on any days with strong tides. This is especially important for families with children. 
+The villa is also only 10-15 minutes away from El Nido Town with all of its bars, restaurants, colourful markets and designer shops, 15 minutes from the main shopping centres of the island, 15 minutes from the famous night market, 5 minutes from Cape Panwa peninsular with its bars, restaurants, and Aquarium.", 
+overview:"You could decide not to go to the Beach as there are wonderful restaurants and bars on your doorstep, including The Brasserie on The Beach, the beach restaurant and beach club restaurant and institution, The Brasserie on the Beach, which is only a 30 second walk along the beach from the villa. They will prepare champagne and oysters, a just-caught barbecued fish, or the islands best fillet steak tenderloin! The Beach Restaurant just one minute away also serves delicious Thai food directly on the beach – a real no shoes experience and always popular.", 
+amenities: "Outside there are carefully landscaped gardens, with ornamental pots, tropical plants, palm trees, and a 200 years old tamarind tree. There is a fully-equipped professional bar with fridges, freezer, ice and wine coolers, pizza oven and large BBQ. There is an infinity edge 12m swimming pool, with sunken seating, and integral Jacuzzi. Surrounding the pool there are sun loungers plus umbrellas to give you shade, or enjoy to enjoy a pool-side massage overlooking the sea. You will enjoy wonderful sea views from every corner of the garden, and can access the beach and sea directly from the garden.", 
+rate: 500, capacity: 24, bedroom: 12, bathroom: 13, services: "The villa also enjoys a fully equipped spa, with a two bed massage room, plus 8-person steam room. Within the spa there is also a private outdoor two-person Jacuzzi with chromotherapy lighting system. Our massage therapists will come to the villa and you can enjoy a whole range of relaxing treatments.
+Retreat is a very special place, a one in a million property. It is arguably the finest property when you consider its direct beach access and seafront location, plus its modern contemporary design. Consider the attentive service levels you will receive with a full-time housekeeper. It is perfect for families due to the direct beach access and safe seas for children, but would also make the perfect party house for groups of friends or a private wedding too.", 
+image1: "https://photos.jamaicavillas.com/photos/10vba-mainnight-00010.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/07vba-living-00040.jpg",
+image3: "https://photos.jamaicavillas.com/photos/07vba-living-00020.jpg",
+image4: "https://photos.jamaicavillas.com/photos/07vba-living-00050.jpg",
+image5: "https://photos.jamaicavillas.com/photos/06vba-bedroom09-00010.jpg",
+image6: "https://photos.jamaicavillas.com/photos/08vba-bedroom01-00020.jpg",
+image7: "https://photos.jamaicavillas.com/photos/08vba-bedroom04-00010.jpg",
+image8: "https://photos.jamaicavillas.com/photos/10vba-pool-00010.jpg",
+image9: "https://photos.jamaicavillas.com/photos/10vba-pool-00060.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1565115558-01VBA-MainDay-00010.jpg",
+location_id: l10.id, user_admin_id: u1.id)
+
+v11 = Villa.create!(name: "Anastasia", highlights: "Anastasia is a stunning villa in Mykonos with infinity pool and terrace overlooking the sea.", 
+features: "Its meticulous landscape and modern design highlight the island’s lifestyle and is ideal for a families and group of friends. The property expands on three levels and features six spacious en-suite double queen bedrooms, out of which the two are master bedrooms, an additional en-suite staff room, seven bathrooms and two open plan kitchens and may comfortably accommodate up to 12 guests.", 
+overview:"Villa Bovary is elegantly furnished and decorated with warm, welcoming colors and boasts multiple indoor and outdoor lounge areas, a private infinity pool, an outdoor Jacuzzi and an outdoor fireplace which creates the perfect focal point from which guests may enjoy the astounding sea views. Last but not least, below the villas main terrace at only two-minutes walk, there is a small isolated sandy beach which guests may freely visit adding a unique feature to the property.
+The waterfront location provides extensive views over the sea, all the way across to the neighboring islands of Naxos, while the southwestern position of the property itself allows guests to be with reasonable distance from Mykonos Town and the most popular southern beaches of the island.", 
+amenities: "Indoors the property boasts a similar approach, directed towards a luxurious experience with top-of-the-line amenities. The villa features an entrance level with living areas and kitchen while all bedrooms are located on the lower level, all spilling out onto the outdoors. The furnishing, fittings and finishing are kin to a luxury boutique hotel, where the details are all oriented towards pure quality and seamless enjoyment of the property at any time of the day.", 
+rate: 2000, capacity: 12, bedroom: 8, bathroom: 8, services: "A lush, flawlessly maintained garden lines the pool terrace of the property, with a swimming pool and smaller Jacuzzi/childrens pool just a few steps away. The modern approach of the materials fitted and furnishing featured throughout blend with the surrounding nature where large beautiful rocks were left in their original position and encompassed in the properties outdoor spaces. A large dining area can be found adjacent to each swimming pool, enhance by the two individual dining areas located on the upper terrace, while smart living areas and relaxation spots are scattered throughout the premises.
+Arya sets a new benchmark on the market, providing a solution for large groups looking to spend their time together on the island in a refined ambiance with all comforts and in a unique location. The ample outdoor spaces and presence of a church also make it undeniably eligible for wedding celebrations or events in general.", 
+image1: "https://photos.jamaicavillas.com/photos/1585167298-23714.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1585167300-23717.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1585167294-23705.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1585167301-23719.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1585167301-23720.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1585167294-23706.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1585167299-23715.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1585167295-23708.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1585167298-23713.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1585167296-23709.jpg",
+location_id: l3.id, user_admin_id: u1.id)
+
+v12 = Villa.create!(name: "Cassiopea", highlights: "The best Cycladic architecture meets contemporary resulting in the exquisite design of Villa Cassiopea.", 
+features: "This is a unique luxury romantic property featuring an infinity pool and Jacuzzi wth sea views, a shared tennis court, and even a helipad, just a few kilometers away from Mykonos town center. Perched high on a cliff, this villa beautifully incorporates elements from the rocky surroundings combined with bamboo beams and palm trees creating a sheltered oasis of peace and tranquility in which guests can fully immerse in the magical atmosphere of island living.", 
+overview: "The very same play house owes its name also to the interior spaces where a lounge area, the central kitchen of the property and the indoor dining area find space. The real treat of the unit though is the home cinema with its 4 mt wide screen, surround system and a pre-installed collection of 690 movies that can also be tapped into from the flat screen TVs present in each suite. The master suite is completely independent counting 120 square meters divided in living space,
+bedroom and en-suite bathroom while four suites are part of a more traditional structure and all appointed to the same standard. The same can be said for the new Gate House bedrooms as well, added in 2018 to increase the capacity and ultimately the quality of Dante. The attention to detail and quality of the materials used throughout the property set a benchmark hardly matched on the island.", 
+amenities: "The main outdoor area of the property is at the aptly named play house unit that serves as a central gathering area for the guests. A grand pergola extends to the side of the building, covering the ever stylish lounge area and outdoor dining table equipped with a BBQ. A few steps down the pool terrace hosts the 15 mt heated lap pool and a few steps away from it the built-in Jacuzzi tub. Other furnished outdoor areas were conceived outside the suites as well, while for basketball enthusiasts a private half court is located just behind the play house.", 
+rate: 900, capacity: 4, bedroom: 2, bathroom: 2, services: "The outdoor area of Villa Delos is ideal for celebrations, gathering, relaxing and sunbathing. The main outdoor lounge and dining areas embrace the spectacular infinity pool while in windy days there are various corners to be sheltered and to unwind. The outdoor furniture is of impeccable taste and quality, with sunbathing beds inviting guests to relax and escape.", 
+image1: "https://photos.jamaicavillas.com/photos/1582567518-21092.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1582567520-21096.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1582567526-21106.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1582567525-21104.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1582567527-21108.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1582567528-21111.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1582567532-21117.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1582567533-21119.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1582567518-21091.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1582567521-21098.jpg",
+location_id: l3.id, user_admin_id: u1.id)
+
+v13 = Villa.create!(name: "Corniche", highlights: "A 2020-renovated luxury getaway that is coming for the throne.", 
+features: "Corniche definitely stands out among the offerings of the prime area of Aleomandra, the most popular southwestern peninsula of Mykonos. This 7-bedroom property sits just above one of the islands best kept secret coves, located a simple walk down the hill. The sunset views are scenic and punchy. The quality of the décor is undeniable across the airy multiple indoor / outdoor living areas and 7 en-suite bedrooms.", 
+overview:"Perched just a few tens of meters above sea level in the area of Aleomandra, Delphine enjoys one of the best views on the island combining sights of the nearby islands with Mykonos’ unforgettable sunsets. 
+Pergolas stretch over two distinct outdoor dining tables, a pool-side bar area and a sunset lounge corner. Guests will truly be spoiled for choice amidst all these elegant, outdoor amenities. Wooden surfaces, ethnic patterns and design furniture distinguish the interior decor of Delphine while its architecture is modern Cycladic at its best.", 
+amenities: "The highest standards were kept throughout, both in the spacious common areas and the four main bedrooms. Fitness and R&R are both provided for as well in the property’s own private gym and massage room, both discretely located below the pool.", 
+rate: 1100, capacity: 10, bedroom: 6, bathroom: 5, services: "The location grants easy access to the most popular southern beaches while also being a short drive away from Mykonos Towns unrivalled nightlife. True to its summer retreat demeanour the villas outdoor spaces were designed to be enjoyed in the utmost comfort throughout the day. Sun loungers, cabana-style beds, summer couches, cushions and poufs surround the grand private pool.", 
+image1: "https://photos.jamaicavillas.com/photos/1678993342-corniche-16.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/1678993353-corniche-26.jpg",
+image3: "https://photos.jamaicavillas.com/photos/1678993355-corniche-28.jpg",
+image4: "https://photos.jamaicavillas.com/photos/1678993363-corniche-36.jpg",
+image5: "https://photos.jamaicavillas.com/photos/1678993352-corniche-25.jpg",
+image6: "https://photos.jamaicavillas.com/photos/1678993357-corniche-30.jpg",
+image7: "https://photos.jamaicavillas.com/photos/1678993344-corniche-19.jpg",
+image8: "https://photos.jamaicavillas.com/photos/1678993345-corniche-20.jpg",
+image9: "https://photos.jamaicavillas.com/photos/1678993372-corniche-51.jpg",
+image10: "https://photos.jamaicavillas.com/photos/1678993369-corniche-47.jpg",
+location_id: l3.id, user_admin_id: u1.id)
+
+v14 = Villa.create!(name: "Cielo Mar", highlights: "Cielo Mar is located in Peninsula Papagayo, a private luxury resort sanctuary that jots out into the Pacific Ocean in Costa Ricas north-west province of Guanacaste.", 
+features: "The villa provides views for all primary spaces: a salon large enough for a dining table and a bar, six bedrooms, two private studies, media room/home theater, the gym, laundry room, the kitchen, and a two-bedroom caretaker apartment with separate entrance and mechanical systems located beneath the two garages. 
+This was achieved by curving the house in a semi-circle around a radial point in front of the bridge so that each room has a slightly shifted view of the ocean to the west and headlands visible to the north and south.", 
+overview: "Organizing the levels downward and outward into the face of the cliff also presented the opportunity to cantilever the infinity-edge pool out over the edge of the terrace, creating the dramatic illusion of swimming three hundred feet above the ocean. A similar effect is created with a bridge or viewing platform that visually connects the upper level with the water, flying 16 feet above the pool beyond the edge of the terrace. 
+Standing at the end of the bridge gives one the impression of soaring above the jungle and the ocean. The bridge points to where the sun dips below the ocean horizon each evening, making the end of the bridge the best location for cocktail hour. The bridge also provides shade for part of the deck and the large outdoor dining table.", 
+amenities: "Placing the 90-foot long pool cantilevered at the edge of the terrace satisfies the need for a barrier so that the ocean view is unencumbered by a guardrail. The Olympic-size pool is lined with charcoal-black volcanic lava stone, imparting a deep blue color to the water. At times it is difficult to distinguish the edge of the pool from the blue Pacific Ocean beyond.", 
+rate: 1200, capacity: 16, bedroom: 10, bathroom: 6, services: "The master bedroom suite is entered from the main terrace, the loggia, or through one of the master studies via a private reading room. A unique feature of the master suite is a completely private, sunken Zen garden with an outdoor shower, which opens off the master bathroom. This creates an exotic retreat in which to bathe and relax.", 
+image1: "https://photos.jamaicavillas.com/photos/dji00228_as_smart_object-1_cropped-1.jpg", 
+image2: "https://photos.jamaicavillas.com/photos/dsc_0669_as_smart_object-1.jpg",
+image3: "https://photos.jamaicavillas.com/photos/dsc_0620_as_smart_object-1.jpg",
+image4: "https://photos.jamaicavillas.com/photos/dsc_0086_as_smart_object-1.jpg",
+image5: "https://photos.jamaicavillas.com/photos/dsc_9930_as_smart_object-1.jpg",
+image6: "https://photos.jamaicavillas.com/photos/dsc_9821_as_smart_object-1_1.jpg",
+image7: "https://photos.jamaicavillas.com/photos/dsc1618_as_smart_object-1.jpg",
+image8: "https://photos.jamaicavillas.com/photos/dsc_0012_as_smart_object-1.jpg",
+image9: "https://photos.jamaicavillas.com/photos/dsc_9555_as_smart_object-1.jpg",
+image10: "https://photos.jamaicavillas.com/photos/dsc_0053_as_smart_object-1.jpg",
+location_id: l1.id, user_admin_id: u1.id)
+
+inquiry1 = Inquiry.create!(arrival: "2023-07-11", departure: "2023-07-20", guests: 4, full_name: "John Doe", email: "jdoe@gmail.com", phone: "555-555-5555", message: "Hi there! I am interested in villa rentals for a family vacation. Could you please provide me with information on availability, pricing, and amenities for a 5-bedroom villa in a beachfront location? Thank you!", location_id: l1.id, villa_id: v14.id)
+inquiry2 = Inquiry.create!(arrival: "2023-09-01", departure: "2023-09-21", guests: 12, full_name: "Kate Winslet", email: "kwinslet@gmail.com", phone: "805-555-4455", message: "Hello! We are a group of friends planning a getaway and would love to rent a villa. Can you please share details about any available properties with at least 4 bedrooms, a private pool, and access to watersports activities? Looking forward to hearing from you!", location_id: l5.id, villa_id: v5.id)
+inquiry3 = Inquiry.create!(arrival: "2023-08-07", departure: "2023-08-24", guests: 10, full_name: "Johnny Woods", email: "jwoods@gmail.com", phone: "832-354-3636", message: "Hello! I am currently planning a destination wedding and interested in renting a villa for the ceremony and accommodations. Can you please provide me with information on villas that can accommodate around 10 guests, with a beautiful outdoor area for the ceremony and reception? It would be great if you could also share details on any wedding-specific amenities or services you offer. Looking forward to your response!", location_id: l8.id, villa_id: v8.id)
+inquiry4 = Inquiry.create!(arrival: "2023-10-05", departure: "2023-10-15", guests: 2, full_name: "Stephanie Madrigal", email: "stephanie08@gmail.com", phone: "713-897-2415", message: "Hi! I am in search of a luxury villa for a romantic retreat. Could you please recommend a secluded property with ocean views, a private Jacuzzi, and a gourmet kitchen? It would be great if you could also provide pricing and any additional amenities available. Thank you!", location_id: l5.id, villa_id: v5.id)
+inquiry5 = Inquiry.create!(arrival: "2023-11-11", departure: "2023-11-20", guests: 8, full_name: "Dominick Xavier", email: "domXavier@gmail.com", phone: "607-254-1234", message: "Greetings! We are planning a special occasion and would like to rent a villa for a family gathering. Can you please suggest a spacious property with a large dining area, outdoor entertainment spaces, and maybe even a games room? We would appreciate information on availability and rates as well.", location_id: l7.id, villa_id: v7.id)
+inquiry6 = Inquiry.create!(arrival:"2023-12-06", departure: "2023-12-12", guests: 20, full_name: "Giovanni Li", email: "gioli@gmail.com", phone: "355-842-9876", message: "Hi, I am interested in booking a villa for a corporate retreat. We need a property with a minimum of 6 bedrooms, a fully equipped conference room, and access to fitness facilities. Could you please provide details on suitable options, including any additional services or event planning assistance you offer? Thank you!", location_id: l10.id, villa_id: v10.id)
 
 
 puts "✅ Done seeding!"

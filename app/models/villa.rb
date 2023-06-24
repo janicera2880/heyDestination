@@ -9,9 +9,10 @@ class Villa < ApplicationRecord
     # Validations
     # Ensures length is correct and presence of attributes
     # Integers have a non-negative numerical value
-    validates :name, presence: true, length: { maximum: 100 }
-    validates :highlights, :features, :services, presence: true, length: { minimum: 200 }
-    validates :overview, :features, :amenities, presence: true, length: { minimum: 300 }
+    validates :name, presence: true
+    validates :highlights, :amenities, presence: true
+    validates :features, :services, presence: true, length: { minimum: 50 }
+    validates :overview, presence: true, length: { minimum: 100 }
     validates :rate, :capacity, :bedroom, :bathroom, presence: true, numericality: { greater_than_or_equal_to: 0 }
     validates :image1, presence: true
     validates :image2, presence: true
