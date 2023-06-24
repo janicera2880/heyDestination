@@ -23,7 +23,7 @@ const AboutUs = () => {
       <p>Renting a villa is simple, and our expert villa specialists are available to guide you every step of the way.</p>
       <p>Our team of experienced travel experts is dedicated to providing *exceptional* service and ensuring that your stay in our villas is nothing short of *extraordinary*.</p>
       <ReactMarkdown>### What Makes A Luxury Villa Vacation</ReactMarkdown> 
-      <ReactMarkdown>- **Features & Amenities**
+        <ReactMarkdown>- **Features & Amenities**
         We go above and beyond entertainment and surround sound. It's about private gyms, spas, children’s spaces, al fresco dining, private gyms, and beyond. Nothing is too big or too extravagant for our guests.</ReactMarkdown> 
         <ReactMarkdown>- **Staff & Services**
         We offer and fully guarantee that our Concierge Services will take the guesswork out of your getaway. Additionally, many of our villas feature private chefs, butlers, gardeners, and more to elevate your experience.</ReactMarkdown> 
@@ -35,13 +35,15 @@ const AboutUs = () => {
 
       {!userAdmin ? (
         <div className="login-section">
-          <h3>Employee Login Here</h3>
+          <br></br>
+          <br></br>
+          <h3>Employee Login Only</h3>
           <LoginSignupToggle />
         </div>
       ) : (
         <div className="admin-link">
           <h4>Logged in as {userAdmin.first_name} {userAdmin.last_name}</h4>
-          <Link to="/user_admin">Go to Admin Portal</Link>
+          <Link to="/user_admin" className="some-button">Go to Admin Portal</Link>
         </div>
       )}
     </div>

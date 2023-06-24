@@ -42,12 +42,12 @@ const AdminPortal = () => {
        
       </div>
       <div className="logout">
-        <button onClick={handleLogout} className="logout-button">Logout</button>
+        <button onClick={handleLogout} className="some-button">Logout</button>
         {showLogoutPopup && (
           <div className="popup">
             <p>Are you sure you want to logout?</p>
-            <button onClick={confirmLogout} className="logout-button">Yes</button>
-            <button onClick={cancelLogout} className="logout-button">No</button>
+            <button onClick={confirmLogout} className="some-button">Yes</button>
+            <button onClick={cancelLogout} className="some-button">No</button>
           </div>
         )}
       </div>

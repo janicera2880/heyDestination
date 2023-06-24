@@ -24,7 +24,7 @@ const LoginSignupToggle = () => {
             <AdminLogin />
             <p>
               Don't have an account? &nbsp;
-              <button onClick={() => setToggleForms(false)}>Signup Here</button>
+              <button onClick={() => setToggleForms(false)} className='some-button'>Signup Here</button>
             </p>
           </>
         ) : (
@@ -32,7 +32,7 @@ const LoginSignupToggle = () => {
             <SignupForm />
             <p>
               Already have an account? &nbsp;
-              <button onClick={() => setToggleForms(true)}>Click to Login</button>
+              <button onClick={() => setToggleForms(true)} className='some-button'>Click to Login</button>
             </p>
           </>
         )}
