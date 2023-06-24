@@ -14,7 +14,7 @@ const AboutUs = () => {
 
         <img
         src={villaPicture}
-        width="700"
+        width="900"
         height="500"
         alt="villa"
         className="villa-pic" />

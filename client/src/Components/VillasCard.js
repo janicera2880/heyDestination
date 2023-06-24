@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { VillasContext } from "../Contexts/VillasContext";
 import { LocationsContext } from "../Contexts/LocationsContext";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 // Renders a component that displays information about a Villa.
 function VillasCard() {
@@ -13,7 +13,8 @@ function VillasCard() {
     // Render a loading state or return null if the villa data is not available yet
     return null;
   }
-// Fetches data from a context called VillasContext and extracts properties from it.
+
+  // Fetches data from a context called VillasContext and extracts properties from it.
   const {
     name,
     highlights,
@@ -25,29 +26,17 @@ function VillasCard() {
     bedroom,
     bathroom,
     services,
-    images,
+    ...images // Use object destructuring to collect image attributes into the 'images' object
   } = villa;
-// Returns the name of the Villa.
 
-// Retrieve the location details using getLocationById
-  const location = getLocationById(location_id); 
+  // Retrieve the location details using getLocationById
+  const location = getLocationById(location_id);
 
   const tomtomApiKey = "uF3xNUwX5wD3lAhJ1jcom9gdMmONPpcC";
   const mapUrl = `https://api.tomtom.com/maps/cdn/embed/v1/view/static.html?key=${tomtomApiKey}&center=${location.latitude},${location.longitude}&zoom=15&height=300&width=100%`;
+
   return (
-    <div className="villa-container">
-      <div className="villa-images">
-        <h4>Images</h4>
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image.url}
-            width="400"
-            height="300"
-            alt={`Villa  ${index}`}
-          />
-        ))}
-      </div>
+    <div className="villa-card">
       <h3 className="villa-name">{name}</h3>
       <div className="villa-highlights">
         <h4>Highlights</h4>
@@ -85,6 +74,13 @@ function VillasCard() {
         <h4>Services</h4>
         <p>{services}</p>
       </div>
+      {/* Render each image attribute dynamically */}
+      {Object.values(images).map((image, index) => (
+        <div key={`villa-image-${index + 1}`} className="villa-image">
+          <h4>Image {index + 1}</h4>
+          <img src={image} width="400" height="400" alt={`Villa Container ${index + 1}`} />
+        </div>
+      ))}
       {location && (
         <div className="villa-location">
           <h4>Location</h4>
