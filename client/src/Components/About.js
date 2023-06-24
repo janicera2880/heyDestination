@@ -15,7 +15,7 @@ const AboutUs = () => {
         <img
         src={villaPicture}
         width="900"
-        height="500"
+        height="550"
         alt="villa"
         className="villa-pic" />
       <ReactMarkdown>## Discover Your Perfect Villa Retreat</ReactMarkdown>
