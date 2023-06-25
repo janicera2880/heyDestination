@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
+import { useNavigate } from 'react-router-dom';
 
 
 //Renders an add activity form with input fields for name, highlights, image, details, and category. 
 const AddActivityForm = () => {
   const { addActivity } = useContext(ActivitiesContext);
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [highlights, setHighlights] = useState('');
   const [image, setImage] = useState('');
@@ -45,6 +48,8 @@ const AddActivityForm = () => {
         setImage('');
         setDetails('');
         setCategories('Sports');
+      // Navigate to a new location after successful submission
+        navigate('/locations'); 
       } else {
         // Display error message if there's a problem with the request
         const errorData = await response.json();
@@ -89,7 +94,7 @@ const AddActivityForm = () => {
           </select>
         </label>
 
-        <button type="submit">Submit</button>
+        <button className="some-button" type="submit">Submit</button>
       </form>
     </div>
   );

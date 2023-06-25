@@ -21,7 +21,7 @@ const ActivityContainer = () => {
 
   return (
     <div className='activity-container'>
-      {userAdmin && <AddActivityForm />}
+      
       <p>
         Discover and indulge in a wide array of captivating activities that we offer.
       </p>
@@ -40,6 +40,9 @@ const ActivityContainer = () => {
           <ActivityCard key={activity.id} activity={activity} />
         ))}
       </ul>
+      <br />
+      <br />
+      {userAdmin && <AddActivityForm />}
     </div>
   );
 };

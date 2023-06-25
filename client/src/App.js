@@ -13,13 +13,16 @@ import ActivityContainer from './Components/ActivityContainer';
 import LocationVillaPage from './Components/LocationVillaPage';
 import AdminPortal from './Components/AdminPortal';
 import About from './Components/About';
-
+import IncomingInquiry from './Components/IncomingInquiry';
+import { InquiriesContext } from './Contexts/InquiriesContext';
 
 function App() {
-  const { setUserAdmin } = useContext(UserAdminContext);
+  const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
   const { villas, setVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
+  const { setUserAdminInquiries, setInquiries} = useContext(InquiriesContext);
+  
 
   useEffect(() => {
     fetch("/me")
@@ -34,6 +37,25 @@ function App() {
         console.error('Error fetching user:', error);
       });
   }, [setUserAdmin]);
+
+  useEffect( ()=>{
+    if (userAdmin != null){
+      fetch(`/user_admins/${userAdmin.id}/villas/inquiries`).then(r=>r.json()).then(data=>{
+        setUserAdminInquiries(data);
+      })
+    }
+  }, [userAdmin, setUserAdminInquiries]);
+
+  useEffect(() => {
+    fetch("/inquiries")
+      .then((r) => r.json())
+      .then((data) => {
+        setInquiries(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching villas:', error);
+      });
+  }, [setInquiries]);
 
   useEffect(() => {
     fetch("/villas")
@@ -86,7 +108,7 @@ function App() {
       <Route path="/user_admin" element={<AdminPortal/>} />
       <Route path="/villas/:id/inquiries" element={<InquireForm />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
-
+      <Route path="/user_admin/:id/villas/inquieries" element={<IncomingInquiry />} />
       </Routes>
     </div>
     </BrowserRouter>

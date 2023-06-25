@@ -122,9 +122,9 @@ nav ul li a:hover {
 }
 
 .locations-container {
-  height: 1200px; /* Adjust the height as per your requirement */
-  width: 80%;
-  max-width: 1500px; /* Adjust the value as needed */
+  
+  width: 90%;
+  max-width: 1700px; /* Adjust the value as needed */
   margin: 0 auto;
   
 }
@@ -746,4 +746,82 @@ select {
   font-family:monospace;
   font-size: 16px;
   
+}
+/*Incoming Inquiry*/
+.inquiry-box {
+  background-color: #0a283f;
+  color: #87c0c0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.inquiry h4 {
+  color: #7aa89e;
+}
+
+.inquiry p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+.inquiry-container {
+  width: 100%; /* Adjust the width as needed */
+}
+
+.inquiry-wrapper {
+  width: 80%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the wrapper horizontally */
+}
+/*Activity Form*/
+.add-activity {
+  background-color: #dbf0f7;
+  padding: 25px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  max-width: 400px; /* Adjust the max-width value as needed */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.add-activity h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.add-activity form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-activity label {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+.add-activity input,
+.add-activity textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.add-activity input[type="text"],
+.add-activity textarea {
+  width: 100%;
+}
+
+.add-activity input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-activity input[type="submit"]:hover {
+  background-color: #45a049;
 }

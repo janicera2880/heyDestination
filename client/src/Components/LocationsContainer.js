@@ -11,11 +11,15 @@ const LocationsContainer = () => {
   const { locations } = useContext(LocationsContext);
   return (
     <div className="locations-container">
-      {userAdmin && <AddLocationForm />}
+      
       <div className="locations-wrapper">
         {locations.map((location) => (
           <LocationsCard key={location.id} location={location} />
+         
         ))}
+        <br />
+        <br />
+         {userAdmin && <AddLocationForm />}
       </div>
     </div>
   );

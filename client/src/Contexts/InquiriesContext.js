@@ -6,7 +6,7 @@ export const InquiriesContext = createContext();
 // Create the InquiriesProvider component
 export const InquiriesProvider = ({ children }) => {
   const [inquiries, setInquiries] = useState([]);
-
+  const [userAdminInquiries, setUserAdminInquiries] = useState(null);
   // Function to add a new inquiry
   const addInquiry = (newInquiry) => {
     setInquiries([...inquiries, newInquiry]);
@@ -15,7 +15,10 @@ export const InquiriesProvider = ({ children }) => {
   // Provide the context value
   const contextValue = {
     inquiries,
-    addInquiry
+    addInquiry,
+    setInquiries,
+    userAdminInquiries,
+    setUserAdminInquiries
   };
 
   return (

@@ -1,6 +1,12 @@
 class InquiriesController < ApplicationController
   skip_before_action :authorize, only: :create
   # Create a new instance of Inquiry using the inquiry_params method
+
+  def index
+    inquiries = Inquiry.all
+    render json: inquiries
+  end
+
   def create
     inquiry = Inquiry.new(inquiry_params)
 
