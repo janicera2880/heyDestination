@@ -2,9 +2,8 @@ class SessionsController < ApplicationController
     skip_before_action :authorize, only: :create
 
     # POST action Create Session
-    def create
-
-        # Find the user admin based on the provided email
+      # Find the user admin based on the provided email
+      def create
         user_admin = UserAdmin.find_by(email: params[:email])
 
         # If the user admin exists and the password is authenticated

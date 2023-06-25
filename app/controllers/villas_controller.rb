@@ -6,8 +6,8 @@ class VillasController < ApplicationController
    
     # GET /villas
     def index
-        villas = Villa.includes(:location).all
-        render json: villas, include: :location, status: :ok
+        villas = Villa.all
+        render json: villas, include: ['activity_locations', 'inquiries'], status: :ok
     end
   
   

@@ -5,7 +5,7 @@ class UserAdmin < ApplicationRecord
   has_many :inquiries, through: :villas
   #has_one_attached :profile_pic
 
-  validates :first_name, :last_name, :email, :admin, presence: true
+  validates :first_name, :last_name, :admin, presence: true
   validates :password, length: { in: 8..45 }
   validates :email, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :profile_image, presence: true

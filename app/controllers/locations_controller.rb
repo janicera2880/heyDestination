@@ -1,18 +1,17 @@
 class LocationsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-    before_action :authorize
     skip_before_action :authorize, only: [:index, :show]
 
     # Fetch all locations from the database and order them by ID.
     def index
         locations = Location.all.order(:id)
-        render json: locations, include: ['villas', 'activity_locations']
+        render json: locations, include: ['villas', 'activity_locations', 'inquiries']
     end
 
     # Find the specific location based on the ID provided in the request parameters.
     def show
         location = find_location
-        render json: location, include: ['villas', 'activity_locations']
+        render json: location, include: ['villas', 'activity_locations', 'inquiries']
     end
 
     # Create a new location using the provided location parameters.

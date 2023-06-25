@@ -1,11 +1,11 @@
 class UserAdminsController < ApplicationController
-  before_action :authorize, except: [:create]
-  skip_before_action :authorize, only: [:index, :show]
+  before_action :authorize, except: [:create, :index]
+  
 
   # GET /user_admins
   def index
-    user_admins = UserAdmin.includes(inquiries: :villa)
-    render json: user_admins, include: { inquiries: { include: :villa } }
+    user_admins = UserAdmin.all
+    render json: user_admins, include: ['villas', 'inquiries'], status: 200
   end
 
   # GET /user_admins/:id

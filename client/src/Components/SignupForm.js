@@ -10,9 +10,9 @@ const SignupForm = () => {
         last_name: '',
         email: '',
         password: '',
-        confirmation_password: '',
+        password_confirmation: '',
         admin: true,
-        profile_pic: null,
+        profile_image: '',
   });
 
   const [errors, setErrors] = useState([]);
@@ -61,16 +61,6 @@ const SignupForm = () => {
     }));
   };
 
-
-  //Updates the profile picture in form data state with the selected file.
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData((prevData) => ({
-      ...prevData,
-      profile_pic: file,
-    }));
-  };
-
   return (
     <div className="signup-form">
     <form onSubmit={handleSubmit}>
@@ -101,7 +91,7 @@ const SignupForm = () => {
         <input
           type="text"
           name="email"
-          value={formData.last_name}
+          value={formData.email}
           onChange={handleInputChange}
         />
       </label>
@@ -123,9 +113,9 @@ const SignupForm = () => {
         Confirm Password:
         <input
           type="password"
-          name="confirmation_password"
+          name="password_confirmation"
           placeholder="Must match password..."
-          value={formData.confirmation_password}
+          value={formData.password_confirmation}
           onChange={handleInputChange}
         />
       </label>
@@ -145,9 +135,10 @@ const SignupForm = () => {
       <label>
         Profile Picture:
         <input
-          type="file"
-          name="profile_pic"
-          onChange={handleFileChange}
+          type="text"
+          name="profile_image"
+          value={formData.profile_image}
+          onChange={handleInputChange}
         />
       </label>
       <br />
