@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddVillaForm from "./AddVillaForm";
@@ -8,6 +8,13 @@ import { UserAdminContext } from "../Contexts/UserAdminContext";
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
   const { isAdmin } = useContext(UserAdminContext);
+
+  const [showMap, setShowMap] = useState(false);
+
+  const toggleMap = () => {
+    setShowMap(!showMap);
+  };
+
 
   const params = useParams();
   const locationId = parseInt(params.id);
@@ -37,12 +44,30 @@ const LocationVillaPage = () => {
       <div className="locationsvilla-wrapper">
       <h3>
           <em>{showLocation ? showLocation.city : ""}</em>
-        </h3>
+      </h3>
         <h4>{showLocation ? showLocation.country : ""}</h4>
         <br />
         <br />
         <h4>Browse To See Available Villas</h4>
+        <br />
+       
+        
         <div className="villas-card">{renderVillas}</div>
+        <br />
+        {showMap && (
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102754.5547056764!2d25.338228928337852!3d36.4072637092345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1499ce86adfd9ff7%3A0xb2a761f740d68afc!2sSantorini!5e0!3m2!1sen!2sus!4v1687805399299!5m2!1sen!2sus" text="Maps" width="100%"
+        title="Map of Villas"
+        height="400"
+        frameBorder="0"
+        style={{ border: 0 }}
+        allowFullScreen
+         ></iframe>
+        )}
+        <br />
+        <button className="some-button" onClick={toggleMap}>
+        {showMap ? "Hide Map" : "Show Map"}
+        </button>
+        <br />
         <br />
         {isAdmin && showLocation && <AddVillaForm />}
       </div>

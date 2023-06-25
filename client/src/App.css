@@ -418,7 +418,7 @@ font-size: 16px;
 }
 
 .admin-portal__links a:hover {
-  color: #0f5ec5;
+  color: #0fc5c5;
 }
 
 .link-button {
@@ -444,7 +444,7 @@ font-size: 16px;
 }
 
 .some-button {
-  background-color: #233d47;
+  background-color: #296075;
   color: white;
   font-weight: bold;
   padding: 10px 30px;
@@ -465,7 +465,7 @@ font-size: 16px;
 }
 
 .popup button {
-  background-color: #0a2531;
+  background-color: #296075;
   color: white;
   font-weight: bold;
   padding: 10px 20px;
@@ -656,7 +656,7 @@ ul li {
 .some-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #294763;
+  background-color: #296075;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -731,7 +731,7 @@ select {
   padding: 10px;
   font-size: 14px;
   font-family:monospace;
-  background-color: #08816d;
+  background-color: #1e948e;
   color: white;
   border: 1px solid #0d965186;
   border-radius: 100px;
