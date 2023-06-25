@@ -13,6 +13,7 @@ import Header from './Components/Header';
 import AdminPortal from './Components/AdminPortal';
 import About from './Components/About';
 import VillaDetails from './Components/VillaDetails';
+import LocationVillaPage from './Components/LocationVillaPage';
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
@@ -70,6 +71,7 @@ function App() {
       <Routes>
       <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer/>} />
+      <Route path="/locations/:location_id" element={<LocationVillaPage/>} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/:id" element={<VillaDetails villas={villas} />} />
       <Route path="/user_admin" element={<AdminPortal/>} />
