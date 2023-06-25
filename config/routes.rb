@@ -16,11 +16,10 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :show]
   end
   
-  resources :villas, only: [:index, :show] do
-    resources :inquiries, only: [:create]
-  end
+  resources :villas, only: [:index, :show]
   resources :activities, only: [:index, :show]
   resource :activity_locations, only: [:index, :show]
+  resources :inquiries, only: [:create]
   
   post "/signup", to: "user_admins#create" # Route to handle the signup request specifically for admin users.
   post "/login", to: "sessions#create" # Route to handle admin user login/authentication.

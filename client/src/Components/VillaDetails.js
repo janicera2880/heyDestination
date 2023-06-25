@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { VillasContext } from "../Contexts/VillasContext";
-import { LocationsContext } from "../Contexts/LocationsContext";
 import { useParams } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-// Renders a component that displays information about a Villa.
-function VillasCard() {
-  const { villa } = useContext(VillasContext);
-  const { location_id } = useParams();
-  const { getLocationById } = useContext(LocationsContext);
+function VillaDetails() {
+  const { id } = useParams(); // Extract the id parameter from the URL
+  const { villas } = useContext(VillasContext);
 
+  // Find the villa by id in the villas array
+  const villa = villas.find((villa) => villa.id === parseInt(id));
   if (!villa) {
     // Render a loading state or return null if the villa data is not available yet
     return null;
@@ -28,12 +29,6 @@ function VillasCard() {
     services,
     ...images // Use object destructuring to collect image attributes into the 'images' object
   } = villa;
-
-  // Retrieve the location details using getLocationById
-  const location = getLocationById(location_id);
-
-  const tomtomApiKey = "uF3xNUwX5wD3lAhJ1jcom9gdMmONPpcC";
-  const mapUrl = `https://api.tomtom.com/maps/cdn/embed/v1/view/static.html?key=${tomtomApiKey}&center=${location.latitude},${location.longitude}&zoom=15&height=300&width=100%`;
 
   return (
     <div className="villa-card">
@@ -74,29 +69,16 @@ function VillasCard() {
         <h4>Services</h4>
         <p>{services}</p>
       </div>
-      {/* Render each image attribute dynamically */}
-      {Object.values(images).map((image, index) => (
-        <div key={`villa-image-${index + 1}`} className="villa-image">
-          <h4>Image {index + 1}</h4>
-          <img src={image} width="400" height="400" alt={`Villa Container ${index + 1}`} />
-        </div>
-      ))}
-      {location && (
-        <div className="villa-location">
-          <h4>Location</h4>
-          <iframe
-            title="Villa Location"
-            width="100%"
-            height="300"
-            frameBorder="0"
-            style={{ border: 0 }}
-            src={mapUrl}
-            allowFullScreen
-          />
-        </div>
-      )}
-    </div>
+      <Carousel>
+        {Object.values(images).map((image, index) => (
+          <div key={`villa-image-${index + 1}`} className="villa-image">
+            <img src={image} width="400" height="400" alt={`Villa Container ${index + 1}`} />
+          </div>
+        ))}
+      </Carousel>
+      
+      </div>
   );
 }
 
-export default VillasCard;
+export default VillaDetails;

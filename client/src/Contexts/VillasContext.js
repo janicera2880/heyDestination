@@ -23,8 +23,7 @@ function VillasProvider({ children }) {
           )
         );
       };
-      const [villa, setVilla] = useState(null);
-
+     
       const value = {
         villas,
         setVillas,
@@ -33,8 +32,6 @@ function VillasProvider({ children }) {
         addVilla,
         removeVilla,
         updateVilla,
-        villa, // Include the villa state in the context value
-        setVilla, // Include the setter function for the villa state
       };
     // Return component with VillasContext.Provider and values of its state
     return (

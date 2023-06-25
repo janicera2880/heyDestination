@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from "react";
 import { VillasContext } from "../Contexts/VillasContext";
-import { Link } from "react-router-dom"; // Import the Link component
+import InquireForm from "./InquireForm";
 
-
-//Renders a container component for displaying villas information and attach a form to it.
+// Renders a container component for displaying villas information and attach a form to it.
 function VillasContainer() {
   const { villas, setVillas } = useContext(VillasContext);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,22 +71,30 @@ function VillasContainer() {
           <br />
           <h4> From {currentVilla.rate} rate per night</h4>
         </div>
-      
-        <Link className="villa-button" to={`/villas/${currentVilla.id}`} >View Full Info</Link>     
-    </div>
+    
+      </div>
       <br />
       <br />
+     
+      <div className="inquire-form">
+        {/* InquireForm component */}
+        <InquireForm />
+      </div>
+
       <div>
         <button className="villa-button" onClick={prevVilla} disabled={currentIndex === 0}>
-        Back
+          Back
         </button>
-        <button className="villa-button" onClick={nextVilla} disabled={currentIndex === villas.length - 1}>
-        Next
+        <button
+          className="villa-button"
+          onClick={nextVilla}
+          disabled={currentIndex === villas.length - 1}
+        >
+          Next
         </button>
       </div>
     </div>
   );
-};
-
+}
 
 export default VillasContainer;
