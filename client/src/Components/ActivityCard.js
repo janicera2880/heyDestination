@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//Renders an activity card with the given activity details.
 const ActivityCard = ({ activity }) => {
   const { name, highlights, image, details, locations } = activity;
  

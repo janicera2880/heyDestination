@@ -1,26 +1,45 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import ActivityCard from './ActivityCard';
-import AddActivityForm from './AddActivityForm'; 
+import AddActivityForm from './AddActivityForm';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 import { UserAdminContext } from '../Contexts/UserAdminContext';
+import FilterCategory from './FilterCategory';
 
-
-
-//A React component that renders a container of activities and an optional form to add new activities.
 const ActivityContainer = () => {
   const { activities } = useContext(ActivitiesContext);
   const { userAdmin } = useContext(UserAdminContext);
+  const [filterSearch, setFilterSearch] = useState('All');
+
+  const selectFilter = (event) => {
+    setFilterSearch(event.target.value);
+  };
+
+  const categoryOptions = activities.filter((activity) => {
+    if (filterSearch === 'All') return true;
+    return activity.categories.includes(filterSearch);
+  });
 
   return (
     <div className='activity-container'>
       {userAdmin && <AddActivityForm />}
-      <p>Discover and indulge in a wide array of captivating activities that we offer.</p>
-        <p>Whether you seek solace in serene moments or desire exhilarating adventures, our collection has something for everyone.</p>
-        <p>Embark on a journey of exploration and create unforgettable memories with your loved ones.</p>
-
-      {activities.map((activity) => (
-        <ActivityCard key={activity.id} activity={activity} />
-      ))}
+      <p>
+        Discover and indulge in a wide array of captivating activities that we offer.
+      </p>
+      <p>
+        Whether you seek solace in serene moments or desire exhilarating adventures, our
+        collection has something for everyone.
+      </p>
+      <p>Embark on a journey of exploration and create unforgettable memories with your loved ones.</p>
+  <br />
+  <br />
+      <FilterCategory selectFilter={selectFilter} />
+      <br />
+      <br />
+      <ul className='activity-options'>
+        {categoryOptions.map((activity) => (
+          <ActivityCard key={activity.id} activity={activity} />
+        ))}
+      </ul>
     </div>
   );
 };
