@@ -11,17 +11,16 @@ const AboutUs = () => {
 
   return (
     <div className="about-us">
-
         <img
         src={villaPicture}
-        width="1000"
-        height="550"
+        width="800"
+        height="500"
         alt="villa"
         className="villa-pic" />
       <ReactMarkdown>## Discover Your Perfect Villa Retreat</ReactMarkdown>
       <ReactMarkdown>At **hey-Destination**, it's our goal to make luxury vacation planning as effortless as the escape itself.</ReactMarkdown>
-      <p>Renting a villa is simple, and our expert villa specialists are available to guide you every step of the way.</p>
-      <p>Our team of experienced travel experts is dedicated to providing *exceptional* service and ensuring that your stay in our villas is nothing short of *extraordinary*.</p>
+      <ReactMarkdown>Renting a villa is simple, and our expert villa specialists are available to guide you every step of the way.</ReactMarkdown>
+      <ReactMarkdown>Our team of experienced travel experts is dedicated to providing *exceptional service* and ensuring that your stay in our villas is nothing short of **EXTRAORDINARY**.</ReactMarkdown>
       <ReactMarkdown>### What Makes A Luxury Villa Vacation</ReactMarkdown> 
         <ReactMarkdown>- **Features & Amenities**
         We go above and beyond entertainment and surround sound. It's about private gyms, spas, children’s spaces, al fresco dining, private gyms, and beyond. Nothing is too big or too extravagant for our guests.</ReactMarkdown> 

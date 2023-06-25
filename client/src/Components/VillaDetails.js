@@ -49,6 +49,10 @@ function VillaDetails() {
         <h4>Amenities</h4>
         <p>{amenities}</p>
       </div>
+      <div className="villa-services">
+        <h4>Services</h4>
+        <p>{services}</p>
+      </div>
       <div className="villa-rate">
         <h4>Rate</h4>
         <p>{rate}</p>
@@ -65,10 +69,7 @@ function VillaDetails() {
         <h4>Bathroom</h4>
         <p>{bathroom}</p>
       </div>
-      <div className="villa-services">
-        <h4>Services</h4>
-        <p>{services}</p>
-      </div>
+     
       <Carousel>
         {Object.values(images).map((image, index) => (
           <div key={`villa-image-${index + 1}`} className="villa-image">

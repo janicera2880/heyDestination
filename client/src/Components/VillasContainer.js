@@ -1,11 +1,12 @@
 import React, { useEffect, useContext, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { VillasContext } from "../Contexts/VillasContext";
-import InquireForm from "./InquireForm";
 
-// Renders a container component for displaying villas information and attach a form to it.
 function VillasContainer() {
   const { villas, setVillas } = useContext(VillasContext);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const perPage = 2;
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -34,13 +35,13 @@ function VillasContainer() {
     return <p>Loading all villas...</p>;
   }
 
-  const currentVilla = villas[currentIndex];
+  const currentVillas = villas.slice(currentIndex, currentIndex + perPage);
 
   const nextVilla = () => {
-    if (currentIndex === villas.length - 1) {
+    if (currentIndex + perPage >= villas.length) {
       alert("You have reached the end.");
     } else {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
+      setCurrentIndex((prevIndex) => prevIndex + perPage);
     }
   };
 
@@ -48,39 +49,42 @@ function VillasContainer() {
     if (currentIndex === 0) {
       alert("You are on the first page.");
     } else {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
+      setCurrentIndex((prevIndex) => prevIndex - perPage);
     }
   };
 
   return (
     <div className="all-villas">
-      <div className="view-card" key={currentVilla.id}>
-        <h2>{currentVilla.name}</h2>
-        <br />
-        <br />
-        {currentVilla.image1 && (
-          <img src={currentVilla.image1} width="1000" height="500" alt="villa-card" />
-        )}
-        <br></br>
-        <div className="villa-details">
-          <h4> Up to {currentVilla.capacity} Guests</h4>|
-          <br />
-          <h4> Up to {currentVilla.bedroom} Bedrooms</h4>|
-          <br />
-          <h4> {currentVilla.bathroom} Bathrooms</h4>|
-          <br />
-          <h4> From {currentVilla.rate} rate per night</h4>
+      {currentVillas.map((villa) => (
+        <div className="view-card" key={villa.id}>
+          <h2>{villa.name}</h2>
+          <Carousel showArrows={true}>
+            {[...Array(10)].map((_, index) => (
+              <div key={index}>
+                <img src={villa[`image${index + 1}`]} alt={`Villa ${villa.name}`} />
+              </div>
+            ))}
+          </Carousel>
+          <div className="villa-details">
+            <h4>Up to {villa.capacity} Guests</h4>
+            <h4>Up to {villa.bedroom} Bedrooms</h4>
+            <h4>{villa.bathroom} Bathrooms</h4>
+            <h4>From {villa.rate} rate per night</h4>
+          <div className="villa-info">
+            <h3>Highlights</h3>
+            <p>{villa.highlights}</p>
+            <h3>Overview</h3>
+            <p>{villa.overview}</p>
+            <h3>Features</h3>
+            <p>{villa.features}</p>
+            <h3>Amenities</h3>
+            <p>{villa.amenities}</p>
+            <h3>Services</h3>
+            <p>{villa.services}</p>
+          </div>
         </div>
-    
       </div>
-      <br />
-      <br />
-     
-      <div className="inquire-form">
-        {/* InquireForm component */}
-        <InquireForm />
-      </div>
-
+      ))}
       <div>
         <button className="villa-button" onClick={prevVilla} disabled={currentIndex === 0}>
           Back
@@ -88,7 +92,7 @@ function VillasContainer() {
         <button
           className="villa-button"
           onClick={nextVilla}
-          disabled={currentIndex === villas.length - 1}
+          disabled={currentIndex + perPage >= villas.length}
         >
           Next
         </button>

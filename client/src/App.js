@@ -24,8 +24,8 @@ function App() {
     fetch("/admin")
       .then((r) => {
         if (r.ok) {
-          r.json().then((userAdmin) => {
-            setUserAdmin(userAdmin);
+          r.json().then((data) => {
+            setUserAdmin(data);
           });
         }
       })
@@ -71,7 +71,7 @@ function App() {
       <Routes>
       <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer/>} />
-      <Route path="/locations/:location_id" element={<LocationVillaPage/>} />
+      <Route path="/locations/:id" element={<LocationVillaPage/>} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/:id" element={<VillaDetails villas={villas} />} />
       <Route path="/user_admin" element={<AdminPortal/>} />
