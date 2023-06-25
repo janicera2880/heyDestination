@@ -42,6 +42,7 @@ const AboutUs = () => {
       ) : (
         <div className="admin-link">
           <h4>Logged in as {userAdmin.first_name} {userAdmin.last_name}</h4>
+          <br />
           <Link to="/user_admin" className="some-button">Go to Admin Portal</Link>
         </div>
       )}

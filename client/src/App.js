@@ -22,7 +22,7 @@ function App() {
   const { locations, setLocations } = useContext(LocationsContext);
 
   useEffect(() => {
-    fetch("/admin")
+    fetch("/me")
       .then((r) => {
         if (r.ok) {
           r.json().then((data) => {

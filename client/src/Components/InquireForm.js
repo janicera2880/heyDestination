@@ -5,9 +5,10 @@ import { useForm } from 'react-hook-form';
 
 const InquireForm = () => {
   const { addInquiry } = useContext(InquiriesContext);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { handleSubmit, register, formState: { errors } } = useForm();
   const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState([]);
 
   const { id } = useParams();
   const villaId = parseInt(id, 10);
@@ -46,15 +47,10 @@ const InquireForm = () => {
             if (errorData.errors) {
               setSuccessMessage('');
               // Set form-level errors
-              Object.keys(errorData.errors).forEach((field) => {
-                errors[field] = {
-                  type: 'manual',
-                  message: errorData.errors[field]
-                };
-              });
+              setFormErrors(Object.values(errorData.errors));
             } else {
               setSuccessMessage('');
-              setErrors(['An error occurred. Please try again later.']);
+              setFormErrors(['An error occurred. Please try again later.']);
             }
           });
         }
@@ -62,7 +58,7 @@ const InquireForm = () => {
       .catch((error) => {
         console.error('Error:', error);
         setSuccessMessage('');
-        setErrors(['An error occurred. Please try again later.']);
+        setFormErrors(['An error occurred. Please try again later.']);
       })
       .finally(() => {
         setIsLoading(false);
@@ -85,19 +81,75 @@ const InquireForm = () => {
           {errors.arrival && <span className="error">{errors.arrival.message}</span>}
         </label>
 
-        {/* Rest of the form fields with validation */}
-        
-        <button className="primary" type="submit">
-          {isLoading ? 'Submitting...' : 'Submit'}
-        </button>
+        <label>
+          Departure Date:
+          <input
+            type="date"
+            {...register('departure', { required: 'Departure date is required' })}
+          />
+          {errors.departure && <span className="error">{errors.departure.message}</span>}
+        </label>
 
-        {errors.length > 0 && (
+        <label>
+          Number of Guests:
+          <input
+            type="number"
+            {...register('guests', { required: 'Number of guests is required' })}
+          />
+          {errors.guests && <span className="error">{errors.guests.message}</span>}
+        </label>
+
+        <label>
+          Full Name:
+          <input
+            type="text"
+            {...register('full_name', { required: 'Full name is required' })}
+          />
+          {errors.full_name && <span className="error">{errors.full_name.message}</span>}
+        </label>
+
+        <label>
+          Email:
+          <input
+            type="email"
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: 'Invalid email address'
+              }
+            })}
+          />
+          {errors.email && <span className="error">{errors.email.message}</span>}
+        </label>
+
+        <label>
+          Phone Number:
+          <input
+            type="text"
+            {...register('phone', { required: 'Phone number is required' })}
+          />
+          {errors.phone && <span className="error">{errors.phone.message}</span>}
+        </label>
+      <label>
+          Message:
+          <textarea
+            type="textarea"
+            {...register('message', { required: 'Message is required' })}
+          />
+          {errors.message && <span className="error">{errors.message.message}</span>}
+        </label>
+        {formErrors.length > 0 && (
           <ul className="error-list">
-            {errors.map((error, index) => (
+            {formErrors.map((error, index) => (
               <li key={index}>{error}</li>
             ))}
           </ul>
         )}
+
+        <button className="primary" type="submit">
+          {isLoading ? 'Submitting...' : 'Submit'}
+        </button>
       </form>
     </div>
   );

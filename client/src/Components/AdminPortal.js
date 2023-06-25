@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
 import { Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail";
+import { useNavigate } from 'react-router-dom';
 
 /*Renders the AdminPortal component that allows an authenticated admin user
 to manage villas, locations, activities and incoming inquiries. The component
@@ -10,7 +11,7 @@ const AdminPortal = () => {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
-
+  const navigate = useNavigate();
   //Handles the logout action by setting the state for showing the logout popup.
   const handleLogout = () => {
     setShowLogoutPopup(true);
@@ -18,11 +19,15 @@ const AdminPortal = () => {
 
   //Executes a fetch request to logout the user, then clears their session and hides the logout popup.
   const confirmLogout = () => {
+
+    
+
     fetch('/logout', {
       method: 'DELETE',
     }).then(() => {
       setUserAdmin(null);
       setShowLogoutPopup(false);
+      navigate('/');
     });
   };
 
@@ -43,8 +48,8 @@ const AdminPortal = () => {
       <div className="admin-portal__links">
         <Link to="/user_admin/inquieries" className="link-button">Incoming Inquiries</Link>
         <Link to="/user_admin/villas" className="link-button">Manage Villas</Link>
-        <Link to="/user_admin/locations" className="link-button">Manage Locations</Link>
-        <Link to="/user_admin/activities"className="link-button">Manage Activities</Link>
+        <Link to="/locations" className="link-button">Manage Locations</Link>
+        <Link to="/activities"className="link-button">Manage Activities</Link>
        
       </div>
       <div className="logout">

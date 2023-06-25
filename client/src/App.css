@@ -382,7 +382,7 @@ font-size: 16px;
 /*admin-portal*/
 
 .admin-portal {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -664,3 +664,59 @@ ul li {
   background-color: #666;
 }
 
+/*Add Location*/
+.add-location {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #c9dadf;
+  border: 2px solid #e0ebf5;
+  border-radius: 6px;
+}
+
+.add-location h2 {
+  font-size: 24px;
+  margin-bottom: 60px;
+}
+
+.add-location label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.add-location input[type="text"],
+.add-location textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-location textarea {
+  height: 120px;
+}
+
+.add-location button[type="submit"] {
+  background-color: #1e4c61;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-location button[type="submit"]:hover {
+  background-color: #546355;
+}
+
+.add-location ul {
+  margin-top: 10px;
+  list-style-type: none;
+}
+
+.add-location ul li {
+  color: rgb(32, 32, 173);
+  text-align: center;
+}

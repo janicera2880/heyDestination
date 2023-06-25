@@ -57,7 +57,7 @@ const AddActivityForm = () => {
 
   return (
     <div className="add-activity">
-      <h2>Add Activity</h2>
+      <h2>Submit New Activity Here</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:
