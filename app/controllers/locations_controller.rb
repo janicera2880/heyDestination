@@ -5,13 +5,13 @@ class LocationsController < ApplicationController
     # Fetch all locations from the database and order them by ID.
     def index
         locations = Location.all.order(:id)
-        render json: locations, include: ['villas', 'activity_locations', 'inquiries']
+        render json: locations, include: ['villas', 'inquiries'], status: :ok
     end
 
     # Find the specific location based on the ID provided in the request parameters.
     def show
         location = find_location
-        render json: location, include: ['villas', 'activity_locations', 'inquiries']
+        render json: location
     end
 
     # Create a new location using the provided location parameters.

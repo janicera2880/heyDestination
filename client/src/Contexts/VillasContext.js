@@ -4,7 +4,7 @@ const VillasContext = React.createContext();
 
 function VillasProvider({ children }) {
      // Initialize state for villas and userVillas
-    const [villas, setVillas] = useState(null);
+     const [villas, setVillas] = useState(null);
     const [userVillas, setUserVillas] = useState(null);
 
     const addVilla = (villa) => {

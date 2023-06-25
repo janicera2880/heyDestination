@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddVillaForm from "./AddVillaForm";
 import {LocationsContext} from "../Contexts/LocationsContext";
+import { UserAdminContext } from "../Contexts/UserAdminContext";
 
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
+  const { isAdmin } = useContext(UserAdminContext);
+
   const params = useParams();
   const locationId = parseInt(params.id);
   const showLocation = locations.find((location) => location.id === locationId);
@@ -41,7 +44,7 @@ const LocationVillaPage = () => {
         <h4>Browse To See Available Villas</h4>
         <div className="villas-card">{renderVillas}</div>
         <br />
-        {showLocation && <AddVillaForm />}
+        {isAdmin && showLocation && <AddVillaForm />}
       </div>
     </div>
   );
