@@ -84,7 +84,7 @@ function App() {
       <Route path="/locations/:id" element={<LocationVillaPage locations={locations} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
-      <Route path="/inquiries" element={<InquireForm/>} />
+      <Route path="/villas/:id/inquiries" element={<InquireForm />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
 
       </Routes>

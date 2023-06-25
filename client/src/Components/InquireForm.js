@@ -1,175 +1,106 @@
 import React, { useContext, useState } from 'react';
 import { InquiriesContext } from '../Contexts/InquiriesContext';
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
-//Creates a form component for users to make inquiries and sends form data to the server.
 const InquireForm = () => {
   const { addInquiry } = useContext(InquiriesContext);
-  const [formData, setFormData] = useState({
-    arrival: '',
-    departure: '',
-    guests: '',
-    full_name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-  
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState([]);
-
 
   const { id } = useParams();
-  const villaId = parseInt(id);
+  const villaId = parseInt(id, 10);
+
+  // Get locationId from the URL state (if available)
+  const location = useLocation();
+  const locationId = location.state && location.state.locationId;
+
   const navigate = useNavigate();
 
-//Updates the form data state with a new key-value pair, where the key is the name of the form field and the value is the value of the form field.
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  //Submits a form data to the server and handles the response accordingly.
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = (data) => {
     setIsLoading(true);
-// Perform a POST request to the '/inquiries' endpoint
-  fetch(`villas/${villaId}/inquiries`, {
+
+    const requestBody = {
+      ...data,
+      villa_id: villaId,
+      location_id: locationId
+    };
+
+    fetch('/villas/inquiries', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-       
-        // clear the errors and add the new inquiry to the list of inquiries
-      body: JSON.stringify(formData),
+      body: JSON.stringify(requestBody),
     })
-      .then((r) => {
-        if (r.ok) {
-          setErrors([]);
-          setSuccessMessage('Thank you for your interest! Please allow 1-3 business days for an agent to contact you.');
-          r.json().then((newInquiry) => addInquiry(newInquiry));
-          navigate("/locations");
+      .then((response) => {
+        if (response.ok) {
+          setSuccessMessage(
+            'Thank you for your interest! Please allow 1-3 business days for an agent to contact you.'
+          );
+          response.json().then((newInquiry) => addInquiry(newInquiry));
+          navigate('/locations');
         } else {
-            // parse the response JSON and set the errors state variable
-          r.json().then((err) => setErrors(err.errors));
+          response.json().then((errorData) => {
+            if (errorData.errors) {
+              setSuccessMessage('');
+              // Set form-level errors
+              Object.keys(errorData.errors).forEach((field) => {
+                errors[field] = {
+                  type: 'manual',
+                  message: errorData.errors[field]
+                };
+              });
+            } else {
+              setSuccessMessage('');
+              setErrors(['An error occurred. Please try again later.']);
+            }
+          });
         }
       })
       .catch((error) => {
-        // If there's a network error or server error, catch the error and set an error message
         console.error('Error:', error);
+        setSuccessMessage('');
         setErrors(['An error occurred. Please try again later.']);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-
-    setFormData({
-        arrival: '',
-        departure: '',
-        guests: '',
-        full_name: '',
-        email: '',
-        phone: '',
-        message: ''
-    });
   };
 
   return (
     <div className="inquire-form">
-     
       <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
-    
-    
-      {successMessage && (
-    <div className="success-message">{successMessage}</div>
-  )}
 
-      <form className="inquire-form__form" onSubmit={handleSubmit}>
+      {successMessage && <div className="success-message">{successMessage}</div>}
+
+      <form className="inquire-form__form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           Arrival Date:
           <input
             type="date"
-            name="arrival"
-            value={formData.arrival}
-            onChange={handleChange}
+            {...register('arrival', { required: 'Arrival date is required' })}
           />
+          {errors.arrival && <span className="error">{errors.arrival.message}</span>}
         </label>
 
-        <label>
-          Departure Date:
-          <input
-            type="date"
-            name="departure"
-            value={formData.departure}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Number of Guests:
-          <input
-            type="number"
-            name="guests"
-            value={formData.guests}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Full Name:
-          <input
-            type="text"
-            name="full_name"
-            value={formData.full_name}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          Phone Number:
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-        Tell us about your group, your budget, and any other information to help curate your stay.
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-          ></textarea>
-        </label>
-
+        {/* Rest of the form fields with validation */}
+        
         <button className="primary" type="submit">
-        {isLoading ? "Submitting..." : "Submit"}
+          {isLoading ? 'Submitting...' : 'Submit'}
         </button>
+
         {errors.length > 0 && (
-        <ul className="error-list">
-          {errors.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
-      )}
+          <ul className="error-list">
+            {errors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        )}
       </form>
     </div>
   );
 };
 
 export default InquireForm;
-

@@ -153,8 +153,9 @@ nav ul li a:hover {
 }
 
 .error-list {
-  color: #ff0000;
-  list-style: none;
+  color: #161414;
+  list-style:none;
+  text-align: center;
   padding: 0;
 }
 

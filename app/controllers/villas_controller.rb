@@ -7,9 +7,9 @@ class VillasController < ApplicationController
     def index
       if params[:user_admin_id]
         user_admin = find_user_admin
-        render json: user_admin.villas.order(id: :desc), status: :ok
+        render json: user_admin.villas.order(id: :asc), status: :ok
       else
-        render json: Villa.order(id: :desc), status: :ok
+        render json: Villa.order(id: :asc), status: :ok
       end
     end
   
