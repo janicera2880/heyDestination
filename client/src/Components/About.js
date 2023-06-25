@@ -3,7 +3,7 @@ import { UserAdminContext } from "../Contexts/UserAdminContext";
 import { Link } from "react-router-dom";
 import LoginSignupToggle from "./LoginSignupToggle";
 import ReactMarkdown from "react-markdown";
-import villaPicture from "./Images/travel.png";
+import villaPicture from "./Images/travellogo.png";
 
 //Renders the About Us page component that displays information about the luxury villa rental service.
 const AboutUs = () => {

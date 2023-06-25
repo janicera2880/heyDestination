@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
 
+//Renders a thumbnail component with the user's profile photo and name.
 function Thumbnail() {
   // Get user from context
   const { userAdmin } = useContext(UserAdminContext);

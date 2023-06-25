@@ -76,14 +76,8 @@ const AddLocationForm = () => {
 
   return (
     <div className='add-location'>
-      <h2>Add Location</h2>
-      {errors.length > 0 && (
-        <ul style={{ color: 'red' }}>
-          {errors.map((error, index) => (
-            <li key={index}>{error}</li>
-          ))}
-        </ul>
-      )}
+      <h2>Submit New Location</h2>
+      
       <form onSubmit={handleSubmit}>
         <label>City:</label>
         <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
@@ -94,6 +88,13 @@ const AddLocationForm = () => {
         <label>Description:</label>
         <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
         <button type="submit">Submit</button>
+        {errors.length > 0 && (
+        <ul style={{ color: 'red' }}>
+          {errors.map((error, index) => (
+            <li key={index}>{error}</li>
+          ))}
+        </ul>
+      )}
       </form>
     </div>
   );

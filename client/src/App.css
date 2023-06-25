@@ -76,7 +76,7 @@ nav ul li a:hover {
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   width: 95%;
-  padding: 2px;
+  padding: 5px;
   box-sizing:content-box;
   margin: 0 auto;
 
@@ -603,3 +603,63 @@ ul {
 ul li {
   margin-bottom: 5px;
 }
+/* CSS for LocationVillaPage */
+.locations-villa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #c9dadf;
+}
+.locationsvilla-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.locations-villa h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.locations-villa h4 {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.locations-villa em {
+  font-style: italic;
+}
+
+.villa-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #c9dadf;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.villa-card img {
+  width: 650px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.some-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #5a5757;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.some-button:hover {
+  background-color: #666;
+}
+

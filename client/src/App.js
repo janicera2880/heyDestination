@@ -3,22 +3,23 @@ import { useContext, useEffect } from 'react';
 import { ActivitiesContext } from './Contexts/ActivitiesContext';
 import { VillasContext } from './Contexts/VillasContext';
 import { UserAdminContext } from './Contexts/UserAdminContext';
+import { LocationsContext } from './Contexts/LocationsContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navigation from './Components/Navigation';
 import LocationsContainer from './Components/LocationsContainer';
 import InquireForm from './Components/InquireForm';
 import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
-import Header from './Components/Header';
+import LocationVillaPage from './Components/LocationVillaPage';
 import AdminPortal from './Components/AdminPortal';
 import About from './Components/About';
-import VillaDetails from './Components/VillaDetails';
-import LocationVillaPage from './Components/LocationVillaPage';
+
 
 function App() {
   const { setUserAdmin } = useContext(UserAdminContext);
   const { villas, setVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
+  const { locations, setLocations } = useContext(LocationsContext);
 
   useEffect(() => {
     fetch("/admin")
@@ -46,6 +47,18 @@ function App() {
   }, [setVillas]);
 
   useEffect(() => {
+    fetch("/locations")
+      .then((r) => r.json())
+      .then((data) => {
+        setLocations(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching villas:', error);
+      });
+  }, [setLocations]);
+
+
+  useEffect(() => {
     fetch("/activities")
       .then((r) => r.json())
       .then((data) => {
@@ -63,17 +76,13 @@ function App() {
     
     <div className="App">
       
-      <Header />
       <Navigation />
-      <br></br>
-      <br></br>
-      <br></br>
+      <br />
       <Routes>
       <Route path="/" element={<About/>} />
-      <Route path="/locations" element={<LocationsContainer/>} />
-      <Route path="/locations/:id" element={<LocationVillaPage/>} />
+      <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
+      <Route path="/locations/:id" element={<LocationVillaPage locations={locations} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
-      <Route path="/villas/:id" element={<VillaDetails villas={villas} />} />
       <Route path="/user_admin" element={<AdminPortal/>} />
       <Route path="/inquiries" element={<InquireForm/>} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
