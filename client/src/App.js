@@ -15,10 +15,11 @@ import AdminPortal from './Components/AdminPortal';
 import About from './Components/About';
 import IncomingInquiry from './Components/IncomingInquiry';
 import { InquiriesContext } from './Contexts/InquiriesContext';
+import ManageVillas from './Components/ManageVillas';
 
 function App() {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
-  const { villas, setVillas } = useContext(VillasContext);
+  const { villas, setVillas, userAdminVillas, setUserAdminVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
   const { setUserAdminInquiries, setInquiries} = useContext(InquiriesContext);
@@ -45,6 +46,14 @@ function App() {
       })
     }
   }, [userAdmin, setUserAdminInquiries]);
+
+  useEffect( ()=>{
+    if (userAdmin != null){
+      fetch(`/user_admins/${userAdmin.id}/villas`).then(r=>r.json()).then(data=>{
+        setUserAdminVillas(data);
+      })
+    }
+  }, [userAdmin, setUserAdminVillas]);
 
   useEffect(() => {
     fetch("/inquiries")
@@ -91,6 +100,58 @@ function App() {
         console.error('Error fetching activities:', error);
       });
   }, [setActivities]);
+
+  function handleDeleteVilla(deletedVilla) {
+    const newVillaArray = userAdminVillas.filter((villa) => {
+      return villa.id !== deletedVilla.id;
+    });
+  
+    const updatedLocationArray = locations.map((location) => {
+      if (location.id === deletedVilla.location_id) {
+        return {
+          ...location,
+          villas: location.villas.filter((villa) => villa.id !== deletedVilla.id)
+        };
+      } else {
+        return location;
+      }
+    });
+  
+    setUserAdminVillas(newVillaArray);
+    setLocations(updatedLocationArray);
+  }
+
+  function handleUpdateVilla(updatedVilla) {
+    console.log(updatedVilla);
+  
+    const updatedLocationArray = locations.map((location) => {
+      if (location.id === updatedVilla.location_id) {
+        return {
+          ...location,
+          villas: location.villas.map((villa) => {
+            if (villa.id === updatedVilla.id) {
+              return updatedVilla;
+            } else {
+              return villa;
+            }
+          }),
+        };
+      } else {
+        return location;
+      }
+    });
+  
+    const updatedVillaArray = userAdmin.map((villa) => {
+      if (villa.id === updatedVilla.id) {
+        return updatedVilla;
+      } else {
+        return villa;
+      }
+    });
+  
+    setLocations(updatedLocationArray);
+    setUserAdminVillas(updatedVillaArray);
+  }
   
   
   return (
@@ -109,6 +170,7 @@ function App() {
       <Route path="/villas/:id/inquiries" element={<InquireForm />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
       <Route path="/user_admin/:id/villas/inquieries" element={<IncomingInquiry />} />
+      <Route path="/user_admin/villas" element={<ManageVillas villas={villas} userAdminVillas={userAdminVillas} setUserAdminVillas={setUserAdminVillas} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} locations={locations} setLocations={setLocations}/>} />
       </Routes>
     </div>
     </BrowserRouter>

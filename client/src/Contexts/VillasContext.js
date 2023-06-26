@@ -2,16 +2,19 @@ import React, { useState } from "react";
 //VillasProvider component that provides VillasContext to its children
 const VillasContext = React.createContext();
 
+//initializes state for villas and userAdminVillas, and defines functions to add, remove, and update villas
 function VillasProvider({ children }) {
      // Initialize state for villas and userVillas
      const [villas, setVillas] = useState(null);
-    const [userVillas, setUserVillas] = useState(null);
+    const [userAdminVillas, setUserAdminVillas] = useState(null);
 
+    // When called, this function appends the villa parameter to an array called villas using the spread operator.
     const addVilla = (villa) => {
         setVillas([...villas, villa]);
       };
     
-    
+    //filters an array of villas and removes the one whose id matches the villaId passed in
+    // the filtered villas array is then set as the new state.
       const removeVilla = (villaId) => {
         setVillas(villas.filter((villa) => villa.id !== villaId));
       };
@@ -27,8 +30,8 @@ function VillasProvider({ children }) {
       const value = {
         villas,
         setVillas,
-        userVillas,
-        setUserVillas,
+        userAdminVillas,
+        setUserAdminVillas,
         addVilla,
         removeVilla,
         updateVilla,

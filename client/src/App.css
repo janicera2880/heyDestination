@@ -825,3 +825,82 @@ select {
 .add-activity input[type="submit"]:hover {
   background-color: #45a049;
 }
+/*Update Form*/
+.edit-form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 28px;
+  background-color: #a6c6ce;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-form h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.edit-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form h5 {
+  font-size: 14px;
+  margin-top: 15px;
+  
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.edit-form ul {
+  margin-top: 15px;
+  padding-left: 20px;
+  color: black;
+}
+/*Villas Component Edit*/
+.villa-component {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.villas-edit {
+  width: 600px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #071e24;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.villas-edit h3 {
+  font-size: 20px;
+  color: #0fc5c5;
+  margin-bottom: 10px;
+}
+
+.villas-edit img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.villas-edit h4,
+.villas-edit h5 {
+  margin-top: 10px;
+  color: #0fc5c5;
+}
+
+

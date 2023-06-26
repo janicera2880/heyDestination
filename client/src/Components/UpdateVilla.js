@@ -6,14 +6,15 @@ function UpdateVilla({ handleUpdateForm }) {
   const [errors, setErrors] = useState([]);
 
   const [formData, setFormData] = useState({
-    name: villa.name,
-    highlights: villa.highlights,
-    features: villa.features,
-    amenities: villa.amenities,
-    overview: villa.overview,
-    rate: villa.rate,
-    services: villa.services,
+    name: villa?.name ?? '',
+    highlights: villa?.highlights ?? '',
+    features: villa?.features ?? '',
+    amenities: villa?.amenities ?? '',
+    overview: villa?.overview ?? '',
+    rate: villa?.rate ?? '',
+    services: villa?.services ?? '',
   });
+  
 
   function handleInputChange(e) {
     const key = e.target.name;
@@ -81,45 +82,14 @@ function UpdateVilla({ handleUpdateForm }) {
         />
         <br />
         <h5>Rate :</h5>
-        <textarea
+        <input
           type="number"
           name="rate"
           value={formData.rate}
           onChange={handleInputChange}
         />
         <br />
-        <h5>Highlights :</h5>
-        <textarea
-          type="text"
-          name="highlights"
-          value={formData.highlights}
-          onChange={handleInputChange}
-        />
-        <br />
-        <h5>Features :</h5>
-        <textarea
-          type="text"
-          name="features"
-          value={formData.features}
-          onChange={handleInputChange}
-        />
-        <br />
-        <h5>Amenities :</h5>
-        <textarea
-          type="text"
-          name="amenities"
-          value={formData.amenities}
-          onChange={handleInputChange}
-        />
-        <br />
-        <h5>Overview :</h5>
-        <textarea
-          type="text"
-          name="overview"
-          value={formData.overview}
-          onChange={handleInputChange}
-        />
-        <br />
+        
         <h5>Services :</h5>
         <textarea
           type="text"
@@ -129,7 +99,7 @@ function UpdateVilla({ handleUpdateForm }) {
         />
         <br />
         <button className="some-button" type="submit">
-          Submit
+          Update ✅
         </button>
         {/* Render error messages if there are any */}
         {errors.length > 0 && (
