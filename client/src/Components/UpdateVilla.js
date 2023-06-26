@@ -7,10 +7,6 @@ function UpdateVilla({ handleUpdateForm }) {
 
   const [formData, setFormData] = useState({
     name: villa?.name ?? '',
-    highlights: villa?.highlights ?? '',
-    features: villa?.features ?? '',
-    amenities: villa?.amenities ?? '',
-    overview: villa?.overview ?? '',
     rate: villa?.rate ?? '',
     services: villa?.services ?? '',
   });
@@ -32,24 +28,13 @@ function UpdateVilla({ handleUpdateForm }) {
     if (formData.name === "") {
       validationErrors.push("Name is required.");
     }
-    if (formData.highlights === "") {
-      validationErrors.push("Highlights is required.");
-    }
-    if (formData.overview === "") {
-      validationErrors.push("Overview is required.");
-    }
     if (formData.rate === "") {
       validationErrors.push("Rate is required.");
     }
     if (formData.services === "") {
       validationErrors.push("Services is required.");
     }
-    if (formData.features === "") {
-      validationErrors.push("Features is required.");
-    }
-    if (formData.amenities === "") {
-      validationErrors.push("Amenities is required.");
-    }
+    
 
     if (validationErrors.length > 0) {
       setErrors(validationErrors);

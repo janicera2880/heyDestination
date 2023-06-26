@@ -34,7 +34,7 @@ function Navigation() {
           </li>
           <li>
             <NavLink to="/inquiries" activeClassName="active">
-              INQUIRE
+              SEARCH
             </NavLink>
           </li>
         

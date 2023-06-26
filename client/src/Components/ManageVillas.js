@@ -118,7 +118,7 @@ function ManageVillas() {
     return(
         <div className="villa-component">
     
-          {villaContent}
+          {villaContent()}
           <br />
           <br />
             <Link className="some-button" to={"/user_admin"}> Go Back To Admin Portal</Link>

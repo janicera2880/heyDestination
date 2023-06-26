@@ -830,13 +830,14 @@ select {
   width: 500px;
   margin: 0 auto;
   padding: 28px;
-  background-color: #a6c6ce;
+  background-color: #5799aa;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .edit-form h4 {
   font-size: 18px;
+  color: #0fc5c5;
   margin-bottom: 10px;
 }
 
@@ -900,7 +901,8 @@ select {
 .villas-edit h4,
 .villas-edit h5 {
   margin-top: 10px;
-  color: #0fc5c5;
+  color: #bce0e0;
+  text-align: justify;
 }
 
 
