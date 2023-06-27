@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   
   post "/villas/inquiries", to: "inquiries#create", as: "create_inquiry"
-  get "/villas/search", to: "villas#_search"
+  get "/villas/search/:term", to: "villas#search"
   post "/signup", to: "user_admins#create" # Route to handle the signup request specifically for admin users.
   post "/login", to: "sessions#create" # Route to handle admin user login/authentication.
   get "/me", to: "user_admins#show" # Route to retrieve the current admin user's information.

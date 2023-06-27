@@ -18,20 +18,19 @@ class VillasController < ApplicationController
       villa = find_villa
       render json: villa, status: :ok
     end
-    # GET /villas/search
-    def search
-      # Retrieve the search criteria from the query parameters
-      bedrooms = params[:bedrooms]
-      bathrooms = params[:bathrooms]
-      capacity = params[:capacity]
-  
-      # Perform the search based on the criteria
-      villas = Villa.where("bedrooms >= ? AND bathrooms >= ? AND capacity >= ?", bedrooms, bathrooms, capacity)
-  
-      # Return the search results as JSON
-      render json: villas, status: :ok
-    end
-  
+    
+    
+    
+    
+    # GET /villas/search/:term
+   # GET /villas/search/:term
+  def search
+    term = params[:term].downcase
+    villas = Villa.where("lower(name) LIKE ?", "%#{term}%")
+    render json: villas, status: :ok
+  end
+    
+
     # POST /villas
     def create
       user_admin = find_user_admin
@@ -72,8 +71,9 @@ class VillasController < ApplicationController
     end
   
     def find_villa
-      Villa.find(params[:id])
+      Villa.find_by(id: params[:id]) || render_not_found_response
     end
+    
   
     def find_user_admin
       UserAdmin.find(session[:user_admin_id])

@@ -1,52 +1,30 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const AdvancedSearchComponent = () => {
-  const [searchCriteria, setSearchCriteria] = useState({
-    bedrooms: "",
-    bathrooms: "",
-    capacity: "",
-  });
-    const navigate = useNavigate();
-  
-    const handleInputChange = (event) => {
-      setSearchCriteria({
-        ...searchCriteria,
-        [event.target.name]: event.target.value,
-      });
-    };
-  
-    const handleSearch = () => {
-      const query = new URLSearchParams(searchCriteria).toString();
-      navigate(`/villas/advanced-search?${query}`);
-    };
-  
-    return (
-      <div>
-        <label>Bedrooms:</label>
-        <input
-          type="number"
-          name="bedrooms"
-          value={searchCriteria.bedrooms}
-          onChange={handleInputChange}
-        />
-        <label>Bathrooms:</label>
-        <input
-          type="number"
-          name="bathrooms"
-          value={searchCriteria.bathrooms}
-          onChange={handleInputChange}
-        />
-        <label>Capacity:</label>
-        <input
-          type="number"
-          name="capacity"
-          value={searchCriteria.capacity}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
-    );
+const AdvancedSearchComponent = ({ handleSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
   };
-  
-  export default AdvancedSearchComponent;
+
+  const handleClickSearch = () => {
+    handleSearch(searchTerm); // Pass the searchTerm to the handleSearch function
+  };
+
+  return (
+    <div className="advanced-search">
+     
+      <input
+        type="text"
+        name="searchTerm"
+        value={searchTerm}
+        placeholder="Search By Villa Name ..."
+        onChange={handleInputChange}
+      />
+      <br />
+      <button className="search-btn" onClick={handleClickSearch}>Click Search</button> {/* Call handleClickSearch */}
+    </div>
+  );
+};
+
+export default AdvancedSearchComponent;

@@ -20,7 +20,7 @@ import VillaSearchPage from './Components/VillaSearchPage';
 
 function App() {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
-  const { villas, setVillas, userAdminVillas, setUserAdminVillas } = useContext(VillasContext);
+  const { villa, villas, setVillas, userAdminVillas, setUserAdminVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
   const { setUserAdminInquiries, setInquiries} = useContext(InquiriesContext);
@@ -167,7 +167,7 @@ function App() {
       <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
       <Route path="/locations/:id" element={<LocationVillaPage locations={locations} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
-      <Route path="/villas/search" element={<VillaSearchPage villas={villas}/>} />
+      <Route path="/villas/search" element={<VillaSearchPage villa={villa} villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
       <Route path="/villas/:id/inquiries" element={<InquireForm />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />

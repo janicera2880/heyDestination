@@ -1,47 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import VillaCard from "./VillaCard";
-import AdvancedSearchComponent from "./AdvancedSearchComponent";
+import React, { useState, useContext } from 'react';
+import VillaCard from './VillaCard';
+import AdvancedSearchComponent from './AdvancedSearchComponent';
+import { VillasContext } from '../Contexts/VillasContext';
+import villaPicture from "./Images/travellogo.png";
 
 const VillaSearchPage = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-
-  const bedrooms = searchParams.get("bedrooms") || null;
-  const bathrooms = searchParams.get("bathrooms") || null;
-  const capacity = searchParams.get("capacity") || null;
-
+  const { villas } = useContext(VillasContext);
   const [searchedVillas, setSearchedVillas] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    const fetchVillas = async () => {
-      try {
-        const response = await fetch(`/villas/search?bedrooms=${bedrooms}&bathrooms=${bathrooms}&capacity=${capacity}`);
-        if (response.ok) {
-          const data = await response.json();
-          setSearchedVillas(data);
-        } else {
-          throw new Error("Error fetching villas");
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+ 
 
-    fetchVillas();
-  }, [bedrooms, bathrooms, capacity]);
+  const handleSearch = () => {
+    const filteredVillas = villas.filter((villa) =>
+      villa.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchedVillas(filteredVillas);
+  };
+  
 
   return (
-    <div>
-      <AdvancedSearchComponent />
-      <h2>Search Results</h2>
-      {searchedVillas.length > 0 ? (
-        searchedVillas.map((villa) => (
-          <VillaCard key={villa.id} villa={villa} />
-        ))
-      ) : (
-        <p>No villas available based on your search criteria.</p>
-      )}
+    <div className='villa-search'>
+      <AdvancedSearchComponent
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        handleSearch={handleSearch}
+      />
+<br />
+<br />
+{searchedVillas.length > 0 ? (
+  searchedVillas.map((villa) => (
+    <VillaCard key={villa.id} villa={villa} />
+  ))
+) : (
+  <img
+        src={villaPicture}
+        width="800"
+        height="500"
+        alt="villa"
+        className="villa-pic" />
+)}
     </div>
   );
 };
