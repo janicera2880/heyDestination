@@ -73,8 +73,8 @@ nav ul li a:hover {
 /*Locations Cards*/
 .locations-card {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
   width: 95%;
   padding: 5px;
   box-sizing:content-box;
@@ -124,12 +124,10 @@ nav ul li a:hover {
 .locations-container {
   
   width: 90%;
-  max-width: 1700px; /* Adjust the value as needed */
+  max-width: 1000px; /* Adjust the value as needed */
   margin: 0 auto;
   
 }
-
-
 /*Inquire Form*/
 
 .inquire-form {

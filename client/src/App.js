@@ -16,6 +16,7 @@ import About from './Components/About';
 import IncomingInquiry from './Components/IncomingInquiry';
 import { InquiriesContext } from './Contexts/InquiriesContext';
 import ManageVillas from './Components/ManageVillas';
+import VillaSearchPage from './Components/VillaSearchPage';
 
 function App() {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
@@ -166,6 +167,7 @@ function App() {
       <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
       <Route path="/locations/:id" element={<LocationVillaPage locations={locations} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
+      <Route path="/villas/search" element={<VillaSearchPage villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
       <Route path="/villas/:id/inquiries" element={<InquireForm />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />

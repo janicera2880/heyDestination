@@ -33,7 +33,7 @@ function Navigation() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/inquiries" activeClassName="active">
+            <NavLink to="/villas/search" activeClassName="active">
               SEARCH
             </NavLink>
           </li>

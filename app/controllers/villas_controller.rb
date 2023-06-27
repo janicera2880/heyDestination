@@ -1,7 +1,7 @@
 class VillasController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     before_action :authorize
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize, only: [:index, :show, :search]
   
     # GET /villas
     def index
@@ -17,6 +17,19 @@ class VillasController < ApplicationController
     def show
       villa = find_villa
       render json: villa, status: :ok
+    end
+    # GET /villas/search
+    def search
+      # Retrieve the search criteria from the query parameters
+      bedrooms = params[:bedrooms]
+      bathrooms = params[:bathrooms]
+      capacity = params[:capacity]
+  
+      # Perform the search based on the criteria
+      villas = Villa.where("bedrooms >= ? AND bathrooms >= ? AND capacity >= ?", bedrooms, bathrooms, capacity)
+  
+      # Return the search results as JSON
+      render json: villas, status: :ok
     end
   
     # POST /villas
