@@ -3,11 +3,19 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { VillasContext } from "../Contexts/VillasContext";
 
+
+/**
+ * Component that displays a carousel of villas with their details.
+ */
 function VillasContainer() {
+  // Accessing the villas and setVillas function from the VillasContext
   const { villas, setVillas } = useContext(VillasContext);
+
+  // State variables
   const [currentIndex, setCurrentIndex] = useState(0);
   const [error, setError] = useState("");
 
+  // Fetch villas data from the server
   useEffect(() => {
     fetch("/villas")
       .then((response) => {
@@ -26,6 +34,7 @@ function VillasContainer() {
       });
   }, [setVillas]);
 
+  // Render error messages or loading indicators based on the state
   if (error) {
     return <p>{error}</p>;
   }
@@ -40,10 +49,11 @@ function VillasContainer() {
 
   const currentVilla = villas[currentIndex];
 
+  // Render an error message if the villa data is invalid
   if (!currentVilla) {
     return <p>Invalid villa data.</p>;
   }
-
+// Function to navigate to the next villa in the carousel
   const nextVilla = () => {
     if (currentIndex === villas.length - 1) {
       alert("You have reached the end.");
@@ -51,7 +61,7 @@ function VillasContainer() {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
-
+// Function to navigate to the previous villa in the carousel
   const prevVilla = () => {
     if (currentIndex === 0) {
       alert("You are on the first page.");
@@ -59,7 +69,11 @@ function VillasContainer() {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
-
+    /*Renders a carousel container to hold the images
+    an array of length 10 created using the spread syntax [...Array(10)]. 
+    It is used to generate a sequence of numbers from 0 to 9, which are then mapped to JSX elements.
+    <div key={index}>: This is a <div> element being rendered for each index in the mapped array. 
+    The key prop is set to the index value to provide a unique identifier for each rendered element.*/
   return (
     <div className="all-villas">
       <div className="view-card" key={currentVilla.id}>

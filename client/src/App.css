@@ -645,12 +645,15 @@ ul li {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.villa-card img {
-  width: 650px;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 4px;
-  margin-bottom: 10px;
+.villa-images-carousel {
+  /* Adjust carousel size as per your preference */
+  width: 500%;
+  height: 70%;
+  /* Add other carousel styles */
+}
+
+.villa-images-carousel .carousel-root {
+  height: 100%;
 }
 
 .some-button {
