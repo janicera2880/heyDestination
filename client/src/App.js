@@ -56,17 +56,7 @@ function App() {
     }
   }, [userAdmin, setUserAdminVillas]);
 
-  /*useEffect(() => {
-    fetch("/inquiries")
-      .then((r) => r.json())
-      .then((data) => {
-        setInquiries(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching villas:', error);
-      });
-  }, [setInquiries]);*/
-
+ 
   useEffect(() => {
     fetch("/villas")
       .then((r) => r.json())

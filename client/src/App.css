@@ -914,7 +914,7 @@ select {
   text-align: center;
 }
 
-input[type="text"] {
+.advanced-search input[type="text"] {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #90d1ab;

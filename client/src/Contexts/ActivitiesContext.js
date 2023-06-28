@@ -9,12 +9,10 @@ const ActivitiesProvider = ({ children }) => {
   const addActivity = (newActivity) => {
     setActivities([...activities, newActivity]);
   };
-  const removeActivity = (activityId) => {
-    setActivities(activities.filter((activity) => activity.id !== activityId));
-  };
+  
 
   return (
-    <ActivitiesContext.Provider value={{ activities, addActivity, removeActivity, setActivities }}>
+    <ActivitiesContext.Provider value={{ activities, addActivity, setActivities }}>
       {children}
     </ActivitiesContext.Provider>
   );

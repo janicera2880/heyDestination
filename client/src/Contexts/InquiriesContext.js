@@ -7,6 +7,7 @@ export const InquiriesContext = createContext();
 export const InquiriesProvider = ({ children }) => {
   const [inquiries, setInquiries] = useState([]);
   const [userAdminInquiries, setUserAdminInquiries] = useState(null);
+  
   // Function to add a new inquiry
   const addInquiry = (newInquiry) => {
     setInquiries([...inquiries, newInquiry]);
