@@ -42,8 +42,8 @@ const LocationVillaPage = () => {
       <h4>From {villa.rate} rate per night</h4>
       <br />
       <br />
-      <Link className="some-button" to={`/villas/${villa.id}/inquiries`}>
-        Inquire To Learn More...
+      <Link className="some-button" to={`/villas/${villa.id}`}>
+        See Full Details...
       </Link>
       <br />
     </div>

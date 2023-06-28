@@ -7,16 +7,16 @@ class VillasController < ApplicationController
     def index
       if params[:user_admin_id]
         user_admin = find_user_admin
-        render json: user_admin.villas.order(id: :asc), status: :ok
+        render json: user_admin.villas.order(id: :asc).includes(:location), status: :ok
       else
-        render json: Villa.order(id: :asc), status: :ok
+        render json: Villa.order(id: :asc).includes(:location), status: :ok
       end
     end
   
     # GET /villas/:id
     def show
       villa = find_villa
-      render json: villa, status: :ok
+      render json: villa, include: :location, status: :ok
     end
     
     

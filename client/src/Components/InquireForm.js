@@ -17,6 +17,7 @@ const InquireForm = ({ onAddPost }) => {
 
   const { id } = useParams();
   const villaId = parseInt(id);
+  const locationId = parseInt(id);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -32,13 +33,14 @@ const InquireForm = ({ onAddPost }) => {
 
     const newInquiry = { ...formData };
 
-    fetch(`/villas/${villaId}/inquiries`, {
+    fetch(`/locations/${locationId}/villas/${villaId}/inquiries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newInquiry),
     })
+    
       .then((response) => {
         if (response.ok) {
           setErrors([]);
@@ -67,13 +69,13 @@ const InquireForm = ({ onAddPost }) => {
     <div className="inquire-form">
       <br />
       <div className="inquire-form__header">
-        We're here to help! Fill out the form below, and a villa specialist will be in touch with you shortly.
+      <h4>To make an inquiry regarding this villa, kindly complete the form below, and a dedicated villa specialist will contact you promptly.</h4>
       </div>
       <br />
       <br />
       <form onSubmit={handleSubmit}>
         <br />
-
+    < label>Arrival Date:</label>
         <input
           type="date"
           name="arrival"
@@ -83,6 +85,7 @@ const InquireForm = ({ onAddPost }) => {
           onChange={handleChange}
         />
         <br />
+        < label>Departure:</label>
         <input
           type="date"
           name="departure"

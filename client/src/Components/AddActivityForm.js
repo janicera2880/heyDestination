@@ -1,26 +1,57 @@
 import React, { useContext, useState } from 'react';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
+import { LocationsContext } from '../Contexts/LocationsContext';
 import { useNavigate } from 'react-router-dom';
 
 const AddActivityForm = () => {
   const { addActivity } = useContext(ActivitiesContext);
+  const { locations } = useContext(LocationsContext);
   const navigate = useNavigate();
+  const [errors, setErrors] = useState([]);
 
   const [name, setName] = useState('');
   const [highlights, setHighlights] = useState('');
   const [image, setImage] = useState('');
   const [details, setDetails] = useState('');
-  const [category, setCategory] = useState('Sports');
+  const [categories, setCategories] = useState('Sports');
+  const [selectedLocations, setSelectedLocations] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors([]);
+    const validationErrors = [];
+
+    if (!name) {
+      validationErrors.push('Name is required.');
+    }
+    if (!highlights) {
+      validationErrors.push('Highlights is required.');
+    }
+    if (!image) {
+      validationErrors.push('Image URL is required.');
+    }
+    if (!details) {
+      validationErrors.push('Details is required.');
+    }
+    if (!categories) {
+      validationErrors.push('Category is required.');
+    }
+    if (selectedLocations.length === 0) {
+      validationErrors.push('At least one location must be selected.');
+    }
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
 
     const newActivity = {
       name,
       highlights,
       image,
       details,
-      category,
+      categories,
+      locations: selectedLocations,
     };
 
     try {
@@ -38,7 +69,8 @@ const AddActivityForm = () => {
         setHighlights('');
         setImage('');
         setDetails('');
-        setCategory('Sports');
+        setCategories('Sports');
+        setSelectedLocations([]);
         navigate('/activities');
       } else {
         const errorData = await response.json();
@@ -47,6 +79,12 @@ const AddActivityForm = () => {
     } catch (error) {
       console.error('Error:', error);
     }
+  };
+
+  const handleLocationChange = (event) => {
+    const selectedLocationIds = Array.from(event.target.selectedOptions, (option) => option.value);
+    const selectedLocations = locations.filter((location) => selectedLocationIds.includes(location.id));
+    setSelectedLocations(selectedLocations);
   };
 
   return (
@@ -75,7 +113,7 @@ const AddActivityForm = () => {
 
         <label>
           Category:
-          <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <select value={categories} onChange={(e) => setCategories(e.target.value)}>
             <option value="Sports">Sports</option>
             <option value="Lifestyle">Lifestyle</option>
             <option value="Events">Events</option>
@@ -83,7 +121,28 @@ const AddActivityForm = () => {
           </select>
         </label>
 
-        <button className="some-button" type="submit">Submit</button>
+        <label>
+          Locations:
+          <select multiple value={selectedLocations.map((location) => location.id)} onChange={handleLocationChange}>
+            {locations.map((location) => (
+              <option key={location.id} value={location.id}>
+                {location.city}, {location.country}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <button className="some-button" type="submit">
+          Submit
+        </button>
+
+        {errors.length > 0 && (
+          <ul style={{ color: 'red' }}>
+            {errors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        )}
       </form>
     </div>
   );

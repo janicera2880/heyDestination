@@ -4,9 +4,10 @@ class ActivitiesController < ApplicationController
   
     # GET /activities
     def index
-      activities = Activity.all
-      render json: activities
+      activities = Activity.includes(:locations).order(id: :asc)
+      render json: activities, status: :ok
     end
+    
   
     # GET /activities/:id
     def show

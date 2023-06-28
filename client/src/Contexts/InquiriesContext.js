@@ -7,6 +7,7 @@ export const InquiriesContext = createContext();
 export const InquiriesProvider = ({ children }) => {
   const [inquiries, setInquiries] = useState([]);
   const [userAdminInquiries, setUserAdminInquiries] = useState(null);
+  const [ villaInquiries, setVillaInquiries] = useState(null);
   
   // Function to add a new inquiry
   const addInquiry = (newInquiry) => {
@@ -19,7 +20,9 @@ export const InquiriesProvider = ({ children }) => {
     addInquiry,
     setInquiries,
     userAdminInquiries,
-    setUserAdminInquiries
+    setUserAdminInquiries,
+    villaInquiries,
+    setVillaInquiries
   };
 
   return (

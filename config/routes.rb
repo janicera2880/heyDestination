@@ -11,9 +11,13 @@ Rails.application.routes.draw do
 
   resources :activities, only: [:create, :destroy]
     resources :locations, only: [:create, :destroy]
-    resources :inquiries, only: [:index, :show]
   end
 
+  resources :locations do
+    resources :villas do
+      resources :inquiries, only: [:create]
+    end
+  end
 
   resources :locations, only: [:index, :show, :create] do
     resources :villas

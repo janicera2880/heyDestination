@@ -7,7 +7,6 @@ import { LocationsContext } from './Contexts/LocationsContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navigation from './Components/Navigation';
 import LocationsContainer from './Components/LocationsContainer';
-//import InquireForm from './Components/InquireForm';
 import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
 import LocationVillaPage from './Components/LocationVillaPage';
@@ -17,6 +16,7 @@ import IncomingInquiry from './Components/IncomingInquiry';
 import { InquiriesContext } from './Contexts/InquiriesContext';
 import ManageVillas from './Components/ManageVillas';
 import VillaSearchPage from './Components/VillaSearchPage';
+import VillaDetails from './Components/VillaDetails';
 
 function App() {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
@@ -24,6 +24,7 @@ function App() {
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
   const { setUserAdminInquiries } = useContext(InquiriesContext);
+  const { setInquiries, setVillaInquiries } = useContext(InquiriesContext);
   
 
   useEffect(() => {
@@ -143,6 +144,48 @@ function App() {
     setLocations(updatedLocationArray);
     setUserAdminVillas(updatedVillaArray);
   }
+  function handleAddInquiry(newInquiry) {
+    setInquiries((prevInquiries) => {
+      if (prevInquiries && Array.isArray(prevInquiries)) {
+        return [newInquiry, ...prevInquiries];
+      } else {
+        return [newInquiry];
+      }
+    });
+  
+    setVillaInquiries((prevVillaInquiries) => {
+      if (prevVillaInquiries && Array.isArray(prevVillaInquiries)) {
+        return [newInquiry, ...prevVillaInquiries];
+      } else {
+        return [newInquiry];
+      }
+    });
+  
+    setVillas((prevVillas) => {
+      if (prevVillas && Array.isArray(prevVillas)) {
+        return prevVillas.map((villa) => {
+          if (villa.id === newInquiry.villa.id) {
+            // Add the new inquiry to the villa's inquiries array
+            const updatedVilla = { ...villa };
+            updatedVilla.inquiries = [newInquiry, ...villa.inquiries];
+            return updatedVilla;
+          } else {
+            return villa;
+          }
+        });
+      } else {
+        return prevVillas;
+      }
+    });
+  
+    // Fetch villa inquiries again
+    fetch(`/villas/${newInquiry.villaId}/inquiries`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the villa inquiries state
+        setInquiries(data);
+      });
+  }
   
   
   return (
@@ -155,11 +198,11 @@ function App() {
       <Routes>
       <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
-      <Route path="/locations/:id" element={<LocationVillaPage locations={locations} />} />
+      <Route path="/locations/:id" element={<LocationVillaPage locations={locations} handleAddInquiry={handleAddInquiry} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} villas={villas}  />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/search" element={<VillaSearchPage villa={villa} villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
-  
+      <Route path="/villas/:id" element={<VillaDetails />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
       <Route path="/user_admin/:id/villas/inquieries" element={<IncomingInquiry />} />
       <Route path="/user_admin/villas" element={<ManageVillas villas={villas} userAdminVillas={userAdminVillas} setUserAdminVillas={setUserAdminVillas} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} locations={locations} setLocations={setLocations}/>} />
