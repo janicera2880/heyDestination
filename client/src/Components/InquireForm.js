@@ -1,78 +1,79 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const InquireForm = ({ onAddPost }) => {
-const [formData, setFormData] = useState({
-arrival: "",
-departure: "",
-guests: 0,
-full_name: "",
-email: "",
-phone: "",
-});
+  const [formData, setFormData] = useState({
+    arrival: "",
+    departure: "",
+    guests: 0,
+    full_name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-const [errors, setErrors] = useState([]);
-const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-const { id } = useParams();
-const villaId = parseInt(id);
-const navigate = useNavigate();
+  const { id } = useParams();
+  const villaId = parseInt(id);
+  const navigate = useNavigate();
 
-const handleChange = (event) => {
-setFormData({
-...formData,
-[event.target.name]: event.target.value, 
-});
-};
+  const handleChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
-const handleSubmit = (event) => {
-event.preventDefault();
-setIsLoading(true);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
 
-const newInquiry = {
-  ...formData,
-};
+    const newInquiry = { ...formData };
 
-fetch(`/villas/${villaId}/inquieries`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(newInquiry),
-})
-.then((response) => {
-  if (response.ok) {
-    setErrors([]);
-    response.json().then((newInquiry) => onAddPost(newInquiry));
-    navigate("/villas")
-  } else {
-    response.json().then((err) => {
-      if (err.errors) {
-        setErrors(Object.values(err.errors));
-      } else {
-        setErrors([err.error]);
-      }
-    });
-  }
-})
-.catch((error) => {
-  console.error("Error:", error);
-  setErrors(["An error occurred. Please try again."]);
-})
-.finally(() => {
-  setIsLoading(false);
-});
-};
+    fetch(`/villas/${villaId}/inquiries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newInquiry),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setErrors([]);
+          response.json().then((newInquiry) => onAddPost(newInquiry));
+          navigate("/villas");
+        } else {
+          response.json().then((err) => {
+            if (err.errors) {
+              setErrors(Object.values(err.errors));
+            } else {
+              setErrors([err.error]);
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrors(["An error occurred. Please try again."]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div className="inquire-form">
+      <br />
+      <div className="inquire-form__header">
+        We're here to help! Fill out the form below, and a villa specialist will be in touch with you shortly.
+      </div>
+      <br />
+      <br />
+      <form onSubmit={handleSubmit}>
         <br />
-        <div className="inquire-form__header">We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</div>
-        <br />
-        <br />
-        <form onSubmit={handleSubmit}>
-        <br />
-        
+
         <input
           type="date"
           name="arrival"
@@ -110,42 +111,47 @@ fetch(`/villas/${villaId}/inquieries`, {
         />
         <br />
         <input
-          type="text"
+          type="email"
           name="email"
           placeholder="Email Address"
           autoComplete="off"
           value={formData.email}
           onChange={handleChange}
         />
+        <br />
         <input
-          type="number"
+          type="tel"
           name="phone"
-          placeholder="Phone Number Must Be 10 Digits xxx-xxx-xxxx"
+          placeholder="Phone Number (e.g., xxx-xxx-xxxx)"
           autoComplete="off"
           value={formData.phone}
           onChange={handleChange}
         />
-        <input
-          type="text"
+        <br />
+        <textarea
           name="message"
           placeholder="Tell us about your group, your budget, and any other information to help curate your stay."
           autoComplete="off"
           value={formData.message}
           onChange={handleChange}
-        />
+        ></textarea>
+        <br />
 
-        <button className="primary" type="submit">
-        {isLoading ? "Submitting..." : "Submit"}
+        <button className="primary" type="submit" disabled={isLoading}>
+          {isLoading ? "Submitting..." : "Submit"}
         </button>
 
-        {errors.map((err) => (
-          /* Display any errors returned by the server */
-          <li style={{ color: "black" }} key={err}>
-            {err}
-          </li>
-        ))}
-        </form>
-      </div>
+        {errors.length > 0 && (
+          <ul style={{ color: "black" }}>
+            {errors.map((err, index) => (
+              /* Display any errors returned by the server */
+              <li key={index}>{err}</li>
+            ))}
+          </ul>
+        )}
+      </form>
+    </div>
   );
-}
+};
+
 export default InquireForm;
