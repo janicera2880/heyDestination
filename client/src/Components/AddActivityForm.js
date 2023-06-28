@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 import { useNavigate } from 'react-router-dom';
 
-
-//Renders an add activity form with input fields for name, highlights, image, details, and category. 
 const AddActivityForm = () => {
   const { addActivity } = useContext(ActivitiesContext);
   const navigate = useNavigate();
@@ -12,24 +10,20 @@ const AddActivityForm = () => {
   const [highlights, setHighlights] = useState('');
   const [image, setImage] = useState('');
   const [details, setDetails] = useState('');
-  const [categories, setCategories] = useState('Sports'); // Default category value is 'sports'
+  const [category, setCategory] = useState('Sports');
 
-
-  //On submit, sends a POST request to add a new activity to the server and updates the activities list using the addActivity function from the ActivitiesContext. 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Create a new activity object
     const newActivity = {
       name,
       highlights,
       image,
       details,
-      categories,
+      category,
     };
 
     try {
-      // Send POST request to add activity
       const response = await fetch('/activities', {
         method: 'POST',
         headers: {
@@ -39,19 +33,14 @@ const AddActivityForm = () => {
       });
 
       if (response.ok) {
-        // Add the activity using the addActivity function from the context
         addActivity(newActivity);
-
-        // Resets the form fields on successful submission. 
         setName('');
         setHighlights('');
         setImage('');
         setDetails('');
-        setCategories('Sports');
-      // Navigate to a new location after successful submission
-        navigate('/locations'); 
+        setCategory('Sports');
+        navigate('/activities');
       } else {
-        // Display error message if there's a problem with the request
         const errorData = await response.json();
         console.error('Error:', errorData);
       }
@@ -86,7 +75,7 @@ const AddActivityForm = () => {
 
         <label>
           Category:
-          <select value={categories} onChange={(e) => setCategories(e.target.value)}>
+          <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="Sports">Sports</option>
             <option value="Lifestyle">Lifestyle</option>
             <option value="Events">Events</option>

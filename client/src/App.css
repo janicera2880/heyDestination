@@ -780,7 +780,7 @@ select {
   padding: 25px;
   border-radius: 5px;
   margin-bottom: 20px;
-  max-width: 600px; /* Adjust the max-width value as needed */
+  max-width: 500px; /* Adjust the max-width value as needed */
   margin: 0 auto; /* Center the form horizontally */
 }
 
