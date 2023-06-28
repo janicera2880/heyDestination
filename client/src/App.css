@@ -669,7 +669,7 @@ ul li {
 
 /*Add Location*/
 .add-location {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 30px;
   background-color: #c9dadf;
@@ -690,7 +690,7 @@ ul li {
 
 .add-location input[type="text"],
 .add-location textarea {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -780,7 +780,7 @@ select {
   padding: 25px;
   border-radius: 5px;
   margin-bottom: 20px;
-  max-width: 400px; /* Adjust the max-width value as needed */
+  max-width: 600px; /* Adjust the max-width value as needed */
   margin: 0 auto; /* Center the form horizontally */
 }
 
@@ -811,7 +811,7 @@ select {
 
 .add-activity input[type="text"],
 .add-activity textarea {
-  width: 100%;
+  width: 90%;
 }
 
 .add-activity input[type="submit"] {

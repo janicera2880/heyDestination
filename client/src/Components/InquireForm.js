@@ -1,158 +1,151 @@
-import React, { useContext, useState } from 'react';
-import { InquiriesContext } from '../Contexts/InquiriesContext';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const InquireForm = () => {
-  const { addInquiry } = useContext(InquiriesContext);
-  const { handleSubmit, register, formState: { errors } } = useForm();
-  const [successMessage, setSuccessMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [formErrors, setFormErrors] = useState([]);
+const InquireForm = ({ onAddPost }) => {
+const [formData, setFormData] = useState({
+arrival: "",
+departure: "",
+guests: 0,
+full_name: "",
+email: "",
+phone: "",
+});
 
-  const { id } = useParams();
-  const villaId = parseInt(id, 10);
+const [errors, setErrors] = useState([]);
+const [isLoading, setIsLoading] = useState(false);
 
-  // Get locationId from the URL state (if available)
-  const location = useLocation();
-  const locationId = location.state && location.state.locationId;
+const { id } = useParams();
+const villaId = parseInt(id);
+const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
-  const onSubmit = (data) => {
-    setIsLoading(true);
-
-    const requestBody = {
-      ...data,
-      villa_id: villaId,
-      location_id: locationId
-    };
-
-    fetch('/villas/inquiries', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => {
-        if (response.ok) {
-          setSuccessMessage(
-            'Thank you for your interest! Please allow 1-3 business days for an agent to contact you.'
-          );
-          response.json().then((newInquiry) => addInquiry(newInquiry));
-          navigate('/locations');
-        } else {
-          response.json().then((errorData) => {
-            if (errorData.errors) {
-              setSuccessMessage('');
-              // Set form-level errors
-              setFormErrors(Object.values(errorData.errors));
-            } else {
-              setSuccessMessage('');
-              setFormErrors(['An error occurred. Please try again later.']);
-            }
-          });
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        setSuccessMessage('');
-        setFormErrors(['An error occurred. Please try again later.']);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  return (
-    <div className="inquire-form">
-      <p>We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</p>
-
-      {successMessage && <div className="success-message">{successMessage}</div>}
-
-      <form className="inquire-form__form" onSubmit={handleSubmit(onSubmit)}>
-        <label>
-          Arrival Date:
-          <input
-            type="date"
-            {...register('arrival', { required: 'Arrival date is required' })}
-          />
-          {errors.arrival && <span className="error">{errors.arrival.message}</span>}
-        </label>
-
-        <label>
-          Departure Date:
-          <input
-            type="date"
-            {...register('departure', { required: 'Departure date is required' })}
-          />
-          {errors.departure && <span className="error">{errors.departure.message}</span>}
-        </label>
-
-        <label>
-          Number of Guests:
-          <input
-            type="number"
-            {...register('guests', { required: 'Number of guests is required' })}
-          />
-          {errors.guests && <span className="error">{errors.guests.message}</span>}
-        </label>
-
-        <label>
-          Full Name:
-          <input
-            type="text"
-            {...register('full_name', { required: 'Full name is required' })}
-          />
-          {errors.full_name && <span className="error">{errors.full_name.message}</span>}
-        </label>
-
-        <label>
-          Email:
-          <input
-            type="email"
-            {...register('email', {
-              required: 'Email is required',
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: 'Invalid email address'
-              }
-            })}
-          />
-          {errors.email && <span className="error">{errors.email.message}</span>}
-        </label>
-
-        <label>
-          Phone Number:
-          <input
-            type="text"
-            {...register('phone', { required: 'Phone number is required' })}
-          />
-          {errors.phone && <span className="error">{errors.phone.message}</span>}
-        </label>
-      <label>
-          Message:
-          <textarea
-            type="textarea"
-            {...register('message', { required: 'Message is required' })}
-          />
-          {errors.message && <span className="error">{errors.message.message}</span>}
-        </label>
-        {formErrors.length > 0 && (
-          <ul className="error-list">
-            {formErrors.map((error, index) => (
-              <li key={index}>{error}</li>
-            ))}
-          </ul>
-        )}
-
-        <button className="primary" type="submit">
-          {isLoading ? 'Submitting...' : 'Submit'}
-        </button>
-      </form>
-    </div>
-  );
+const handleChange = (event) => {
+setFormData({
+...formData,
+[event.target.name]: event.target.value, 
+});
 };
 
+const handleSubmit = (event) => {
+event.preventDefault();
+setIsLoading(true);
+
+const newInquiry = {
+  ...formData,
+};
+
+fetch(`/villas/${villaId}/inquieries`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(newInquiry),
+})
+.then((response) => {
+  if (response.ok) {
+    setErrors([]);
+    response.json().then((newInquiry) => onAddPost(newInquiry));
+    navigate("/villas")
+  } else {
+    response.json().then((err) => {
+      if (err.errors) {
+        setErrors(Object.values(err.errors));
+      } else {
+        setErrors([err.error]);
+      }
+    });
+  }
+})
+.catch((error) => {
+  console.error("Error:", error);
+  setErrors(["An error occurred. Please try again."]);
+})
+.finally(() => {
+  setIsLoading(false);
+});
+};
+  return (
+    <div className="inquire-form">
+        <br />
+        <div className="inquire-form__header">We're here to help! Fill out the form below and a villa specialist will be in touch with you shortly.</div>
+        <br />
+        <br />
+        <form onSubmit={handleSubmit}>
+        <br />
+        
+        <input
+          type="date"
+          name="arrival"
+          placeholder="Arrival Date"
+          autoComplete="off"
+          value={formData.arrival}
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          type="date"
+          name="departure"
+          placeholder="Departure Date"
+          autoComplete="off"
+          value={formData.departure}
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          type="number"
+          name="guests"
+          placeholder="Number Of Guests"
+          autoComplete="off"
+          value={formData.guests}
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          type="text"
+          name="full_name"
+          placeholder="First and Last Name"
+          autoComplete="off"
+          value={formData.full_name}
+          onChange={handleChange}
+        />
+        <br />
+        <input
+          type="text"
+          name="email"
+          placeholder="Email Address"
+          autoComplete="off"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          name="phone"
+          placeholder="Phone Number Must Be 10 Digits xxx-xxx-xxxx"
+          autoComplete="off"
+          value={formData.phone}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="message"
+          placeholder="Tell us about your group, your budget, and any other information to help curate your stay."
+          autoComplete="off"
+          value={formData.message}
+          onChange={handleChange}
+        />
+
+        <button className="primary" type="submit">
+        {isLoading ? "Submitting..." : "Submit"}
+        </button>
+
+        {errors.map((err) => (
+          /* Display any errors returned by the server */
+          <li style={{ color: "black" }} key={err}>
+            {err}
+          </li>
+        ))}
+        </form>
+      </div>
+  );
+}
 export default InquireForm;

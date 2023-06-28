@@ -7,7 +7,7 @@ import { LocationsContext } from './Contexts/LocationsContext';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Navigation from './Components/Navigation';
 import LocationsContainer from './Components/LocationsContainer';
-import InquireForm from './Components/InquireForm';
+//import InquireForm from './Components/InquireForm';
 import VillasContainer from './Components/VillasContainer';
 import ActivityContainer from './Components/ActivityContainer';
 import LocationVillaPage from './Components/LocationVillaPage';
@@ -23,7 +23,7 @@ function App() {
   const { villa, villas, setVillas, userAdminVillas, setUserAdminVillas } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
-  const { setUserAdminInquiries, setInquiries} = useContext(InquiriesContext);
+  const { setUserAdminInquiries } = useContext(InquiriesContext);
   
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function App() {
     }
   }, [userAdmin, setUserAdminVillas]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     fetch("/inquiries")
       .then((r) => r.json())
       .then((data) => {
@@ -65,7 +65,7 @@ function App() {
       .catch((error) => {
         console.error('Error fetching villas:', error);
       });
-  }, [setInquiries]);
+  }, [setInquiries]);*/
 
   useEffect(() => {
     fetch("/villas")
@@ -169,7 +169,7 @@ function App() {
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/search" element={<VillaSearchPage villa={villa} villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
-      <Route path="/villas/:id/inquiries" element={<InquireForm />} />
+  
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
       <Route path="/user_admin/:id/villas/inquieries" element={<IncomingInquiry />} />
       <Route path="/user_admin/villas" element={<ManageVillas villas={villas} userAdminVillas={userAdminVillas} setUserAdminVillas={setUserAdminVillas} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} locations={locations} setLocations={setLocations}/>} />
