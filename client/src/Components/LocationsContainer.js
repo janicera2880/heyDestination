@@ -21,6 +21,7 @@ const LocationsContainer = () => {
             {showForm ? "Hide Add Location Form" : "Show Add Location Form"}
           </button>
           <br />
+          <h3>Please Choose a Location To Add a New Villa Rental...</h3>
           <br />
           {showForm && <AddLocationForm />}
         </div>

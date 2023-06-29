@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
-  const { isAdmin } = useContext(UserAdminContext);
+  const { userAdmin } = useContext(UserAdminContext);
 
   const [showMap, setShowMap] = useState(false);
 
@@ -82,7 +82,7 @@ const LocationVillaPage = () => {
         </button>
         <br />
         <br />
-        {isAdmin && showLocation && <AddVillaForm />}
+        {userAdmin && showLocation && <AddVillaForm />}
       </div>
     </div>
   );

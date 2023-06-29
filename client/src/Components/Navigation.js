@@ -19,7 +19,7 @@ function Navigation() {
           
           <li>
             <NavLink to="/locations" activeClassName="active">
-              DESTINATIONS 
+              TOP DESTINATIONS 
             </NavLink>
           </li>
           <li>

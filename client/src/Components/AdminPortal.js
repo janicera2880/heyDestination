@@ -49,7 +49,7 @@ const AdminPortal = () => {
         <Link to="/user_admin/:id/villas/inquieries" className="link-button">Incoming Inquiries</Link>
         <Link to="/user_admin/villas" className="link-button">Manage Villas</Link>
         <Link to="/locations" className="link-button">Manage Locations</Link>
-        <Link to="/activities" className="link-button">Manage Activities</Link>
+        <Link to="/locations" className="link-button">List A New Villa</Link>
        
       </div>
       <div className="logout">

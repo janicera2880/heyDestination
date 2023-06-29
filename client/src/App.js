@@ -1,5 +1,5 @@
 import './App.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ActivitiesContext } from './Contexts/ActivitiesContext';
 import { VillasContext } from './Contexts/VillasContext';
 import { UserAdminContext } from './Contexts/UserAdminContext';
@@ -14,6 +14,7 @@ import AdminPortal from './Components/AdminPortal';
 import About from './Components/About';
 import IncomingInquiry from './Components/IncomingInquiry';
 import { InquiriesContext } from './Contexts/InquiriesContext';
+import InquireForm from './Components/InquireForm';
 import ManageVillas from './Components/ManageVillas';
 import VillaSearchPage from './Components/VillaSearchPage';
 import VillaDetails from './Components/VillaDetails';
@@ -25,6 +26,7 @@ function App() {
   const { locations, setLocations } = useContext(LocationsContext);
   const { setUserAdminInquiries } = useContext(InquiriesContext);
   const { setInquiries, setVillaInquiries } = useContext(InquiriesContext);
+  const [showLocation, setShowLocation] = useState(true);
   
 
   useEffect(() => {
@@ -92,6 +94,49 @@ function App() {
         console.error('Error fetching activities:', error);
       });
   }, [setActivities]);
+
+  function handleAddVilla(newVilla) {
+    setVillas((prevVillas) => {
+      if (prevVillas && Array.isArray(prevVillas)) {
+        return [newVilla, ...prevVillas];
+      } else {
+        return [newVilla];
+      }
+    });
+  
+  setUserAdminVillas((prevUserAdminVillas) => {
+    if (prevUserAdminVillas && Array.isArray(prevUserAdminVillas)) {
+      return [newVilla, ...prevUserAdminVillas];
+    } else {
+      return [newVilla];
+    }
+  });
+  setLocations((prevLocations) => {
+    if (prevLocations && Array.isArray(prevLocations)) {
+      return prevLocations.map((location) => {
+        if (location.id === newVilla.location.id) {
+          // Add the new villa to a location listings array
+          const updatedLocation = { ...location };
+          updatedLocation.villas = [newVilla, ...location.villas];
+          return updatedLocation;
+        } else {
+          return location;
+        }
+      });
+    } else {
+      return prevLocations;
+    }
+  });
+
+  // Fetch location villa listings again
+  
+  fetch(`/locations/${newVilla.locationId}/villas`)
+    .then((response) => response.json())
+    .then((data) => {
+      // Update the location villa listings state
+      setVillas(data);
+    });
+  } 
 
   function handleDeleteVilla(deletedVilla) {
     const newVillaArray = userAdminVillas.filter((villa) => {
@@ -178,14 +223,18 @@ function App() {
       }
     });
   
+    // Set showLocation to true
+    setShowLocation(true);
+  
     // Fetch villa inquiries again
     fetch(`/villas/${newInquiry.villaId}/inquiries`)
       .then((response) => response.json())
       .then((data) => {
         // Update the villa inquiries state
-        setInquiries(data);
+        setVillaInquiries(data);
       });
   }
+  
   
   
   return (
@@ -198,10 +247,11 @@ function App() {
       <Routes>
       <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
-      <Route path="/locations/:id" element={<LocationVillaPage locations={locations} handleAddInquiry={handleAddInquiry} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} villas={villas}  />} />
+      <Route path="/locations/:id" element={<LocationVillaPage locations={locations}  handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} villas={villas} onAddVilla={handleAddVilla} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/search" element={<VillaSearchPage villa={villa} villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />
+      <Route path="/villas/:villa_id/inquiries" element={<InquireForm onAddInquiry={handleAddInquiry} showLocation={showLocation}/>} />
       <Route path="/villas/:id" element={<VillaDetails />} />
       <Route path="/activities" element={<ActivityContainer activities={activities}/>} />
       <Route path="/user_admin/:id/villas/inquieries" element={<IncomingInquiry />} />

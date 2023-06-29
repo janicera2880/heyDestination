@@ -86,7 +86,7 @@ const AddVillaForm = () => {
 
   return (
     <div className="villa-form">
-      <h2>Create a Villa</h2>
+      <h2>List A New Villa Here</h2>
       {errors.length > 0 && (
         <ul className="error-list">
           {errors.map((error, index) => (

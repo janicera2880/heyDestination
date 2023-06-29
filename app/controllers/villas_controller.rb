@@ -7,9 +7,9 @@ class VillasController < ApplicationController
     def index
       if params[:user_admin_id]
         user_admin = find_user_admin
-        render json: user_admin.villas.order(id: :asc).includes(:location), status: :ok
+        render json: user_admin.villas.order(id: :desc).includes(:location), status: :ok
       else
-        render json: Villa.order(id: :asc).includes(:location), status: :ok
+        render json: Villa.order(id: :desc).includes(:location), status: :ok
       end
     end
   
@@ -20,9 +20,6 @@ class VillasController < ApplicationController
     end
     
     
-    
-    
-    # GET /villas/search/:term
    # GET /villas/search/:term
   def search
     term = params[:term].downcase
@@ -45,8 +42,8 @@ class VillasController < ApplicationController
     # PATCH /villas/:id
     def update
       villa = find_villa
-      if authorized_user?(villa)
-        villa.update!(villa_params)
+      if authorized_user?(villa.user_admin)
+        villa.update!(update_villa_params)
         render json: villa, status: :ok
       else
         render json: { errors: villa.errors.full_messages }, status: :unprocessable_entity
@@ -56,13 +53,14 @@ class VillasController < ApplicationController
     # DELETE /villas/:id
     def destroy
       villa = find_villa
-      if authorized_user?(villa)
+      if authorized_user?(villa.user_admin)
         villa.destroy
         head :no_content
       else
         render json: { error: "You are not authorized to delete this post" }, status: :unauthorized
       end
     end
+    
   
     private
   
@@ -74,7 +72,10 @@ class VillasController < ApplicationController
       Villa.find_by(id: params[:id]) || render_not_found_response
     end
     
-  
+    def update_villa_params
+      params.require(:villa).permit(:name, :rate, :services)
+    end
+    
     def find_user_admin
       UserAdmin.find(session[:user_admin_id])
     end
@@ -87,8 +88,8 @@ class VillasController < ApplicationController
       render json: { errors: ['Not Authorized'] }, status: :unauthorized unless session.include?(:user_admin_id)
     end
   
-    def authorized_user?(villa)
-      villa.user_admin_id == session[:user_admin_id]
+    def authorized_user?(user_admin)
+      user_admin && user_admin.id == session[:user_admin_id]
     end
   end
   

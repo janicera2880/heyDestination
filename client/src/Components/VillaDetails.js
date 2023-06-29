@@ -1,15 +1,16 @@
 import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { VillasContext } from "../Contexts/VillasContext";
 import { Carousel } from "react-responsive-carousel";
-import InquireForm from "./InquireForm";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 //this function is a React component that renders a post and the user who created it.
 function VillaDetails() {
 
   //useParams hook to retrieve the post ID from the URL.
   const { id } = useParams();
-  const { villa, setVilla } = useContext(VillasContext);
+  const { villa, setVilla} = useContext(VillasContext);
 
 
   /*useEffect hook to fetch the post data from the server when the component mounts
@@ -23,7 +24,7 @@ function VillaDetails() {
       .catch((error) => {
         console.error(error);
       });
-  }, [id]);
+  }, [id, setVilla]);
 
   function VillaComponent() {
     
@@ -54,8 +55,11 @@ function VillaDetails() {
             <p>{villa.amenities}</p>
             <h3>Services</h3>
             <p>{villa.services}</p>
+            <Link className="some-button" to={`/villas/${villa.id}/inquiries?location_id=${villa.location_id}`}>
+            Inquire About This Villa...
+            </Link>
           </div>
-          <InquireForm />
+          
         </div>
         </div>
       </div>

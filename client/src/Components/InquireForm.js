@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const InquireForm = ({ onAddPost }) => {
+const InquireForm = ({ onAddInquiry, showLocation }) => {
+
+  const { id } = useParams();
+  const villaID = parseInt(id);
+  //const locationId = parseInt(id);
+
   const [formData, setFormData] = useState({
     arrival: "",
     departure: "",
@@ -10,14 +15,15 @@ const InquireForm = ({ onAddPost }) => {
     email: "",
     phone: "",
     message: "",
+    villa_id: villaID,
+    location_id: showLocation.id, 
   });
 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { id } = useParams();
-  const villaId = parseInt(id);
-  const locationId = parseInt(id);
+  
+  
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -33,7 +39,7 @@ const InquireForm = ({ onAddPost }) => {
 
     const newInquiry = { ...formData };
 
-    fetch(`/locations/${locationId}/villas/${villaId}/inquiries`, {
+    fetch(`/villas/${villaID}/inquiries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +50,7 @@ const InquireForm = ({ onAddPost }) => {
       .then((response) => {
         if (response.ok) {
           setErrors([]);
-          response.json().then((newInquiry) => onAddPost(newInquiry));
+          response.json().then((newInquiry) => onAddInquiry(newInquiry));
           navigate("/villas");
         } else {
           response.json().then((err) => {
