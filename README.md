@@ -132,8 +132,8 @@ Contributions to **hey-Destination** are welcome! If you encounter any issues or
 ## Acknowledgements
 
 ***Images and Logo***
-- The images and logo utilized in this application were obtained from  [Canva](“https://www.canva.com/”)
- and [Villas of DISTINCTION](“https://www.villasofdistinction.com/”).
+- The images and logo utilized in this application were obtained from  [Canva](https://www.canva.com)
+ and [Villas of DISTINCTION](https://www.villasofdistinction.com).
 
 Special credit to various open-source libraries and frameworks used in the development of this application, which have significantly contributed to its functionality and user experience.
 
@@ -147,4 +147,5 @@ Take a look at my blog, where I showcase a snippet of my web application.
 
 ## License 
 
-This project is licensed under the[MIT](“https://choosealicense.com/licenses/mit/”) Feel free to use, modify, and distribute the code as per the terms of the license.
+This project is licensed under the [MIT](https://choosealicense.com/licenses/mit) 
+Feel free to use, modify, and distribute the code as per the terms of the license.
