@@ -247,7 +247,7 @@ function App() {
       <Routes>
       <Route path="/" element={<About/>} />
       <Route path="/locations" element={<LocationsContainer locations={locations}/>} />
-      <Route path="/locations/:id" element={<LocationVillaPage locations={locations}  handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} villas={villas} onAddVilla={handleAddVilla} />} />
+      <Route path="/locations/:id" element={<LocationVillaPage locations={locations} activities={activities} handleDeleteVilla={handleDeleteVilla} handleUpdateVilla={handleUpdateVilla} villas={villas} onAddVilla={handleAddVilla} />} />
       <Route path="/villas" element={<VillasContainer villas = {villas}/>} />
       <Route path="/villas/search" element={<VillaSearchPage villa={villa} villas={villas}/>} />
       <Route path="/user_admin" element={<AdminPortal/>} />

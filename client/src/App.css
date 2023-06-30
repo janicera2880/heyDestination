@@ -15,12 +15,6 @@ body {
   max-width: 1800px; /* Adjust the value as needed */
 }
 
-/*Header*/
-.header {
-  display: center;
-  align-items: flex-start;
-}
-
 /*Navigation*/
 .navigation {
   clear:both;
@@ -84,7 +78,7 @@ nav ul li a:hover {
 
 .locations-card div {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   transition: transform 0.20s;
   border-radius: 1px;
   box-shadow: 2px  5px 20px #162d6b;
@@ -111,7 +105,7 @@ nav ul li a:hover {
   padding: 10px 50px;
   background-color: rgb(199, 217, 224);
   text-decoration: none;
-  color: rgb(32, 29, 41);
+  color: rgb(21, 19, 150);
   font-style: oblique;
 }
 
@@ -604,6 +598,7 @@ ul {
 ul li {
   margin-bottom: 5px;
 }
+
 /* CSS for LocationVillaPage */
 .locations-villa {
   display: flex;
@@ -724,7 +719,8 @@ ul li {
   color: rgb(32, 32, 173);
   text-align: center;
 }
-/*FIlter*/
+
+/*Filter*/
 .filter {
   margin-bottom: 20px;
 }
@@ -993,10 +989,66 @@ button.primary {
 }
 
 button.primary:hover {
-  background-color: #4e977f;
+  background-color: #2c6452;
 }
 
 button.primary:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+/* CSS for the villa-details-container */
+.villa-details-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* CSS for the villa-title */
+.villa-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* CSS for the villa-info */
+.villa-info {
+  margin-bottom: 20px;
+}
+
+/* CSS for the Carousel */
+.carousel {
+  width: 90%;
+}
+
+/* CSS for the Carousel images */
+.carousel img {
+  width: 80%; /* Adjust the image size as needed */
+  height: 70%; /* Adjust the image size as needed */
+}
+
+/* CSS for the villa-details */
+.villa-details {
+  margin-bottom: 20px;
+}
+
+/* CSS for the h4 elements inside villa-details */
+.villa-details h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* CSS for the villa-info inside villa-details */
+.villa-details .villa-info {
+  margin-bottom: 10px;
+}
+
+/* CSS for the h3 elements inside villa-details */
+.villa-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* CSS for the p elements inside villa-details */
+.villa-details p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+

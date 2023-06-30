@@ -11,32 +11,36 @@ function ManageVillas() {
     const { locations, setLocations } = useContext(LocationsContext);
 
     function handleDeleteVilla(deletedVilla) {
-        fetch(`/user_admins/${userAdmin.id}/villas/${deletedVilla.id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(deletedVilla),
-        })
-          .then((r) => r.json())
-          .then(() => {
-            const newVillaArray = userAdminVillas.filter((villa) => {
-              return villa.id !== deletedVilla.id;
-            });
-            const updatedLocationArray = locations.map((location) => {
-              if (location.id === deletedVilla.location_id) {
-                return {
-                  ...location,
-                  villas: location.villas.filter((villa) => villa.id !== deletedVilla.id)
-                };
-              } else {
-                return location;
-              }
-            });
-            setUserAdminVillas(newVillaArray);
-            setLocations(updatedLocationArray);
+      fetch(`/user_admins/${userAdmin.id}/villas/${deletedVilla.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(deletedVilla),
+      })
+        .then(() => {
+          const newVillaArray = userAdminVillas.filter(
+            (villa) => villa.id !== deletedVilla.id
+          );
+          const updatedLocationArray = locations.map((location) => {
+            if (location.id === deletedVilla.location_id) {
+              return {
+                ...location,
+                villas: location.villas.filter(
+                  (villa) => villa.id !== deletedVilla.id
+                ),
+              };
+            } else {
+              return location;
+            }
           });
-      }
+          setUserAdminVillas(newVillaArray);
+          setLocations(updatedLocationArray);
+        })
+        .catch((error) => {
+          console.error("Error deleting villa:", error);
+        });
+    }
 
       function handleUpdate(updatedVilla, villaID) {
         fetch(`/user_admins/${userAdmin.id}/villas/${villaID}`, {

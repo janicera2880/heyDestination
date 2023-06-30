@@ -13,13 +13,13 @@ ReactDOM.render(
   <React.StrictMode>
     <UserAdminProvider>
       <LocationsProvider>
-       <VillasProvider>
-       <InquiriesProvider>
-       <ActivitiesProvider>
-    <App />
-       </ActivitiesProvider>
-       </InquiriesProvider>
-       </VillasProvider>
+        <VillasProvider>
+          <InquiriesProvider>
+            <ActivitiesProvider>
+              <App />
+            </ActivitiesProvider>
+          </InquiriesProvider>
+        </VillasProvider>
       </LocationsProvider>
     </UserAdminProvider>
   </React.StrictMode>,

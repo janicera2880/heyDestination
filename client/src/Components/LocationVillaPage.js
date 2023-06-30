@@ -6,10 +6,13 @@ import { LocationsContext } from "../Contexts/LocationsContext";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
   const { userAdmin } = useContext(UserAdminContext);
+  const { activities } = useContext(ActivitiesContext);
+
 
   const [showMap, setShowMap] = useState(false);
 
@@ -21,33 +24,55 @@ const LocationVillaPage = () => {
   const locationId = parseInt(params.id);
   const showLocation = locations.find((location) => location.id === locationId);
 
-  const renderVillas = showLocation && showLocation.villas.map((villa) => (
-    <div className="villa-card" key={villa.id}>
-      <Carousel showArrows={true}>
-        {[...Array(10)].map((_, index) => (
-          <div key={index}>
-            <img
-              src={villa[`image${index + 1}`]}
-              alt={`Villa ${villa.name}`}
-              className="villa-image"
-            />
+  const renderVillas = showLocation && showLocation.villas.map((villa) => {
+    const relatedActivities = activities.filter((activity) => {
+      if (showLocation.activity_locations) {
+        return showLocation.activity_locations.includes(activity.id);
+      }
+      return false;
+    });
+    
+  
+    return (
+      <div className="villa-card" key={villa.id}>
+        <Carousel showArrows={true}>
+          {[...Array(10)].map((_, index) => (
+            <div key={index}>
+              <img
+                src={villa[`image${index + 1}`]}
+                alt={`Villa ${villa.name}`}
+                className="villa-image"
+              />
+            </div>
+          ))}
+        </Carousel>
+        <h3>{villa.name}</h3>
+        <br />
+        <h4>Up to {villa.capacity} Guests</h4>
+        <h4>Up to {villa.bedroom} Bedrooms</h4>
+        <h4>{villa.bathroom} Bathrooms</h4>
+        <h4>From {villa.rate} rate per night</h4>
+        <br />
+        <br />
+        <Link className="some-button" to={`/villas/${villa.id}`}>
+          See Full Details...
+        </Link>
+        <br />
+        {/* Display the related activities */}
+        {relatedActivities.length > 0 && (
+          <div>
+            <h3>Related Activities:</h3>
+            <ul>
+              {relatedActivities.map((activity) => (
+                <li key={activity.id}>{activity.name}</li>
+              ))}
+            </ul>
           </div>
-        ))}
-      </Carousel>
-      <h3>{villa.name}</h3>
-      <br />
-      <h4>Up to {villa.capacity} Guests</h4>
-      <h4>Up to {villa.bedroom} Bedrooms</h4>
-      <h4>{villa.bathroom} Bathrooms</h4>
-      <h4>From {villa.rate} rate per night</h4>
-      <br />
-      <br />
-      <Link className="some-button" to={`/villas/${villa.id}`}>
-        See Full Details...
-      </Link>
-      <br />
-    </div>
-  ));
+        )}
+        <br />
+      </div>
+    );
+  });
 
   return (
     <div className="locations-villa">
@@ -89,4 +114,3 @@ const LocationVillaPage = () => {
 };
 
 export default LocationVillaPage;
-
