@@ -3,6 +3,8 @@ import { UserAdminContext } from "../Contexts/UserAdminContext";
 
 const Thumbnail = () => {
   const { userAdmin } = useContext(UserAdminContext);
+
+  //conditionally renders an img element if userAdmin exists and has profile image
   return (
     <div className="thumbnail">
       {userAdmin && userAdmin.profile_image && (

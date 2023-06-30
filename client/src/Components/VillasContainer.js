@@ -4,9 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { VillasContext } from "../Contexts/VillasContext";
 
 
-/**
- * Component that displays a carousel of villas with their details.
- */
+// Component that displays a carousel of villas with their details.
 function VillasContainer() {
   // Accessing the villas and setVillas function from the VillasContext
   const { villas, setVillas } = useContext(VillasContext);

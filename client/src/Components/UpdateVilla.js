@@ -1,8 +1,12 @@
 import React, { useState, useContext } from "react";
 import { VillasContext } from "../Contexts/VillasContext";
 
+
+//UpdateVilla is a function that handles the updating of villa information.
 function UpdateVilla({ handleUpdateForm }) {
+  // Access the villa object from the VillasContext
   const { villa } = useContext(VillasContext);
+  // Initialize state variables
   const [errors, setErrors] = useState([]);
 
   const [formData, setFormData] = useState({
@@ -11,7 +15,7 @@ function UpdateVilla({ handleUpdateForm }) {
     services: villa?.services ?? '',
   });
   
-
+// Function to handle input changes in the form
   function handleInputChange(e) {
     const key = e.target.name;
     const value = e.target.value;
@@ -20,6 +24,7 @@ function UpdateVilla({ handleUpdateForm }) {
     setFormData(newFormData);
   }
 
+  // Function to handle form submission
   function handleSubmit(event) {
     event.preventDefault();
     const validationErrors = [];
@@ -41,6 +46,7 @@ function UpdateVilla({ handleUpdateForm }) {
       return;
     }
 
+    // Prepare the updated villa object with form data
     const updatedVilla = {
       name: formData.name,
       highlights: formData.highlights,
@@ -50,10 +56,13 @@ function UpdateVilla({ handleUpdateForm }) {
       rate: formData.rate,
       services: formData.services,
     };
+    // Call the handleUpdateForm function passed as a prop
     handleUpdateForm(updatedVilla);
+    // Update the form data state with the updated villa data
     setFormData({ ...villa, ...updatedVilla });
   }
 
+  // Render the update villa form
   return (
     <div className="edit-form">
       <h4>Update Villa Information Here</h4>

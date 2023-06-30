@@ -5,16 +5,16 @@ import { VillasContext } from "../Contexts/VillasContext";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-//this function is a React component that renders a post and the user who created it.
+//Fetches the details of a villa from the server and displays them.
 function VillaDetails() {
 
-  //useParams hook to retrieve the post ID from the URL.
+  //useParams hook to retrieve the villa ID from the URL.
   const { id } = useParams();
   const { villa, setVilla} = useContext(VillasContext);
 
 
   /*useEffect hook to fetch the post data from the server when the component mounts
-  updates the post state with the received data*/
+  updates the villa state with the received data*/
   useEffect(() => {
     fetch(`/villas/${id}`)
       .then((response) => response.json())

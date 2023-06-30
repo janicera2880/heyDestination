@@ -5,12 +5,15 @@ import { VillasContext } from "../Contexts/VillasContext";
 import UpdateVilla from "./UpdateVilla";
 import { LocationsContext } from "../Contexts/LocationsContext";
 
+
+// Functional component that manages the state and functionality related to managing villas.
 function ManageVillas() {
     const { userAdmin } = useContext(UserAdminContext);
     const { userAdminVillas, setUserAdminVillas } = useContext(VillasContext);
     const { locations, setLocations } = useContext(LocationsContext);
 
     function handleDeleteVilla(deletedVilla) {
+      // Delete the villa by sending a DELETE request to the server
       fetch(`/user_admins/${userAdmin.id}/villas/${deletedVilla.id}`, {
         method: "DELETE",
         headers: {
@@ -19,6 +22,7 @@ function ManageVillas() {
         body: JSON.stringify(deletedVilla),
       })
         .then(() => {
+          // Update the state by removing the deleted villa from userAdminVillas and locations
           const newVillaArray = userAdminVillas.filter(
             (villa) => villa.id !== deletedVilla.id
           );
@@ -43,6 +47,7 @@ function ManageVillas() {
     }
 
       function handleUpdate(updatedVilla, villaID) {
+        // Update the villa by sending a PATCH request to the server
         fetch(`/user_admins/${userAdmin.id}/villas/${villaID}`, {
           method: "PATCH",
           headers: {
@@ -97,7 +102,7 @@ function ManageVillas() {
         handleUpdate(newVilla, villa.id);
       }
 
-        // Render the post with the update form and delete button
+        // Render the villa with the update form and delete button
             return (
                 
                 <div className='villas-edit'key={villa.id}>

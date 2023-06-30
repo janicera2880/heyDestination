@@ -1,10 +1,12 @@
 import React from "react";
 import { NavLink} from "react-router-dom";
 
-
+/*The component renders a navigation bar with multiple links. 
+Each link is wrapped in a NavLink component, 
+which is a special type of link component provided by React Router. */
 function Navigation() {
   
-
+//NavLink component accepts a to prop to specify the destination URL
   return (
     <div className="navigation">
      
