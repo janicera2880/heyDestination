@@ -28,8 +28,9 @@ function IncomingInquiry() {
   return (
     <div className="inquiry-container">
       <h2>
-        {userAdmin ? `Hello ${userAdmin.first_name}, you have incoming inquiries!` : 'Loading...'}
+        {userAdmin ? `Hello ${userAdmin.first_name}, check here for incoming inquiries!` : 'Loading...'}
       </h2>
+      <br />
       <br />
       <div className="inquiry-wrapper">
       {incomingQuery}

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { LocationsContext } from '../Contexts/LocationsContext';
 
+//Renders a form for adding a new location.
+
 const AddLocationForm = () => {
   const { addLocation } = useContext(LocationsContext);
   const [city, setCity] = useState('');
@@ -9,6 +11,10 @@ const AddLocationForm = () => {
   const [description, setDescription] = useState('');
   const [errors, setErrors] = useState([]);
 
+  /*function called handleSubmit that is triggered when a form is submitted. 
+  It performs client-side validation on the form inputs and sends a POST request to add a new location. 
+  If the request is successful, it adds the new location to the context and resets the form fields. 
+  If there is an error with the request, it displays an error message.*/
   const handleSubmit = async (e) => {
     e.preventDefault();
 

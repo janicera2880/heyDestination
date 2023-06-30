@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   skip_before_action :authorize, only: [:create]
+  
   # Create a new instance of Inquiry using the inquiry_params method
 
   def index

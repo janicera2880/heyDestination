@@ -2,6 +2,10 @@ import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { VillasContext } from "../Contexts/VillasContext";
 
+/*Renders a form for adding a new villa, which uses React hooks such as useState, useContext, and useParams 
+for managing state and navigating between pages. The form captures various details about the villa, 
+when the form is submitted, it makes a POST request to a server endpoint to save the new villa data. 
+If there are any errors during the submission, they are displayed below the form.*/
 const AddVillaForm = () => {
   const { id } = useParams();
   const locationId = parseInt(id);
@@ -35,6 +39,9 @@ const AddVillaForm = () => {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  /*This function makes an event object as a parameter. Inside the function, it calls the setFormData function 
+  with an updated object as its argument. The updated object is created by spreading the formData object 
+  with the name and adding a new key-value pair with the name and value from the event.target object.*/
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -42,6 +49,11 @@ const AddVillaForm = () => {
     });
   };
 
+/*Prevents the default form submission behavior, sets a loading state, 
+creates a new object newVilla by spreading formData and adding a location_id property, 
+makes a POST request to a specific API endpoint with the newVilla object as the request body, and handles the response. 
+If the response is successful, it clears any errors, adds the new villa to a list, and navigates to a specific page. 
+If the response is not successful, it extracts error messages from the response and sets them in the state.*/
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);

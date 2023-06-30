@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :villas, only: [:index, :show, :create] do
     resources :inquiries
   end
+  
   resources :activities, only: [:index, :show, :create]
   resource :activity_locations, only: [:index, :show]
   

@@ -6,7 +6,7 @@ const ActivityCard = ({ activity }) => {
  
   
   const renderedLocations = locations.map((location) => (
-    <li key={location.id}>{location.city}, {location.country}</li>
+    <li key={location.id}>{location.city}, {location.country}</li>// Render a list item with the location's city and country
   ))
 
   return (

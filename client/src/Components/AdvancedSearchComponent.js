@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
+
+//Component for advanced search functionality.
 const AdvancedSearchComponent = ({ handleSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
+
+  //Handles the input change event.
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };

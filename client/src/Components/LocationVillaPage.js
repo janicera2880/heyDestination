@@ -8,21 +8,24 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 
+/*The component renders a list of villas based on the selected location. 
+It also includes a button to toggle the display of a map, and if the user is an admin, 
+it shows a form to add a new villa.*/
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
   const { userAdmin } = useContext(UserAdminContext);
   const { activities } = useContext(ActivitiesContext);
 
 
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(false);// Setting up a state variable to toggle the display of the map
 
   const toggleMap = () => {
-    setShowMap(!showMap);
+    setShowMap(!showMap);// Toggle the showMap state between true and false
   };
 
-  const params = useParams();
-  const locationId = parseInt(params.id);
-  const showLocation = locations.find((location) => location.id === locationId);
+  const params = useParams();// Accessing the route parameters
+  const locationId = parseInt(params.id);// Parsing the locationId from the route parameters
+  const showLocation = locations.find((location) => location.id === locationId);// Find the location object with matching locationId
 
   const renderVillas = showLocation && showLocation.villas.map((villa) => {
     const relatedActivities = activities.filter((activity) => {

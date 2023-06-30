@@ -253,9 +253,9 @@ font-size: 16px;
 }
 /*Login*/
 .Login {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 50px;
   background-color: #c2d4da;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -282,7 +282,7 @@ font-size: 16px;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 20px;
 }
 
 .Login button {
@@ -466,7 +466,7 @@ font-size: 16px;
   cursor: pointer;
   margin-right: 10px;
 }
-/*Villas Page*/
+/*Villas Container*/
 .all-villas {
   display: flex;
   flex-direction: column;
@@ -866,7 +866,8 @@ select {
   padding-left: 20px;
   color: black;
 }
-/*Villas Component Edit*/
+
+/*Manage Villas*/
 .villa-component {
   display: flex;
   flex-wrap: wrap;
@@ -875,10 +876,10 @@ select {
 }
 
 .villas-edit {
-  width: 600px;
+  width: 700px;
   padding: 20px;
   margin: 20px;
-  background-color: #071e24;
+  background-color: #093742;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
@@ -944,6 +945,7 @@ input[type="text"]::placeholder {
 .search-btn:focus {
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
+
 /*Add Villa Form*/
 .villa-form {
   max-width: 500px;

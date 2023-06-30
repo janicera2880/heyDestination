@@ -3,6 +3,8 @@ import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 import { LocationsContext } from '../Contexts/LocationsContext';
 import { useNavigate } from 'react-router-dom';
 
+
+//Renders a form for adding a new activity.
 const AddActivityForm = () => {
   const { addActivity } = useContext(ActivitiesContext);
   const { locations } = useContext(LocationsContext);

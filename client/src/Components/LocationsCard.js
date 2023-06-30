@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { LocationsContext } from '../Contexts/LocationsContext';
 import { Link } from 'react-router-dom';
 
-
+// The component renders a div with the class name "locations-card". 
+// it maps over the locations array and renders some information for each location//
 const LocationsCard = () => {
   const { locations } = useContext(LocationsContext);
 
