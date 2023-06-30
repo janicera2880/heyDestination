@@ -1,19 +1,2 @@
-development:
-  cloud_name: <%= ENV['dggmk93at'] %>
-  api_key: <%= ENV['553712752648837'] %>
-  api_secret: <%= ENV['86xTYnj9XB8V-FOZe7KEsE2CfZU'] %>
-  enhance_image_tag: true
-  static_file_support: false
-production:
-  cloud_name: <%= ENV['dggmk93at'] %>
-  api_key: <%= ENV['553712752648837'] %>
-  api_secret: <%= ENV['86xTYnj9XB8V-FOZe7KEsE2CfZU'] %>
-  enhance_image_tag: true
-  static_file_support: true
-test:
-  cloud_name: <%= ENV['dggmk93at'] %>
-  api_key: <%= ENV['553712752648837'] %>
-  api_secret: <%= ENV['86xTYnj9XB8V-FOZe7KEsE2CfZU'] %>
-  enhance_image_tag: true
-  static_file_support: false
+
  

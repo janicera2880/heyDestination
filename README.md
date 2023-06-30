@@ -1,5 +1,5 @@
 # hey-Destination
-![hey-Destination]("C:\Users\janic\Downloads\Hotels Business Website in Brown White Modern Elegance Style.png")
+
 ### Table Of Contents
 
 [Description](#description) 
