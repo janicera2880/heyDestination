@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 
+
 //Component for advanced search functionality.
-const AdvancedSearchComponent = ({ handleSearch }) => {
+const SearchComponent = ({ handleSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
 
@@ -31,4 +32,4 @@ const AdvancedSearchComponent = ({ handleSearch }) => {
   );
 };
 
-export default AdvancedSearchComponent;
+export default SearchComponent;

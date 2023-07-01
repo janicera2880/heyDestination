@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import VillaCard from './VillaCard';
-import AdvancedSearchComponent from './AdvancedSearchComponent';
+import SearchComponent from './SearchComponent';
 import { VillasContext } from '../Contexts/VillasContext';
-import villaPicture from "./Images/travellogo.png";
 
-const VillaSearchPage = () => {
+import villaPicture from './Images/travellogo.png';
+
+const LocationSearchPage = () => {
   const { villas } = useContext(VillasContext);
   const [searchedVillas, setSearchedVillas] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +22,7 @@ const VillaSearchPage = () => {
 
   return (
     <div className='villa-search'>
-      <AdvancedSearchComponent
+      <SearchComponent
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         handleSearch={handleSearch}
@@ -44,4 +45,4 @@ const VillaSearchPage = () => {
   );
 };
 
-export default VillaSearchPage;
+export default LocationSearchPage;

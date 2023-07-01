@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { VillasContext } from "../Contexts/VillasContext";
 
-const InquireForm = ({ onAddInquiry, showLocation }) => {
-
-  const { id } = useParams();
-  const villaID = parseInt(id);
-  //const locationId = parseInt(id);
-
-  const [formData, setFormData] = useState({
+const InquireForm = () => {
+  const { addInquiryToVilla } = useContext(VillasContext);
+  const initialState = {
     arrival: "",
     departure: "",
     guests: 0,
@@ -15,61 +12,64 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
     email: "",
     phone: "",
     message: "",
-    villa_id: villaID,
-    location_id: showLocation.id, 
-  });
-
+  };
+  const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  
-  
+  const [isLoading, setIsLoading] = useState(false); // New state for loading state
+  const { id } = useParams();
+  const villaID = parseInt(id);
   const navigate = useNavigate();
 
-  const handleChange = (event) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (!value) {
+      setValues({
+        ...values,
+        [name]: initialState[name],
+      });
+    } else {
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true);
-
-    const newInquiry = { ...formData };
+    setIsLoading(true); // Enable loading state
 
     fetch(`/villas/${villaID}/inquiries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newInquiry),
+      body: JSON.stringify(values),
     })
-    
       .then((response) => {
         if (response.ok) {
           setErrors([]);
-          response.json().then((newInquiry) => onAddInquiry(newInquiry));
+          response.json().then((newInquiry) => addInquiryToVilla(newInquiry));
           navigate("/villas");
         } else {
           response.json().then((err) => {
             if (err.errors) {
-              setErrors(Object.values(err.errors));
+              setErrors(err.errors);
             } else {
               setErrors([err.error]);
             }
           });
         }
       })
-      .catch((error) => {
-        console.error("Error:", error);
-        setErrors(["An error occurred. Please try again."]);
-      })
       .finally(() => {
-        setIsLoading(false);
+        setIsLoading(false); // Disable loading state
       });
+
+    setValues(initialState);
   };
+
+  
 
   return (
     <div className="inquire-form">
@@ -87,7 +87,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="arrival"
           placeholder="Arrival Date"
           autoComplete="off"
-          value={formData.arrival}
+          value={values.arrival}
           onChange={handleChange}
         />
         <br />
@@ -97,7 +97,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="departure"
           placeholder="Departure Date"
           autoComplete="off"
-          value={formData.departure}
+          value={values.departure}
           onChange={handleChange}
         />
         <br />
@@ -106,7 +106,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="guests"
           placeholder="Number Of Guests"
           autoComplete="off"
-          value={formData.guests}
+          value={values.guests}
           onChange={handleChange}
         />
         <br />
@@ -115,7 +115,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="full_name"
           placeholder="First and Last Name"
           autoComplete="off"
-          value={formData.full_name}
+          value={values.full_name}
           onChange={handleChange}
         />
         <br />
@@ -124,7 +124,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="email"
           placeholder="Email Address"
           autoComplete="off"
-          value={formData.email}
+          value={values.email}
           onChange={handleChange}
         />
         <br />
@@ -133,7 +133,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="phone"
           placeholder="Phone Number (e.g., xxx-xxx-xxxx)"
           autoComplete="off"
-          value={formData.phone}
+          value={values.phone}
           onChange={handleChange}
         />
         <br />
@@ -141,7 +141,7 @@ const InquireForm = ({ onAddInquiry, showLocation }) => {
           name="message"
           placeholder="Tell us about your group, your budget, and any other information to help curate your stay."
           autoComplete="off"
-          value={formData.message}
+          value={values.message}
           onChange={handleChange}
         ></textarea>
         <br />

@@ -1,7 +1,7 @@
 class VillasController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     before_action :authorize
-    skip_before_action :authorize, only: [:index, :show, :search]
+    skip_before_action :authorize, only: [:index, :show]
   
     # GET /villas
     def index
@@ -19,15 +19,13 @@ class VillasController < ApplicationController
       render json: villa, include: :location, status: :ok
     end
     
-    
-   # GET /villas/search/:term
-  def search
+     # GET /villas/search/:term
+    def search
     term = params[:term].downcase
     villas = Villa.where("lower(name) LIKE ?", "%#{term}%")
     render json: villas, status: :ok
-  end
+    end
     
-
     # POST /villas
     def create
       user_admin = find_user_admin

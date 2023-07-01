@@ -20,10 +20,11 @@
 
 [Acknowledgements](#Acknowledgements)
 
-[License](#license)
+[Deployment](#deployment)
 
 [Resources](#resources)
 
+[License](#license)
 
 ## Description
 
@@ -43,7 +44,7 @@
 
 ## Technology Stack
 
-- Frontend: The frontend of hey-Destination is built using JavaScript, HTML, and React. React is leveraged to create dynamic and interactive user interfaces, ensuring a smooth browsing experience.
+- Frontend: The frontend of **hey-Destination** is built using JavaScript, HTML, and React. React is leveraged to create dynamic and interactive user interfaces, ensuring a smooth browsing experience.
 
 - Backend: The backend of the application is developed using Ruby on Rails, providing a robust and scalable server-side framework. Ruby on Rails facilitates efficient data management, authentication, and seamless communication with the front-end.
 
@@ -136,6 +137,12 @@ Contributions to **hey-Destination** are welcome! If you encounter any issues or
  and [Villas of DISTINCTION](https://www.villasofdistinction.com).
 
 Special credit to various open-source libraries and frameworks used in the development of this application, which have significantly contributed to its functionality and user experience.
+
+## Deployment
+
+To access the live version of the app, I have completed the deploying process on Render. You can visit the deployed app at [https://hey-destination.onrender.com]. The deployment on Render was straightforward, ensuring that the app is readily available for users to access and interact with. Feel free to explore the deployed version and provide feedback on any improvements or issues you may encounter.
+
+For detailed instructions on how to deploy and set up your environment to deploy on Render, please refer to the resources section.
 
 ## Resources
 

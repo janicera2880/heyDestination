@@ -28,7 +28,7 @@ class InquiriesController < ApplicationController
   end
 
   def render_not_found_response
-    render json: { error: 'Channel Not Found' }, status: :not_found
+    render json: { error: 'Inquiry Not Found' }, status: :not_found
   end
   
 end

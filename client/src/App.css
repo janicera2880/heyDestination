@@ -172,28 +172,7 @@ nav ul li a:hover {
   height: 100px;
 }
 
-.primary {
-  background-color: #007bff;
-  color: #d0d9df;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
 
-.primary:hover {
-  background-color: #addbe4;
-}
-
-.success-message {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 20px;
-}
 
 /*Activities Cards*/
 .activity-card {
@@ -552,7 +531,7 @@ h4 {
 }
 
 .view-card .carousel .slide img {
-  max-width: 100%;
+  max-width: 150%;
   max-height: 100%;
   object-fit: contain;
 }
@@ -1000,7 +979,8 @@ button.primary:disabled {
 }
 /* CSS for the villa-details-container */
 .villa-details-container {
-  max-width: 900px;
+  max-width: 1000px;
+  max-height: 600px;
   margin: 0 auto;
 }
 
@@ -1016,14 +996,14 @@ button.primary:disabled {
 }
 
 /* CSS for the Carousel */
-.carousel {
+.villa-info .carousel {
   width: 90%;
 }
 
 /* CSS for the Carousel images */
-.carousel img {
+.villa-info .carousel img {
   width: 80%; /* Adjust the image size as needed */
-  height: 70%; /* Adjust the image size as needed */
+  height: auto;
 }
 
 /* CSS for the villa-details */

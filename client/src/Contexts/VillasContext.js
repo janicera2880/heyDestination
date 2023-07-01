@@ -26,6 +26,19 @@ function VillasProvider({ children }) {
           )
         );
       };
+
+      const addInquiryToVilla = (newInquiry) => {
+        setVillas((prevVillas) =>
+          prevVillas.map((villa) => {
+            if (villa.id === newInquiry.villa.id) {
+            const updatedVilla = { ...villa };
+            updatedVilla.inquiries = [newInquiry, ...villa.inquiries];
+            return updatedVilla;
+            }
+            return villa;
+            })
+          );
+        };
      
       const value = {
         villas,
@@ -37,6 +50,7 @@ function VillasProvider({ children }) {
         addVilla,
         removeVilla,
         updateVilla,
+        addInquiryToVilla,
       };
     // Return component with VillasContext.Provider and values of its state
     return (
