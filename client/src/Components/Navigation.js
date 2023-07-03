@@ -31,15 +31,9 @@ function Navigation() {
           </li>
           <li>
             <NavLink to="/activities" activeClassName="active">
-             ACTIVITIES
+             THINGS TO DO
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/villas/search" activeClassName="active">
-              SEARCH
-            </NavLink>
-          </li>
-        
          
         </ul>
       </nav>

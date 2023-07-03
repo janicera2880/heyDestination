@@ -17,18 +17,18 @@ body {
 
 /*Navigation*/
 .navigation {
-  clear:both;
+  clear: both;
   overflow: hidden;
 }
 
 nav ul {
   list-style-type:none;
   display:list-item;
-  padding: 18px ;
+  padding: 22px ;
   background-size: 150% 100%;
   background-image: linear-gradient(-40deg, #afe0e0, #181e38, #71c9ba, #6f8696,#84d4ee);
   animation: 15s myGradient infinite;
-  border-radius: 85px;
+  border-radius: 90px;
   box-shadow: 5px 5px 20px #2c5ba3;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 6px;
@@ -36,13 +36,13 @@ nav ul {
 
 nav ul li {
   display: inline-block;
-  margin-right: 100px;
+  margin-right: 108px;
 }
 
 nav ul li a {
   text-decoration: none;
   color: #ece4e4;
-  padding: 5px;
+  padding: 10px;
 }
 
 nav ul li a.active {

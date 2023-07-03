@@ -140,7 +140,7 @@ Special credit to various open-source libraries and frameworks used in the devel
 
 ## Deployment
 
-To access the live version of the app, I have completed the deploying process on Render. You can visit the deployed app at [https://hey-destination.onrender.com]. The deployment on Render was straightforward, ensuring that the app is readily available for users to access and interact with. Feel free to explore the deployed version and provide feedback on any improvements or issues you may encounter.
+To access the live version of the app, I have completed the deploying process on Render. You can visit the deployed app at [hey-Destination](https://hey-destination.onrender.com). The deployment on Render was straightforward, ensuring that the app is readily available for users to access and interact with. Feel free to explore the deployed version and provide feedback on any improvements or issues you may encounter.
 
 For detailed instructions on how to deploy and set up your environment to deploy on Render, please refer to the resources section.
 

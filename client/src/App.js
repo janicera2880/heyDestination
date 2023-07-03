@@ -15,13 +15,11 @@ import About from './Components/About';
 import IncomingInquiry from './Components/IncomingInquiry';
 import { InquiriesContext } from './Contexts/InquiriesContext';
 import ManageVillas from './Components/ManageVillas';
-import LocationSearchPage from './Components/LocationSearchPage';
 import VillaDetails from './Components/VillaDetails';
 
 function App() {
   const { userAdmin, setUserAdmin } = useContext(UserAdminContext);
   const {
-    villa,
     villas,
     setVillas,
     userAdminVillas,
@@ -270,10 +268,7 @@ function App() {
             path="/villas"
             element={<VillasContainer villas={villas} />}
           />
-          <Route
-            path="/villas/search"
-            element={<LocationSearchPage villa={villa} villas={villas} />}
-          />
+         
           <Route path="/user_admin" element={<AdminPortal />} />
           <Route
             path="/villas/:id"
