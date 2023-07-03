@@ -24,7 +24,7 @@ class InquiriesController < ApplicationController
 
   # Retrieve and require the :inquiry parameter from the params object, and permit specific attributes.
   def inquiry_params
-    params.require(:inquiry).permit(:arrival, :departure, :guests, :full_name, :email, :phone, :message, :villa_id, :location_id)
+    params.require(:inquiry).permit(:arrival, :departure, :guests, :full_name, :email, :phone, :message, :villa_id)
   end
 
   def render_not_found_response

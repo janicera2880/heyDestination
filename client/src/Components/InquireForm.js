@@ -1,10 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { VillasContext } from "../Contexts/VillasContext";
+import { InquiriesContext } from "../Contexts/InquiriesContext";
 
 const InquireForm = () => {
-  const { addInquiryToVilla } = useContext(VillasContext);
-  const initialState = {
+
+  const { id } = useParams();
+  const villaId = parseInt(id);
+  const navigate = useNavigate();
+
+  const { addInquiry } = useContext(InquiriesContext);
+
+  const [values, setValues] = useState({
     arrival: "",
     departure: "",
     guests: 0,
@@ -12,76 +18,72 @@ const InquireForm = () => {
     email: "",
     phone: "",
     message: "",
-  };
-  const [values, setValues] = useState(initialState);
+  });
+  
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // New state for loading state
-  const { id } = useParams();
-  const villaID = parseInt(id);
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (!value) {
-      setValues({
-        ...values,
-        [name]: initialState[name],
-      });
-    } else {
-      setValues({
-        ...values,
-        [name]: value,
-      });
-    }
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true); // Enable loading state
+    setIsLoading(true);
 
-    fetch(`/villas/${villaID}/inquiries`, {
+    const newInquiry = {
+      ...values,
+      villa_id: villaId,
+    };
+
+    fetch(`/villas/${villaId}/inquiries`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(newInquiry),
     })
       .then((response) => {
         if (response.ok) {
           setErrors([]);
-          response.json().then((newInquiry) => addInquiryToVilla(newInquiry));
-          navigate("/villas");
+          response.json().then((newInquiry) => {
+            addInquiry(newInquiry);
+            navigate("/villas");
+          });
         } else {
           response.json().then((err) => {
             if (err.errors) {
-              setErrors(err.errors);
+              setErrors(Object.values(err.errors));
             } else {
               setErrors([err.error]);
             }
           });
         }
       })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrors(["An error occurred. Please try again."]);
+      })
       .finally(() => {
-        setIsLoading(false); // Disable loading state
+        setIsLoading(false);
       });
-
-    setValues(initialState);
   };
-
-  
 
   return (
     <div className="inquire-form">
-      <br />
-      <div className="inquire-form__header">
-      <h4>To make an inquiry regarding this villa, kindly complete the form below, and a dedicated villa specialist will contact you promptly.</h4>
-      </div>
-      <br />
-      <br />
+      <h4>
+        To make an inquiry regarding this villa, kindly complete the form below,
+        and a dedicated villa specialist will contact you promptly.
+      </h4>
+
       <form onSubmit={handleSubmit}>
-        <br />
-    < label>Arrival Date:</label>
+        <label>Arrival Date:</label>
         <input
           type="date"
           name="arrival"
@@ -90,8 +92,8 @@ const InquireForm = () => {
           value={values.arrival}
           onChange={handleChange}
         />
-        <br />
-        < label>Departure:</label>
+
+        <label>Departure:</label>
         <input
           type="date"
           name="departure"
@@ -100,7 +102,7 @@ const InquireForm = () => {
           value={values.departure}
           onChange={handleChange}
         />
-        <br />
+
         <input
           type="number"
           name="guests"
@@ -109,7 +111,7 @@ const InquireForm = () => {
           value={values.guests}
           onChange={handleChange}
         />
-        <br />
+
         <input
           type="text"
           name="full_name"
@@ -118,25 +120,25 @@ const InquireForm = () => {
           value={values.full_name}
           onChange={handleChange}
         />
-        <br />
+
         <input
-          type="email"
+          type="text"
           name="email"
           placeholder="Email Address"
           autoComplete="off"
           value={values.email}
           onChange={handleChange}
         />
-        <br />
+
         <input
-          type="tel"
+          type="text"
           name="phone"
-          placeholder="Phone Number (e.g., xxx-xxx-xxxx)"
+          placeholder="Must be 10 digits"
           autoComplete="off"
           value={values.phone}
           onChange={handleChange}
         />
-        <br />
+
         <textarea
           name="message"
           placeholder="Tell us about your group, your budget, and any other information to help curate your stay."
@@ -144,7 +146,6 @@ const InquireForm = () => {
           value={values.message}
           onChange={handleChange}
         ></textarea>
-        <br />
 
         <button className="primary" type="submit" disabled={isLoading}>
           {isLoading ? "Submitting..." : "Submit"}
@@ -153,7 +154,6 @@ const InquireForm = () => {
         {errors.length > 0 && (
           <ul style={{ color: "black" }}>
             {errors.map((err, index) => (
-              /* Display any errors returned by the server */
               <li key={index}>{err}</li>
             ))}
           </ul>

@@ -29,8 +29,7 @@ function App() {
   } = useContext(VillasContext);
   const { activities, setActivities } = useContext(ActivitiesContext);
   const { locations, setLocations } = useContext(LocationsContext);
-  const { setUserAdminInquiries, setVillaInquiries } =
-    useContext(InquiriesContext);
+  const { setUserAdminInquiries, setVillaInquiries } = useContext(InquiriesContext);
 
   useEffect(() => {
     fetch('/me')
@@ -272,7 +271,7 @@ function App() {
             element={<VillasContainer villas={villas} />}
           />
           <Route
-            path="/locations/search"
+            path="/villas/search"
             element={<LocationSearchPage villa={villa} villas={villas} />}
           />
           <Route path="/user_admin" element={<AdminPortal />} />

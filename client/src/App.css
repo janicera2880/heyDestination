@@ -169,7 +169,7 @@ nav ul li a:hover {
 }
 
 .inquire-form__form textarea {
-  height: 100px;
+  height: 200px;
 }
 
 
@@ -936,7 +936,7 @@ h2 {
 }
 
 .error-list {
-  color: red;
+  color: rgb(20, 15, 15);
   list-style: none;
   padding: 0;
 }

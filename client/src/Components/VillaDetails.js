@@ -20,7 +20,6 @@ function VillaDetails() {
         console.error(error);
       });
   }, [villaID, setVilla]);
-  
 
   function VillaComponent() {
     return (
@@ -53,7 +52,7 @@ function VillaDetails() {
             </div>
           </div>
         </div>
-        <InquireForm />
+        <InquireForm villaId={villa.id} />
       </div>
     );
   }

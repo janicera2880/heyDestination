@@ -1,7 +1,7 @@
 class VillasController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     before_action :authorize
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize, only: [:index, :show, :search]
   
     # GET /villas
     def index
@@ -18,7 +18,7 @@ class VillasController < ApplicationController
       villa = find_villa
       render json: villa, include: :location, status: :ok
     end
-    
+
      # GET /villas/search/:term
     def search
     term = params[:term].downcase
