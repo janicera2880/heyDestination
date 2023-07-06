@@ -1,14 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
-import { LocationsContext } from '../Contexts/LocationsContext';
-import { useNavigate } from 'react-router-dom';
+
 
 
 //Renders a form for adding a new activity.
 const AddActivityForm = () => {
   const { addActivity } = useContext(ActivitiesContext);
-  const { locations } = useContext(LocationsContext);
-  const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
 
   const [name, setName] = useState('');
@@ -53,7 +50,6 @@ const AddActivityForm = () => {
       image,
       details,
       categories,
-      locations: selectedLocations,
     };
 
     try {
@@ -73,7 +69,7 @@ const AddActivityForm = () => {
         setDetails('');
         setCategories('Sports');
         setSelectedLocations([]);
-        navigate('/activities');
+       
       } else {
         const errorData = await response.json();
         console.error('Error:', errorData);
@@ -83,11 +79,6 @@ const AddActivityForm = () => {
     }
   };
 
-  const handleLocationChange = (event) => {
-    const selectedLocationIds = Array.from(event.target.selectedOptions, (option) => option.value);
-    const selectedLocations = locations.filter((location) => selectedLocationIds.includes(location.id));
-    setSelectedLocations(selectedLocations);
-  };
 
   return (
     <div className="add-activity">
@@ -120,17 +111,6 @@ const AddActivityForm = () => {
             <option value="Lifestyle">Lifestyle</option>
             <option value="Events">Events</option>
             <option value="Unique">Unique</option>
-          </select>
-        </label>
-
-        <label>
-          Locations:
-          <select multiple value={selectedLocations.map((location) => location.id)} onChange={handleLocationChange}>
-            {locations.map((location) => (
-              <option key={location.id} value={location.id}>
-                {location.city}, {location.country}
-              </option>
-            ))}
           </select>
         </label>
 

@@ -1,14 +1,11 @@
 import React, { useContext, useState } from 'react';
 import ActivityCard from './ActivityCard';
-import AddActivityForm from './AddActivityForm';
 import { ActivitiesContext } from '../Contexts/ActivitiesContext';
-import { UserAdminContext } from '../Contexts/UserAdminContext';
 import FilterCategory from './FilterCategory';
 
 // Renders the ActivityContainer component, showing a list of activities and a form to add an activity.
 const ActivityContainer = () => {
   const { activities } = useContext(ActivitiesContext);// Accessing activities data from the ActivitiesContext
-  const { userAdmin } = useContext(UserAdminContext);// Accessing userAdmin data from the UserAdminContext
   const [filterSearch, setFilterSearch] = useState('All');// Setting up a state variable for filtering activities
 
   const selectFilter = (event) => {
@@ -43,8 +40,7 @@ const ActivityContainer = () => {
       </ul>
       <br />
       <br />
-       {/* Render the AddActivityForm component only if the user is an admin = true */}
-      {userAdmin && <AddActivityForm />}
+     
     </div>
   );
 };
