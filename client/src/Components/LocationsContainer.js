@@ -31,7 +31,7 @@ const LocationsContainer = () => {
       )}
         <br />
         <br />
-      <div className="locations-wrapper">
+        <div className="locations-card-wrapper">
         {/* maps over an array of locations to render multiple LocationsCard components, passing each location as a prop. */}
         {locations.map((location) => (
           <LocationsCard key={location.id} location={location} />
