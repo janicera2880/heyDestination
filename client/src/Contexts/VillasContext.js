@@ -13,11 +13,7 @@ function VillasProvider({ children }) {
         setVillas([...villas, villa]);
       };
     
-    //filters an array of villas and removes the one whose id matches the villaId passed in
-    // the filtered villas array is then set as the new state.
-      const removeVilla = (villaId) => {
-        setVillas(villas.filter((villa) => villa.id !== villaId));
-      };
+   
     
       const updateVilla = (updatedVilla) => {
         setVillas((prevVillas) =>
@@ -37,7 +33,6 @@ function VillasProvider({ children }) {
         userAdminVillas,
         setUserAdminVillas,
         addVilla,
-        removeVilla,
         updateVilla,
       };
     // Return component with VillasContext.Provider and values of its state

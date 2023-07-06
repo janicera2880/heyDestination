@@ -6,7 +6,6 @@ import { LocationsContext } from "../Contexts/LocationsContext";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { ActivitiesContext } from '../Contexts/ActivitiesContext';
 
 /*The component renders a list of villas based on the selected location. 
 It also includes a button to toggle the display of a map, and if the user is an admin, 
@@ -14,22 +13,13 @@ it shows a form to add a new villa.*/
 const LocationVillaPage = () => {
   const { locations } = useContext(LocationsContext);
   const { userAdmin } = useContext(UserAdminContext);
-  const { activities } = useContext(ActivitiesContext);
-
-
- 
-
+  
   const params = useParams();// Accessing the route parameters
   const locationId = parseInt(params.id);// Parsing the locationId from the route parameters
   const showLocation = locations.find((location) => location.id === locationId);// Find the location object with matching locationId
 
   const renderVillas = showLocation && showLocation.villas.map((villa) => {
-    const relatedActivities = activities.filter((activity) => {
-      if (showLocation.activity_locations) {
-        return showLocation.activity_locations.includes(activity.id);
-      }
-      return false;
-    });
+    
     
   
     return (
@@ -57,21 +47,10 @@ const LocationVillaPage = () => {
           See Full Details...
         </Link>
         <br />
-        {/* Display the related activities */}
-        {relatedActivities.length > 0 && (
-          <div>
-            <h3>Related Activities:</h3>
-            <ul>
-              {relatedActivities.map((activity) => (
-                <li key={activity.id}>{activity.name}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <br />
+       
       </div>
-    );
-  });
+      );
+    });
 
   return (
     <div className="locations-villa">

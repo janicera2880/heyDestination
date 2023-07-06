@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:index, :show, :create] do
     resources :villas
-    resources :activities
+    resources :activity_locations
   end
   
   resources :villas, only: [:index, :show, :create] do

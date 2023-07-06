@@ -801,7 +801,7 @@ select {
 
 .add-activity input[type="text"],
 .add-activity textarea {
-  width: 90%;
+  width: 80%;
 }
 
 .add-activity input[type="submit"] {
@@ -821,14 +821,14 @@ select {
   width: 500px;
   margin: 0 auto;
   padding: 28px;
-  background-color: #5799aa;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #14434e;
+  border: 3px solid #79979b;
+  border-radius: 10px;
 }
 
 .edit-form h4 {
   font-size: 18px;
-  color: #0fc5c5;
+  color: #63caca;
   margin-bottom: 10px;
 }
 
@@ -846,11 +846,11 @@ select {
 .edit-form input[type="text"],
 .edit-form input[type="number"],
 .edit-form textarea {
-  width: 100%;
-  padding: 8px;
+  width: 95%;
+  padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 15px;
 }
 
 
@@ -869,7 +869,7 @@ select {
 }
 
 .villas-edit {
-  width: 700px;
+  width: 600px;
   padding: 20px;
   margin: 20px;
   background-color: #093742;
@@ -879,7 +879,7 @@ select {
 
 .villas-edit h3 {
   font-size: 20px;
-  color: #0fc5c5;
+  color: #97bdbd;
   margin-bottom: 10px;
 }
 
@@ -893,7 +893,7 @@ select {
 .villas-edit h4,
 .villas-edit h5 {
   margin-top: 10px;
-  color: #bce0e0;
+  color: #a2dddd;
   text-align: justify;
 }
 

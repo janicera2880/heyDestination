@@ -106,6 +106,10 @@ function ManageVillas() {
             return (
                 
                 <div className='villas-edit'key={villa.id}>
+          <Link className="some-button" to={"/user_admin"}> Go Back To Admin Portal</Link>
+                    <br />
+                    <br />
+                    <br />
                     <br />
                     <h3>{villa.name}</h3>
                     <br />
@@ -128,11 +132,9 @@ function ManageVillas() {
         <div className="villa-component">
     
           {villaContent()}
-          <br />
-          <br />
-          <br />
-          <br />
-            <Link className="some-button" to={"/user_admin"}> Go Back To Admin Portal</Link>
+          
+         
+            
         </div>
     );
 }

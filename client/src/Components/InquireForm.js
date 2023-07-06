@@ -129,7 +129,7 @@ const InquireForm = () => {
         <input
           type="text"
           name="email"
-          placeholder="Email Address"
+          placeholder="Email Address, e.g., johndoe@gmail.com"
           autoComplete="off"
           value={values.email}
           onChange={handleChange}
