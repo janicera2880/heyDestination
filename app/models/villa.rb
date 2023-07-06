@@ -4,7 +4,7 @@ class Villa < ApplicationRecord
     belongs_to :user_admin
     belongs_to :location
     has_many :inquiries
-    #has_many_attached :images
+   
 
     # Validations
     # Ensures length is correct and presence of attributes
@@ -24,21 +24,6 @@ class Villa < ApplicationRecord
     validates :image8, presence: true
     validates :image9, presence: true
     validates :image10, presence: true
-    #validate :acceptable_images
-
-    #def acceptable_images
-        #return unless images.attached?
-      
-        #images.each do |image|
-          #if image.blob.byte_size > 1.megabyte
-            #errors.add(:images, "file is too big")
-          #end
     
-          #acceptable_types = ["image/jpeg", "image/png"]
-          #unless acceptable_types.include?(image.blob.content_type)
-           # errors.add(:images, "must be a JPEG or PNG")
-          #end
-        #end
-      #end
 
 end

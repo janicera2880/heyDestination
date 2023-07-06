@@ -71,7 +71,7 @@ nav ul li a:hover {
   gap: 70px;
   width: 105%;
   padding: 5px;
-  box-sizing:content-box;
+  box-sizing: border-box;
   margin: 0 auto;
 
 }
@@ -89,7 +89,7 @@ nav ul li a:hover {
 }
 
 .locations-card p {
-  margin: 5;
+  margin: 5px;
   
 }
 
@@ -170,6 +170,14 @@ nav ul li a:hover {
 
 .inquire-form__form textarea {
   height: 200px;
+}
+
+.popup-success {
+  background-color: #e1f2dd;
+  color: #2c7d3e;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
 }
 
 
@@ -883,47 +891,6 @@ select {
   text-align: justify;
 }
 
-/*search*/
-.advanced-search {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.advanced-search input[type="text"] {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #90d1ab;
-  border-radius: 20px;
-  width: 500px;
-  margin-left: 50px;
-  margin-right: 10px;
-  outline: none;
-}
-
-input[type="text"]::placeholder {
-  color: #3a6e91a4;
-}
-
-.search-btn {
-  padding: 8px 10px;
-  font-size: 16px;
-  background-color: #afc9c2;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  outline: none;
-}
-
-.search-btn:hover {
-  background-color: #8bd1d1;
-}
-
-.search-btn:focus {
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-}
 
 /*Add Villa Form*/
 .villa-form {
@@ -1033,4 +1000,12 @@ button.primary:disabled {
   font-size: 16px;
   margin-bottom: 10px;
 }
+.popup-success-main {
+  background-color: #5cb85c;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+
 

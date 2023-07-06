@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { VillasContext } from "../Contexts/VillasContext";
 import { Carousel } from "react-responsive-carousel";
@@ -9,6 +9,7 @@ function VillaDetails() {
   const { id } = useParams();
   const villaID = parseInt(id);
   const { villa, setVilla } = useContext(VillasContext);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     fetch(`/villas/${villaID}`)
@@ -52,12 +53,17 @@ function VillaDetails() {
             </div>
           </div>
         </div>
-        <InquireForm villaId={villa.id} />
+        <InquireForm villaId={villa.id} setIsSubmitted={setIsSubmitted} isSubmitted={isSubmitted} />
+        {isSubmitted && (
+        <div className="popup-success-main">
+        Thank you for expressing your interest! We kindly request your patience for a response within 1 to 3 business days. Our dedicated agent will reach out to you promptly.
+        </div>
+        )}
       </div>
     );
   }
 
-  return <div className="user-post-details">{villa ? <VillaComponent /> : "Loading villa..."}</div>;
+  return <div className="villa-details-component">{villa ? <VillaComponent /> : "Loading villa..."}</div>;
 }
 
 export default VillaDetails;
