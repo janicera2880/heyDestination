@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddVillaForm from "./AddVillaForm";
@@ -17,11 +17,7 @@ const LocationVillaPage = () => {
   const { activities } = useContext(ActivitiesContext);
 
 
-  const [showMap, setShowMap] = useState(false);// Setting up a state variable to toggle the display of the map
-
-  const toggleMap = () => {
-    setShowMap(!showMap);// Toggle the showMap state between true and false
-  };
+ 
 
   const params = useParams();// Accessing the route parameters
   const locationId = parseInt(params.id);// Parsing the locationId from the route parameters
@@ -80,35 +76,17 @@ const LocationVillaPage = () => {
   return (
     <div className="locations-villa">
       <div className="locationsvilla-wrapper">
-        <h3>
-          <em>{showLocation ? showLocation.city : ""}</em>
-        </h3>
-        <h4>{showLocation ? showLocation.country : ""}</h4>
+      <h4>Our Exquisite Selection Of Luxury Villa Rentals In Our Renowned Destination</h4>
+      <br />
+      <h4>{showLocation ? showLocation.city : ""}</h4>,<h4>{showLocation ? showLocation.country : ""}</h4>
+        
         <br />
-        <br />
-        <h4>Browse To See Available Villas</h4>
+        
         <br />
 
         {renderVillas}
 
-        <br />
-        {showMap && (
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102754.5547056764!2d25.338228928337852!3d36.4072637092345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1499ce86adfd9ff7%3A0xb2a761f740d68afc!2sSantorini!5e0!3m2!1sen!2sus!4v1687805399299!5m2!1sen!2sus"
-            text="Maps"
-            width="100%"
-            title="Map of Villas"
-            height="400"
-            frameBorder="0"
-            style={{ border: 0 }}
-            allowFullScreen
-          ></iframe>
-        )}
-        <br />
-        <button className="some-button" onClick={toggleMap}>
-          {showMap ? "Hide Map" : "Show Map"}
-        </button>
-        <br />
+        <br />      
         <br />
         {userAdmin && showLocation && <AddVillaForm />}
       </div>

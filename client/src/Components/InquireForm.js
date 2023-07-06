@@ -107,7 +107,7 @@ const InquireForm = () => {
           value={values.departure}
           onChange={handleChange}
         />
-
+        <label>Number Of Guests:</label>
         <input
           type="number"
           name="guests"
