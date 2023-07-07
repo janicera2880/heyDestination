@@ -3,6 +3,7 @@ import { LocationsContext } from "../Contexts/LocationsContext";
 import LocationsCard from "./LocationsCard";
 import AddLocationForm from "./AddLocationForm";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
+import { Link } from "react-router-dom";
 
 // Uses the useContext hook to access the LocationsContext and UserAdminContext context values
 const LocationsContainer = () => {
@@ -16,9 +17,13 @@ const LocationsContainer = () => {
 
   return (
     <div className="locations-container">
+      
       {/* If userAdmin is truthy, it renders a button that toggles the value of showForm*/}
       {userAdmin && (
         <div>
+           <Link className="some-button" to={"/user_admin"}> Go Back To Admin Portal</Link>
+           <br />
+           <br />
           {/* Render a button to toggle the display of the AddLocationForm */}
           <button className="some-button" onClick={toggleForm}>
             {showForm ? "Hide Add Location Form" : "Show Add Location Form"}
@@ -35,8 +40,10 @@ const LocationsContainer = () => {
         {/* maps over an array of locations to render multiple LocationsCard components, passing each location as a prop. */}
         {locations.map((location) => (
           <LocationsCard key={location.id} location={location} />
+          
         ))}
       </div>
+     
     </div>
   );
 };
