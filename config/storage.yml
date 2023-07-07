@@ -6,20 +6,14 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-cloudinary:
-  service: Cloudinary
-  cloud_name: <%= ENV[''] %>
-  api_key: <%= ENV[''] %>
-  api_secret: <%= ENV[''] %>
-
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-# amazon:
-#   service: S3
-#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-#   region: us-east-1
-#   bucket: your_own_bucket
+ amazon:
+   service: S3
+   access_key_id: <%= Rails.application.credentials.dig(:aws, :AKIARTN4A7UZ7RESFPSI) %>
+   secret_access_key: <%= Rails.application.credentials.dig(:aws, :G1YyZ25F78edGanCz7Uv2cQXCRobDXYRAw3aWTox) %>
+   region: us-east-1
+   bucket: ecinajthur-bucket
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

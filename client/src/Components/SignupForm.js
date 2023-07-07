@@ -12,11 +12,12 @@ const SignupForm = () => {
         password: '',
         password_confirmation: '',
         admin: true,
-        profile_image: '',
+        profile_image: null,
   });
 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedFileName, setSelectedFileName] = useState('');
   const { setUserAdmin } = useContext(UserAdminContext);
   const navigate = useNavigate();
 
@@ -27,38 +28,61 @@ const SignupForm = () => {
     
     setIsLoading(true);
 
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
+    const userData = new FormData();
+    for (const key in formData) {
+      if (key === 'profile_image') {
+        userData.append(key, formData[key]);
+      } else {
+        userData.append(key, formData[key]);
+      }
+    }
+
+    fetch('/signup', {
+      method: 'POST',
+      body: userData,
     })
-      .then((r) => {
+      .then((response) => {
         setIsLoading(false);
-        if (r.ok) {
-          setFormData(false);
-          r.json().then((userAdmin) => {
+        if (response.ok) {
+          setFormData({
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            password_confirmation: '',
+            admin: true,
+            profile_image: null,
+          });
+          setSelectedFileName(''); // Clear the selected file name
+          response.json().then((userAdmin) => {
             setUserAdmin(userAdmin);
             setErrors([]);
-            navigate("/");
+            navigate('/');
           });
         } else {
-          r.json().then((err) => setErrors(err.errors));
+          response.json().then((error) => setErrors(error.errors));
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error('Error:', error);
         setIsLoading(false);
       });
-  }
-//Updates the form data state with the new input value.
+  };
+
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, type, files } = e.target;
+
+    if (type === 'file') {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: files[0], // Updated to store the File object
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -133,14 +157,17 @@ const SignupForm = () => {
       <br />
 
       <label>
-        Profile Picture:
+      Profile Picture:
+      <div className="profile-pic-input">
         <input
-          type="text"
+          type="file"
           name="profile_image"
-          value={formData.profile_image}
+          accept="image/jpeg, image/png"
           onChange={handleInputChange}
         />
-      </label>
+       <span>{selectedFileName || 'Choose a file'}</span> {/* Display the selected file name */}
+      </div>
+    </label>
       <br />
 
       <button className="primary" type="submit">

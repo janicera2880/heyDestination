@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext, useState} from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import AddVillaForm from "./AddVillaForm";
@@ -17,6 +17,11 @@ const LocationVillaPage = () => {
   const params = useParams();// Accessing the route parameters
   const locationId = parseInt(params.id);// Parsing the locationId from the route parameters
   const showLocation = locations.find((location) => location.id === locationId);// Find the location object with matching locationId
+  const [showForm, setShowForm] = useState(false); // State variable for showing/hiding the form
+
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
 
   const renderVillas = showLocation && showLocation.villas.map((villa) => {
     
@@ -60,14 +65,15 @@ const LocationVillaPage = () => {
       <h4>{showLocation ? showLocation.city : ""}</h4>,<h4>{showLocation ? showLocation.country : ""}</h4>
         
         <br />
-        
         <br />
-
+     
         {renderVillas}
 
         <br />      
         <br />
-        {userAdmin && showLocation && <AddVillaForm />}
+         {/* Toggle button */}
+         <button className="some-button" onClick={toggleForm}>{showForm ? "Hide Form" : "Click Here to Create New Villa"}</button>
+        {userAdmin && showLocation && showForm && <AddVillaForm />}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ class UserAdminsController < ApplicationController
   # GET /user_admins
   def index
     user_admins = UserAdmin.all
-    render json: user_admins, include: ['villas', 'inquiries'], status: 200
+    render json: user_admins, include: ['villas', 'inquiries'], status: :ok
   end
 
   # GET /user_admins/:id
