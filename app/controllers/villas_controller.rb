@@ -55,7 +55,7 @@ class VillasController < ApplicationController
         villa.destroy
         head :no_content
       else
-        render json: { error: "You are not authorized to delete this post" }, status: :unauthorized
+        render json: { error: "You are not logged in" }, status: :unauthorized
       end
     end
     
