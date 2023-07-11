@@ -16,35 +16,44 @@ Inquiry.destroy_all
 ActivityLocation.destroy_all
 
 
-u1 = UserAdmin.create!(
+janice = UserAdmin.create!(
   first_name: "Janice",
   last_name: "Alecha",
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
-  admin: true,
-  profile_image: "https://fashionterest.com/wp-content/uploads/2019/01/Top-female-models-in-the-world-6-766x1024.jpg"
+  admin: true 
+)
+janice.profile_pic.attach(
+  io: File.open('db/images/profile_pic1.png'),
+  filename: 'profile_pic1.png',
+  content_type: 'application/png'
 )
 
-
-u2 = UserAdmin.create!(
+geneveive = UserAdmin.create!(
   first_name: "Genevieve",
   last_name: "Lopez",
   password: "admingene",
   email: "genlopez05@gmail.com",
-  admin: true,
-  profile_image: "https://pbs.twimg.com/profile_images/1472792284458532866/PS1qng6P_400x400.jpg"
+  admin: true
+)
+geneveive.profile_pic.attach(
+  io: File.open('db/images/profile_pic3.png'),
+  filename: 'profile_pic3.png',
+  content_type: 'application/png'
 )
 
-
-u3 = UserAdmin.create!(
+claire = UserAdmin.create!(
   first_name: "Claire",
   last_name: "Smith",
   password: "adminclaire",
   email: "clairesmith95@gmail.com",
-  admin: true,
-  profile_image: "https://www.janairmodels.in/wp-content/uploads/2022/12/KELLY-Janair-Models-2-380x380.jpg" 
+  admin: true
 )
-
+claire.profile_pic.attach(
+  io: File.open('db/images/profile_pic4.png'),
+  filename: 'profile_pic4.png',
+  content_type: 'application/png'
+)
 
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")
 l2 = Location.create!(city: "Loire Valley", country: "France", image: "https://cdn.britannica.com/87/687-050-06103996/chateau-Villandry-gardens-Tours-France-Loire-Valley-1532.jpg", description: "The Loire Valley, spanning 280 kilometres, is a valley located in the middle stretch of the Loire river in central France, in both the administrative regions Pays de la Loire and Centre-Val de Loire. The area of the Loire Valley comprises about 800 square kilometres.")

@@ -8,11 +8,11 @@ class UserAdmin < ApplicationRecord
   validates :first_name, :last_name, :admin, presence: true
   validates :password, length: { in: 8..45 }
   validates :email, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validate :profile_image_validation
+  validate :profile_pic_validation
 
-  def profile_image_validation
+  def profile_pic_validation
     if profile_pic.attached?
-      if profile_pic.blob.byte_size > 3.megabyte
+      if profile_pic.blob.byte_size > 5.megabyte
         errors.add(:profile_pic, "file is too big")
       end
 
