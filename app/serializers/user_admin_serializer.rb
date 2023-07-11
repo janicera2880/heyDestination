@@ -1,15 +1,13 @@
 class UserAdminSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :email, :admin, :profile_image_url
+  include Rails.application.routes.url_helpers
 
+  attributes :id, :first_name, :last_name, :email, :admin, :profile_pic
   has_many :villas
   has_many :inquiries, through: :villas
 
-  def profile_image_url
-    if object.profile_image.attached?
-      Rails.application.routes.url_helpers.rails_blob_url(object.profile_image)
-    else
-      nil
-    end
+  def profile_pic
+    rails_blob_path(object.profile_pic, only_path: true) if object.profile_pic.attached?
   end
+
 end
 

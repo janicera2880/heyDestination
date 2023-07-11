@@ -12,9 +12,10 @@ const SignupForm = () => {
         password: '',
         password_confirmation: '',
         admin: true,
-        profile_image: null,
+        profile_pic: null,
   });
 
+ 
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedFileName, setSelectedFileName] = useState('');
@@ -51,7 +52,7 @@ const SignupForm = () => {
             password: '',
             password_confirmation: '',
             admin: true,
-            profile_image: null,
+            profile_pic: null,
           });
           setSelectedFileName(''); // Clear the selected file name
           response.json().then((userAdmin) => {
@@ -161,7 +162,7 @@ const SignupForm = () => {
       <div className="profile-pic-input">
         <input
           type="file"
-          name="profile_image"
+          name="profile_pic"
           accept="image/jpeg, image/png"
           onChange={handleInputChange}
         />
