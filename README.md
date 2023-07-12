@@ -48,6 +48,64 @@
 
 - Backend: The backend of the application is developed using Ruby on Rails, providing a robust and scalable server-side framework. Ruby on Rails facilitates efficient data management, authentication, and seamless communication with the front-end.
 
+**File Upload Management with Active Storage and AWS S3 Cloud Service**
+
+The hey-Destination application utilizes Active Storage and AWS S3 for efficient and scalable file upload management. Active Storage is an integrated file attachment library in Ruby on Rails, and AWS S3 (Simple Storage Service) is a cloud storage service provided by Amazon Web Services. This powerful combination ensures smooth file uploads and storage.
+
+To set up and use Active Storage with AWS S3 in your own Ruby on Rails application, follow these steps:
+
+1. Set up Active Storage:
+
+- Install the required dependencies by running *rails active_storage:install*.
+- Generate the necessary migration files with *rails db:migrate*.
+- Configure Active Storage to use AWS S3 for file storage by adding the following line to your *config/environments/development.rb* and *config/environments/production.rb* files:
+
+```
+config.active_storage.service = :amazon
+```
+
+2. Set up AWS S3:
+
+- Create an AWS S3 bucket to store your uploaded files.
+- Set up your AWS credentials (Access Key ID and Secret Access Key) either through environment variables example Dotenv or a credentials file.
+- Add the aws-sdk-s3 gem to your Gemfile: gem "aws-sdk-s3", require: false.
+- Run bundle install to install the gem.
+
+3. Configure AWS S3 settings in your Rails application:
+
+- In config/storage.yml set up AWS S3 configurations, such as the region and bucket name.
+
+```
+amazon:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  region: us-east-1
+  bucket: your_bucket_name
+```
+4. Use Active Storage in your application:
+
+- Attach a file to a model by adding the necessary association and declaration. For example, if you have a User model and want to attach a profile picture, you can add the following code:
+
+```
+class User < ApplicationRecord
+  has_one_attached :profile_picture
+end
+
+```
+- In your form, use the appropriate form field to handle file uploads:
+
+```
+<label>
+      Profile Picture:
+      <div className="profile-pic-input">
+        <input
+          type="file"
+          name="profile_pic"
+          accept="image/jpeg, image/png"
+          onChange={handleInputChange}
+        />
+```
 ## Requirements
 
 - Ruby 2.7.4

@@ -35,6 +35,7 @@ class UserAdminsController < ApplicationController
   def user_admin_params
     params.permit(:first_name, :last_name, :password, :password_confirmation, :email, :admin, :profile_pic)
   end
+  
 
   # Find a user admin by ID
   def find_user_admin
