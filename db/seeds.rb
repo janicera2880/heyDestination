@@ -16,44 +16,20 @@ Inquiry.destroy_all
 ActivityLocation.destroy_all
 
 
-janice = UserAdmin.create!(
+user1 = UserAdmin.create!(
   first_name: "Janice",
   last_name: "Alecha",
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
   admin: true 
 )
-janice.profile_pic.attach(
-  io: File.open('db/images/profile_pic1.png'),
-  filename: 'profile_pic1.png',
-  content_type: 'application/png'
+user1.profile_pic.attach(
+  io: File.open(Rails.root.join('./public/image/profilepic2.jpg')),
+  filename: 'profilepic2.jpg',
+  content_type: 'image/jpeg'
 )
 
-geneveive = UserAdmin.create!(
-  first_name: "Genevieve",
-  last_name: "Lopez",
-  password: "admingene",
-  email: "genlopez05@gmail.com",
-  admin: true
-)
-geneveive.profile_pic.attach(
-  io: File.open('db/images/profile_pic3.png'),
-  filename: 'profile_pic3.png',
-  content_type: 'application/png'
-)
 
-claire = UserAdmin.create!(
-  first_name: "Claire",
-  last_name: "Smith",
-  password: "adminclaire",
-  email: "clairesmith95@gmail.com",
-  admin: true
-)
-claire.profile_pic.attach(
-  io: File.open('db/images/profile_pic4.png'),
-  filename: 'profile_pic4.png',
-  content_type: 'application/png'
-)
 
 l1 = Location.create!(city: "Guanacaste", country: "Costa Rica", image: "https://media.cntraveller.com/photos/611bf67d3e186825295c3365/16:9/w_2560%2Cc_limit/Aerial-32-Manuel-Antonio.jpg", description: "Guanacaste, a province in northwestern Costa Rica bordering the Pacific, is known for its beaches and biodiverse parkland. Its Santa Rosa National Park is home to rare dry tropical forest, surfing sites and some 250 bird species. Endless beaches include Playa Blanca, with its calm waters, and Playa Hermosa, popular for diving and water sports. Papagayo Peninsula hosts luxury resorts and golf courses.")
 l2 = Location.create!(city: "Loire Valley", country: "France", image: "https://cdn.britannica.com/87/687-050-06103996/chateau-Villandry-gardens-Tours-France-Loire-Valley-1532.jpg", description: "The Loire Valley, spanning 280 kilometres, is a valley located in the middle stretch of the Loire river in central France, in both the administrative regions Pays de la Loire and Centre-Val de Loire. The area of the Loire Valley comprises about 800 square kilometres.")
@@ -140,7 +116,7 @@ image7: "https://photos.jamaicavillas.com/photos/dsc_9119.jpg",
 image8: "https://photos.jamaicavillas.com/photos/dsc_8677.jpg",
 image9: "https://photos.jamaicavillas.com/photos/dsc_5629.jpg",
 image10: "https://photos.jamaicavillas.com/photos/dsc_5892.jpg",
-location_id: l3.id, user_admin_id: u1.id)
+location_id: l3.id, user_admin_id: user1.id)
 
 v2 = Villa.create!(name: "Bastide et Mas du Droy", highlights: "Bastide du Droy is a magnificent 100 acre estate consisting of a Bastide du Droy and an adjoining farmhouse with a park, swimming pool and tennis court. Immerse yourself in the romance of our secluded villa nestled along the picturesque coastline. Wake up to breathtaking ocean views and the sound of waves crashing, creating the perfect ambiance for a romantic retreat.", 
 features: "The landscape in this region is particularly picturesque, encompassing rolling hills dotted with quaint hilltop villages and countless hiking trails, extensive sunflower fields, olive groves and a formidable area of vineyards. This region is steep with history with plenty of sites to visit
@@ -163,7 +139,7 @@ image7: "https://photos.jamaicavillas.com/photos/1576591396-3f3262de806888441210
 image8: "https://photos.jamaicavillas.com/photos/1576591407-ac862f604591fd1a2ca90151700c514cjpeg",
 image9: "https://photos.jamaicavillas.com/photos/1576591395-3b561efa9a6e1ace367908000b47b501jpeg",
 image10: "https://photos.jamaicavillas.com/photos/1576591394-2a94dafb85243c12e3d482270901f6f8jpeg",
-location_id: l2.id, user_admin_id: u1.id)
+location_id: l2.id, user_admin_id: user1.id)
 
 v3 = Villa.create!(name: "Villa Estrella", highlights: "This all-inclusive villa is located in the exclusive beachside community of Ocotal, in the Guanacaste region of Costa Rica, overlooking the Gulf of Papagayo and the Pacific Ocean. Indulge in the intimate luxury of our villa, featuring a private pool surrounded by lush gardens. Enjoy romantic evenings under the starlit sky, savoring candlelit dinners prepared by our private chef.", 
 features: "Villa Estrella is perfectly situated for guests to enjoy swimming, scuba diving, snorkeling, fishing, and sailing in the pristine waters of the Gulf of Papagayo. Villa does not have direct access to the beach but guests have access to the private beach club in Ocotal. It is a 15-minute walk down to the beach or the villa driver service can shuttle you back and forth at your leisure.", 
@@ -185,7 +161,7 @@ image7: "https://photos.jamaicavillas.com/photos/1623956643-villa-estrella-sv-17
 image8: "https://photos.jamaicavillas.com/photos/1623956654-villa-estrella-sv-43.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1623956677-villa-estrella-sv-95.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1623956667-villa-estrella-sv-73.jpg",
-location_id: l1.id, user_admin_id: u1.id)
+location_id: l1.id, user_admin_id: user1.id)
 
 v4 = Villa.create!(name: "Ambiance Sea Salt at the Tryall Club", highlights: "Ambiance Sea Salt is one of the most stylish villas in this collection. Exquisite classic Jamaican architecture defines 7,700 square feet of living, dining, entertaining, and relaxation spaces. Exteriors are lushly landscaped with native trees and a host of flowering plants.", 
 features: "Various living spaces, each quite private, are connected by landscaped walkways. The design includes textures of mahogany and Italian Flat screen cable televisions and wireless Internet throughout the villa. The state-of-the-art sound system features Sirius satellite radio.
@@ -209,7 +185,7 @@ image7: "https://photos.jamaicavillas.com/photos/1616075961-13dsc-9651-aurorahdr
 image8: "https://photos.jamaicavillas.com/photos/1616075952-3dsc-9386-aurorahdr2018-edit-edit.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1616075962-15dsc-9696-aurorahdr2018-edit-edit.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1616075968-21dsc-9868-aurorahdr2018-edit-edit.jpg",
-location_id: l4.id, user_admin_id: u1.id)
+location_id: l4.id, user_admin_id: user1.id)
 
 v5 = Villa.create!(name: "Water Villa with Pool at Joali", highlights: "Discover the enchantment of life on the water from this one-bedroom beauty, perfect for honeymoons. Escape to our hidden gem, tucked away in a serene countryside setting. Experience ultimate privacy in our romantic villa with its own secluded garden, providing an oasis of tranquility for couples seeking a romantic getaway.", 
 features: "Upon arrival at the Male Airport, guests will receive a warm welcome into the exclusive JOALI airport lounge, offering a private and serene environment to unwind and relax before their transfer to the resort. 
@@ -236,7 +212,7 @@ image7: "https://photos.jamaicavillas.com/photos/1624375139-8zianue4.jpeg",
 image8: "https://photos.jamaicavillas.com/photos/1624375182-rlnvefik.jpeg",
 image9: "https://photos.jamaicavillas.com/photos/1624375158-geeeglmy.jpeg",
 image10: "https://photos.jamaicavillas.com/photos/1624375159-gjsp-jbm.jpeg",
-location_id: l5.id, user_admin_id: u1.id)
+location_id: l5.id, user_admin_id: user1.id)
 
 v6 = Villa.create!(name: "Ani Thailand", highlights: "Located on the unspoiled island of Koh Yao Noi within two acres half a hectare of lush, well-tended gardens, Ani offers an entire, all-inclusive, private resort designed exclusively for a single group of guests. Rejuvenate your senses with our spa-inspired villa retreat. Pamper yourselves with couples massages, unwind in the private jacuzzi, and let the stress melt away as you indulge in a peaceful and romantic ambiance.", 
 features: "With spellbinding oceanfront views, the resort can accommodate up to 20 guests across two Ocean Villas, two Family Villas, each with two guestrooms, and four Pool Suites, and offers direct access to a sandy beach overlooking the turquoise waters and limestone islands of Phang Nga Bay.", 
@@ -258,7 +234,7 @@ image7: "https://photos.jamaicavillas.com/photos/1664213175-ani-thailand-resort-
 image8: "https://photos.jamaicavillas.com/photos/1664213144-ani-thailand-accommodation-family-villa-king.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1664213179-ani-thailand-resort-spa.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1664213185-ani-thailand-resort-swimming-pool.jpg",
-location_id: l6.id, user_admin_id: u1.id)
+location_id: l6.id, user_admin_id: user1.id)
 
 v7 = Villa.create!(name: "Casa del Arco", highlights: "Perched right on the beach and surrounded by exquisite ocean views, Casa del Arco exudes the utmost in luxurious accommodations. Witness breathtaking sunsets from the comfort of your own private terrace. Our villa offers panoramic views that set the stage for unforgettable romantic moments, perfect for toasting to your love and creating lasting memories.", 
 features: "With walls of windows stretching from end to end, this waterfront retreat entertains with the promise of upscale amenities and top-notch finishes. The outdoor space is the real draw of this home, as you bask in the mist of ocean waves lapping near the edge of the sparkling pool. Spend your afternoons lounging on one of the various open-air patios and terraces or relaxing in the Jacuzzi that seemingly blends into the rocky beach below. ", 
@@ -276,7 +252,7 @@ image7: "https://photos.jamaicavillas.com/photos/1607463838-casa-del-arco-cabo-s
 image8: "https://photos.jamaicavillas.com/photos/1607463845-casa-del-arco-cabo-san-lucas-16.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1607463874-casa-del-arco-cabo-san-lucas-54.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1607463877-casa-del-arco-cabo-san-lucas-58.jpg",
-location_id: l7.id, user_admin_id: u1.id)
+location_id: l7.id, user_admin_id: user1.id)
 
 v8 = Villa.create!(name: "Four Peaks Estate", highlights: "There is a reason John Denver dubbed this place his snow-covered paradise. The majestic Rocky Mountain backdrop. The canopy of evergreens. The captivating mountain homes and winding roads. Explore the romance of the local area with our curated romantic excursions. Embark on a sunset sail, discover hidden coves hand-in-hand, or enjoy a private beach picnic tailored exclusively for you and your partner.", 
 features: "Experience Starwood for yourself at Four Peaks Estate, a breathtaking five bedroom, six bathroom vacation home designed by rowlands. Starwood has maintained its off-the-beaten-path mystique, while also evolving into an exclusive setting for special events and celebrity vacations. Situated on three acres of land, Four Peaks Estate was once owned by Prince Badar, Saudi Arabias Ambassador to the United States. It is now available for rent for the first time ever.",
@@ -296,7 +272,7 @@ image7: "https://photos.jamaicavillas.com/photos/mosteller_hires026.jpg",
 image8: "https://photos.jamaicavillas.com/photos/mosteller_hires025.jpg",
 image9: "https://photos.jamaicavillas.com/photos/mosteller_hires012.jpg",
 image10: "https://photos.jamaicavillas.com/photos/mosteller_hires002.jpg",
-location_id: l8.id, user_admin_id: u1.id)
+location_id: l8.id, user_admin_id: user1.id)
 
 v9 = Villa.create!(name: "Arrecife Royale", highlights: "This massive nine bedroom villa is a landmark throughout the Caribbean, based on the following pillars: modernism, minimalism, and professionalism. Our dedicated concierge is here to create personalized romantic experiences just for you. From surprise room decorations to organizing romantic candlelit dinners, we go the extra mile to ensure your stay is filled with love and cherished moments.", 
 features: "As you enter through the main entrance, a high-ceiling with a gentle wind coming from the garden welcomes you to a large and sober foyer with modern touches and governed by a minimalistic outlook. The wooden panels on the main window sprinkle a fresh and natural touch to the villa.
@@ -316,7 +292,7 @@ image7: "https://photos.jamaicavillas.com/photos/1592320941-hl-4435.jpg",
 image8: "https://photos.jamaicavillas.com/photos/1592320966-hl-5612.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1592320932-hl-4146.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1592320973-bar-2.jpg",
-location_id: l9.id, user_admin_id: u1.id)
+location_id: l9.id, user_admin_id: user1.id)
 
 v10 = Villa.create!(name: "Paraiso De Royal", highlights: "One of the most exclusive beach front villa, located directly on the island most beautiful white sand beach. Including 10-en-suite bedrooms, two Jacuzzis, spa, award-winning infinity pool, sea-front dining, plus every luxury including full-time housekeeping staff and your own personal concierge.", 
 features: "Paraiso De Royal is a brand new private luxury beach villa, located in the center of El Nido, Palawans most beautiful white sand beach. The beach is picturesque and sheltered, and is therefore one of the select few beaches in Palawan that offer you 365 days a year swimming. Western coast beaches are all closed for most of the period from May thru Nov, plus closed on any days with strong tides. This is especially important for families with children. 
@@ -335,7 +311,7 @@ image7: "https://photos.jamaicavillas.com/photos/08vba-bedroom04-00010.jpg",
 image8: "https://photos.jamaicavillas.com/photos/10vba-pool-00010.jpg",
 image9: "https://photos.jamaicavillas.com/photos/10vba-pool-00060.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1565115558-01VBA-MainDay-00010.jpg",
-location_id: l10.id, user_admin_id: u1.id)
+location_id: l10.id, user_admin_id: user1.id)
 
 v11 = Villa.create!(name: "Anastasia", highlights: "Anastasia is a stunning villa in Mykonos with infinity pool and terrace overlooking the sea.  Ignite your taste buds with our culinary experiences designed for romance. Enjoy private cooking classes with renowned chefs, savor gourmet meals infused with local flavors, and let your senses be delighted with every bite.", 
 features: "Its meticulous landscape and modern design highlight the island’s lifestyle and is ideal for a families and group of friends. The property expands on three levels and features six spacious en-suite double queen bedrooms, out of which the two are master bedrooms, an additional en-suite staff room, seven bathrooms and two open plan kitchens and may comfortably accommodate up to 12 guests.", 
@@ -354,7 +330,7 @@ image7: "https://photos.jamaicavillas.com/photos/1585167299-23715.jpg",
 image8: "https://photos.jamaicavillas.com/photos/1585167295-23708.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1585167298-23713.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1585167296-23709.jpg",
-location_id: l3.id, user_admin_id: u1.id)
+location_id: l3.id, user_admin_id: user1.id)
 
 v12 = Villa.create!(name: "Cassiopea", highlights: "The best Cycladic architecture meets contemporary resulting in the exquisite design of Villa Cassiopea.  Experience the romance of our villas enchanting garden, filled with fragrant flowers and cozy nooks. Take leisurely strolls hand-in-hand, sip champagne under a blooming canopy, and let love blossom in this romantic setting.", 
 features: "This is a unique luxury romantic property featuring an infinity pool and Jacuzzi wth sea views, a shared tennis court, and even a helipad, just a few kilometers away from Mykonos town center. Perched high on a cliff, this villa beautifully incorporates elements from the rocky surroundings combined with bamboo beams and palm trees creating a sheltered oasis of peace and tranquility in which guests can fully immerse in the magical atmosphere of island living.", 
@@ -372,7 +348,7 @@ image7: "https://photos.jamaicavillas.com/photos/1582567532-21117.jpg",
 image8: "https://photos.jamaicavillas.com/photos/1582567533-21119.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1582567518-21091.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1582567521-21098.jpg",
-location_id: l3.id, user_admin_id: u1.id)
+location_id: l3.id, user_admin_id: user1.id)
 
 v13 = Villa.create!(name: "Corniche", highlights: "A 2020-renovated luxury getaway that is coming for the throne. Our villa has been the backdrop for countless love stories. Read the heartwarming testimonials from our guests who have celebrated anniversaries, proposals, and special moments in our romantic haven. Join the ranks of those who have created unforgettable memories with us.", 
 features: "Corniche definitely stands out among the offerings of the prime area of Aleomandra, the most popular southwestern peninsula of Mykonos. This 7-bedroom property sits just above one of the islands best kept secret coves, located a simple walk down the hill. The sunset views are scenic and punchy. The quality of the décor is undeniable across the airy multiple indoor / outdoor living areas and 7 en-suite bedrooms.", 
@@ -390,7 +366,7 @@ image7: "https://photos.jamaicavillas.com/photos/1678993344-corniche-19.jpg",
 image8: "https://photos.jamaicavillas.com/photos/1678993345-corniche-20.jpg",
 image9: "https://photos.jamaicavillas.com/photos/1678993372-corniche-51.jpg",
 image10: "https://photos.jamaicavillas.com/photos/1678993369-corniche-47.jpg",
-location_id: l3.id, user_admin_id: u1.id)
+location_id: l3.id, user_admin_id: user1.id)
 
 v14 = Villa.create!(name: "Cielo Mar", highlights: "Cielo Mar is located in Peninsula Papagayo, a private luxury resort sanctuary that jots out into the Pacific Ocean in Costa Ricas north-west province of Guanacaste. Immerse yourself in the romance of our secluded villa nestled along the picturesque coastline. Wake up to breathtaking ocean views and the sound of waves coming in from the sea.", 
 features: "The villa provides views for all primary spaces: a salon large enough for a dining table and a bar, six bedrooms, two private studies, media room/home theater, the gym, laundry room, the kitchen, and a two-bedroom caretaker apartment with separate entrance and mechanical systems located beneath the two garages. 
@@ -409,7 +385,7 @@ image7: "https://photos.jamaicavillas.com/photos/dsc1618_as_smart_object-1.jpg",
 image8: "https://photos.jamaicavillas.com/photos/dsc_0012_as_smart_object-1.jpg",
 image9: "https://photos.jamaicavillas.com/photos/dsc_9555_as_smart_object-1.jpg",
 image10: "https://photos.jamaicavillas.com/photos/dsc_0053_as_smart_object-1.jpg",
-location_id: l1.id, user_admin_id: u1.id)
+location_id: l1.id, user_admin_id: user1.id)
 
 inquiry1 = Inquiry.create!(arrival: "2023-07-11", departure: "2023-07-20", guests: 4, full_name: "John Doe", email: "jdoe@gmail.com", phone: "5564514187", message: "Hi there! I am interested in villa rentals for a family vacation. Could you please provide me with information on availability, pricing, and amenities for a 5-bedroom villa in a beachfront location? Thank you!", location_id: l1.id, villa_id: v14.id)
 inquiry2 = Inquiry.create!(arrival: "2023-09-01", departure: "2023-09-21", guests: 12, full_name: "Kate Winslet", email: "kwinslet@gmail.com", phone: "8055554455", message: "Hello! We are a group of friends planning a getaway and would love to rent a villa. Can you please share details about any available properties with at least 4 bedrooms, a private pool, and access to watersports activities? Looking forward to hearing from you!", location_id: l5.id, villa_id: v5.id)

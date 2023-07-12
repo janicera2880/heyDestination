@@ -12,7 +12,7 @@ class UserAdmin < ApplicationRecord
 
   def profile_pic_validation
     if profile_pic.attached?
-      if profile_pic.blob.byte_size > 5.megabyte
+      if profile_pic.blob.byte_size > 8.megabyte
         errors.add(:profile_pic, "file is too big")
       end
 
@@ -25,4 +25,3 @@ class UserAdmin < ApplicationRecord
     end
   end
 end
-

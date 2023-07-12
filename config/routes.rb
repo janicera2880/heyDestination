@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:index, :show]
   end
 
-  resources :activities, only: [:create, :destroy]
+  resources :activities, only: [:create, :destroy] do
     resources :locations, only: [:create, :destroy]
   end
 
