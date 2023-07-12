@@ -72,7 +72,7 @@ const LocationVillaPage = () => {
         <br />      
         <br />
          {/* Toggle button */}
-         <button className="some-button" onClick={toggleForm}>{showForm ? "Hide Form" : "Click Here to Create New Villa"}</button>
+         <button className="some-button" onClick={toggleForm}>{showForm ? "Hide Form" : "Click Here to Add New Villa"}</button>
         {userAdmin && showLocation && showForm && <AddVillaForm />}
       </div>
     </div>
