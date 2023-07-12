@@ -7,6 +7,7 @@ Rails.application.routes.draw do
  resources :user_admins, only: [:index, :show] do
   resources :villas, only: [:index, :update, :destroy] do
     resources :inquiries, only: [:index, :show]
+    end
   end
 
   resources :activities, only: [:create, :destroy] do

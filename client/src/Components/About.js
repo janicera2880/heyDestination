@@ -13,8 +13,8 @@ const AboutUs = () => {
     <div className="about-us">
         <img
         src={villaPicture}
-        width="800"
-        height="500"
+        width="900"
+        height="450"
         alt="villa"
         className="villa-pic" />
       <ReactMarkdown>## Discover Your Perfect Villa Retreat</ReactMarkdown>

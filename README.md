@@ -38,9 +38,9 @@
 
 - Admin Authentication: Only administrators have the privilege to sign up and log in to the application, granting them exclusive access to manage villa listings, add locations, and handle incoming inquiries. Once logged in, administrators are directed to the admin portal.
 
-- Interactive Carousel: The application utilizes React Carousel libraries to create an interactive image carousel for each villa listing, allowing users to easily view and navigate through multiple images of the villas.
+- Interactive Carousel: The application utilizes *React Carousel* libraries to create an interactive image carousel for each villa listing, allowing users to easily view and navigate through multiple images of the villas.
 
-- Stylish Design: The CSS design of the application is optimized to provide a visually appealing and user-friendly experience, enhancing the overall aesthetics and usability of the interface.
+- Stylish Design: The CSS design of the application is optimized to provide a visually appealing and user-friendly experience, enhancing the overall aesthetics and usability of the interface. Furthermore, the application utilizes the *ReactMarkdown* library, which allows for the seamless rendering of Markdown content, providing enhanced formatting capabilities and further enhancing the visual appeal of the interface.
 
 ## Technology Stack
 

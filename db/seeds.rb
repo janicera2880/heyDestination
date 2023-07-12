@@ -16,18 +16,21 @@ Inquiry.destroy_all
 ActivityLocation.destroy_all
 
 
-user1 = UserAdmin.create!(
+user1 = UserAdmin.new(
   first_name: "Janice",
   last_name: "Alecha",
   password: "adminjanz",
   email: "janiceralecha@gmail.com",
   admin: true 
 )
+
 user1.profile_pic.attach(
-  io: File.open(Rails.root.join('./public/image/profilepic2.jpg')),
-  filename: 'profilepic2.jpg',
-  content_type: 'image/jpeg'
+  io: File.open(Rails.root.join('./db/images/profile_pic.jpg')),
+  filename: 'profile_pic.jpg',
+  content_type: 'image/jpeg',
+  identify: false
 )
+user1.save
 
 
 
@@ -44,7 +47,8 @@ l10 = Location.create!(city: "El Nido", country: "Philippines", image: "https://
 l11 = Location.create!(city: "Lautoka", country: "Fiji", image: "https://www.theknot.com/tk-media/images/f323e3d9-729b-4776-bbe7-bea8a0198411", description: "Fiji, a country in the South Pacific, is an archipelago of more than 300 islands. It is famed for rugged landscapes, palm-lined beaches and coral reefs with clear lagoons. Its major islands, Viti Levu and Vanua Levu, contain most of the population. Viti Levu is home to the capital, Suva, a port city with British colonial architecture. The Fiji Museum, in the Victorian-era Thurston Gardens, has ethnographic exhibits.")
 l12 = Location.create!(city: "Tulum", country: "Mexico", image: "https://media.cntraveler.com/photos/546cd38c2a3d21fa285c8069/16:9/w_2580,c_limit/el-castillo-quintana-roo-tulum-mexico.jpg", description: "Tulum is a town on the Caribbean coastline of Mexicos Yucatan, located in the Pacific Ocean Peninsula. It is known for its beaches and well-preserved ruins of an ancient Mayan port city. The main building is a large stone structure called El Castillo, perched on a rocky cliff above the white sand beach and turquoise sea. Near the ruins is the Parque Nacional Tulum, a coastal area with mangroves and cenotes")
 l13 = Location.create!(city: "Oahu", country: "USA", image: "https://cdn.aarp.net/content/dam/aarp/travel/Domestic/2021/12/1140-oahu-hero.jpg", description: "Oahu is a U.S. island in the Central Pacific, part of the Hawaiian island chain and home to the state capital, Honolulu. Highlights of the city include historic Chinatown and the Punchbowl, a crater-turned-cemetery. Waikiki is an iconic beach, dining and nightlife area. West of Honolulu is Pearl Harbor, site of the WWIIs 1941 bombing attack and home to the USS Arizona Memorial. ")
-
+l14 = Location.create!(city: "Barcelona", country: "Spain", image: "https://media.cntraveller.com/photos/611be87424f18e2bd3cbdfc1/16:9/w_2580,c_limit/tibidabo-amusement-park-barcelona-conde-nast-traveller-10march14-alamy.jpg", description: "Barcelona, the cosmopolitan capital of Spains Catalonia region, is known for its art and architecture. The fantastical Sagrada Família church and other modernist landmarks designed by Antoni Gaudí dot the city. Museu Picasso and Fundació Joan Miró feature modern art by their namesakes. City history museum MUHBA, includes several Roman archaeological sites.")
+l15 = Location.create!(city: "Las vegas", country: "USA", image: "https://www.traveloffpath.com/wp-content/uploads/2023/03/Six-New-Attractions-Coming-To-Las-Vegas-This-Year.jpg", description: "Las Vegas, Nevada is a place that needs no introduction. With its five-star resorts, world-class restaurants, stellar shopping, unrivaled entertainment, and all day long pulse—from classic Downtown Las Vegas to the famous Las Vegas Strip and beyond—this one-of-a-kind city owns the throne as the worlds premier tourist destination. Get the lay of the land in Nevadas largest city, a vision for visiting Vegas like a pro, and tips on exploring the stunning sights of southern Nevada.")
 
 a1 = Activity.create!(name: "Golf Courses", highlights: "Be a part of the elite precision club and swing your clubs where the pros play! Pack up your clubs and jet off to private villa, where you can spend your days on some of the most famed greens. The experience of a lifetime is waiting for you on a golf course in paradise.", image: "https://www.oceanedgeclub.com/Images/Library/troonfamilyfcallout.jpeg", details: "We have 9 holes Par 32 of links-style golf, perfect for the occasional golfer with challenging tee boxes for the pros. The Loop is our quick 3 hole Par 9 of the short course designed for those just starting out as well as experts looking to sharpen their short game.", categories: "Sports")
 a2 = Activity.create!(name: "Weddings", highlights: "Our All-Inclusive wedding packages provide a range of enhancements and experiences. You have the option to customize each package to your desires by adding extras such as a fourth course, a champagne toast, or a fireworks display.", image: "https://www.verobeachhotelandspa.com/images/1700-960/wedding-ceremony-on-shoreline-patio-b638b1e8.jpg", details: "Mexico is a beloved wedding destination because of its multifaceted beauty. From white-sand beaches to lush tropical ruins, you and your guests are sure to find something to love! One of the most popular destinations for tying the knot are the luxurious, all-inclusive resorts that dot the beach fronts of Cancun, Oaxaca, and the Riviera Maya. Aside from enjoying the sun and the sand, you and your guests can also explore nearby ancient ruins tucked away in the tropical jungle. Saying I do in Mexico City allows you and your guests to take in the awe-inspiring architecture and historic artworks of times long past, channeling a sense of Old World nostalgia that is sure to leave a lasting impression. Unlike many other places in the world, Mexico provides ample opportunity to experience a little bit of everything.", categories:"Events")
@@ -90,6 +94,10 @@ al27 = ActivityLocation.create!(location_id: l13.id, activity_id: a11.id)
 al28 = ActivityLocation.create!(location_id: l7.id, activity_id: a11.id)
 al29 = ActivityLocation.create!(location_id: l5.id, activity_id: a12.id)
 al30 = ActivityLocation.create!(location_id: l13.id, activity_id: a12.id)
+al31 = ActivityLocation.create!(location_id: l14.id, activity_id: a5.id)
+al32 = ActivityLocation.create!(location_id: l14.id, activity_id: a9.id)
+al33 = ActivityLocation.create!(location_id: l15.id, activity_id: a7.id)
+al34 = ActivityLocation.create!(location_id: l15.id, activity_id: a10.id)
 
 
 
