@@ -23,68 +23,79 @@ const SignupForm = () => {
   const navigate = useNavigate();
 
  //A function that handles the form submission
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("Submitting...");
-    
-    setIsLoading(true);
+ function handleSubmit(e) {
+  e.preventDefault();
+  console.log('Submitting...');
 
-    const userData = new FormData();
-    for (const key in formData) {
-      if (key === 'profile_image') {
-        userData.append(key, formData[key]);
-      } else {
-        userData.append(key, formData[key]);
-      }
-    }
+  setIsLoading(true);
 
-    fetch('/signup', {
-      method: 'POST',
-      body: userData,
-    })
-      .then((response) => {
-        setIsLoading(false);
-        if (response.ok) {
-          setFormData({
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
-            password_confirmation: '',
-            admin: true,
-            profile_pic: null,
-          });
-          setSelectedFileName(''); // Clear the selected file name
-          response.json().then((userAdmin) => {
-            setUserAdmin(userAdmin);
-            setErrors([]);
-            navigate('/');
-          });
-        } else {
-          response.json().then((error) => setErrors(error.errors));
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        setIsLoading(false);
-      });
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value, type, files } = e.target;
-
-    if (type === 'file') {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: files[0], // Updated to store the File object
-      }));
+  const userData = new FormData();
+  for (const key in formData) {
+    if (key === 'profile_pic') {
+      userData.append(key, formData[key]);
     } else {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+      userData.append(key, formData[key]);
     }
-  };
+  }
+
+  fetch('/signup', {
+    method: 'POST',
+    body: userData,
+  })
+    .then((response) => {
+      setIsLoading(false);
+      if (response.ok) {
+        setFormData({
+          first_name: '',
+          last_name: '',
+          email: '',
+          password: '',
+          password_confirmation: '',
+          admin: true,
+          profile_pic: null,
+        });
+        setSelectedFileName(''); // Clear the selected file name
+        response.json().then((userAdmin) => {
+          setUserAdmin(userAdmin);
+          setErrors([]);
+          navigate('/');
+        });
+      } else {
+        response
+          .json()
+          .then((error) => {
+            if (error && error.errors) {
+              setErrors(error.errors);
+            } else {
+              console.error('Unexpected error format:', error);
+            }
+          })
+          .catch((error) => {
+            console.error('Error parsing error response:', error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      setIsLoading(false);
+    });
+}
+
+const handleInputChange = (e) => {
+  const { name, value, type, files } = e.target;
+
+  if (type === 'file') {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: files[0], // Updated to store the File object
+    }));
+  } else {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+};
 
   return (
     <div className="signup-form">

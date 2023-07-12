@@ -25,7 +25,7 @@ nav ul {
   list-style-type:none;
   display:list-item;
   padding: 20px ;
-  background-size: 100% 20%;
+  background-size: 125% 20%;
   background-image: linear-gradient(-40deg, #c1e4e4, #181e38, #71c9ba, #407c87, #84d4ee);
   animation: 18s myGradient infinite;
   border-radius: 80px;
@@ -369,11 +369,11 @@ font-size: 16px;
   align-items: center;
 }
 
-.thumbnail img {
-  width: 100px;
-  height: 100px;
+.thumbnail-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .thumbnail p {

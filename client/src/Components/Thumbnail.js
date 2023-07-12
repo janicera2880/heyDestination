@@ -7,11 +7,10 @@ const Thumbnail = () => {
   //conditionally renders an img element if userAdmin exists and has profile image
   return (
     <div className="thumbnail">
-      {userAdmin && userAdmin.profile_pic_url && (
+      {userAdmin && userAdmin.profile_pic && (
         <img
-          src={userAdmin.profile_pic_url}
-          width="600"
-          height="400"
+          src={userAdmin.profile_pic}
+          className="thumbnail-image"
           alt="Profile"
         />
       )}
@@ -25,3 +24,4 @@ const Thumbnail = () => {
 };
 
 export default Thumbnail;
+

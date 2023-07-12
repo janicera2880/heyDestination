@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
-  include ActionController::Cookies
+  # Line 1 is designed for building JSON APIs without the need for cookies or session management.
+  #protect_from_forgery with: :null_session
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found_response 

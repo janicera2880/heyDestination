@@ -38,7 +38,7 @@ class UserAdminsController < ApplicationController
 
   # Find a user admin by ID
   def find_user_admin
-    UserAdmin.find_by(params[:id])
+    UserAdmin.find_by(id: params[:id])
   end
 
   # Check if the user is authorized
