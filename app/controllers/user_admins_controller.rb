@@ -29,6 +29,7 @@ class UserAdminsController < ApplicationController
     end
   end
 
+
   private
 
   # Strong parameters for creating a new user admin
