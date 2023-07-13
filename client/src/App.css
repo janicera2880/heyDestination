@@ -28,7 +28,7 @@ nav ul {
   background-size: 125% 20%;
   background-image: linear-gradient(-40deg, #c1e4e4, #181e38, #71c9ba, #407c87, #84d4ee);
   animation: 18s myGradient infinite;
-  border-radius: 80px;
+  border-radius: 60px;
   box-shadow: 5px 5px 20px #2c5ba3;
   border-top-left-radius: 0px;
   border-bottom-right-radius: 6px;
@@ -683,8 +683,8 @@ ul li {
 /* VIDEO background*/
 .locations-villa video {
   position: fixed;
-  z-index: -50;
-  width: 150%;
+  z-index: -10;
+  width: 100%;
   height: max-content;
   object-fit: cover;
 }
@@ -692,8 +692,8 @@ ul li {
 .all-villas video {
   position: fixed;
   z-index: -50;
-  width: 150%;
-  
+  width: 100%;
+  height: 100vh;
   object-fit: cover;
 }
 /*Add Location*/
