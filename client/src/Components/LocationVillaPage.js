@@ -6,6 +6,7 @@ import { LocationsContext } from "../Contexts/LocationsContext";
 import { UserAdminContext } from "../Contexts/UserAdminContext";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import VideoBackdrop from "./Images/videobackground1.mp4"
 
 /*The component renders a list of villas based on the selected location. 
 It also includes a button to toggle the display of a map, and if the user is an admin, 
@@ -29,6 +30,7 @@ const LocationVillaPage = () => {
   
     return (
       <div className="villa-card" key={villa.id}>
+        
         <Carousel showArrows={true}>
           {[...Array(10)].map((_, index) => (
             <div key={index}>
@@ -40,6 +42,7 @@ const LocationVillaPage = () => {
             </div>
           ))}
         </Carousel>
+        
         <h3>{villa.name}</h3>
         <br />
         <h4>Up to {villa.capacity} Guests</h4>
@@ -59,10 +62,11 @@ const LocationVillaPage = () => {
 
   return (
     <div className="locations-villa">
+       <video id="background-video" src={VideoBackdrop} autoPlay loop muted />
       <div className="locationsvilla-wrapper">
-      <h4>Our Exquisite Selection Of Luxury Villa Rentals In Our Renowned Destination</h4>
+      <h4>Our Exquisite Selection Of Luxury Villas In Our Top Destination</h4>
       <br />
-      <h4>{showLocation ? showLocation.city : ""}</h4>,<h4>{showLocation ? showLocation.country : ""}</h4>
+      <h4>{showLocation ? showLocation.city : ""}</h4><h4>{showLocation ? showLocation.country : ""}</h4>
         
         <br />
         <br />

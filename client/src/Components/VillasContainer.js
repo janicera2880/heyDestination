@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { VillasContext } from "../Contexts/VillasContext";
+import VideoBackground from "./Images/videobackground2.mp4"
 
 
 // Component that displays a carousel of villas with their details.
@@ -74,6 +75,7 @@ function VillasContainer() {
     The key prop is set to the index value to provide a unique identifier for each rendered element.*/
   return (
     <div className="all-villas">
+      <video id="video-background" src={VideoBackground} autoPlay loop muted /> 
       <div className="view-card" key={currentVilla.id}>
         <h2>{currentVilla.name}</h2>
         <Carousel showArrows={true}>
@@ -102,8 +104,8 @@ function VillasContainer() {
           </div>
         </div>
         <div className="controls">
-          <button className="some-button" onClick={prevVilla}>Previous</button>
-          <button className="some-button" onClick={nextVilla}>Next Page</button>
+          <button className="villa-button" onClick={prevVilla}>Previous</button>
+          <button className="villa-button" onClick={nextVilla}>Next Page</button>
         </div>
       </div>
     </div>
