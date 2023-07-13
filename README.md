@@ -206,6 +206,7 @@ For detailed instructions on how to deploy and set up your environment to deploy
 
 Take a look at my blog, where I showcase a snippet of my web application.
 - [Celebrating a Milestone: Capstone Project Unveiled](https://dev.to/janicera2880/celebrating-a-milestone-capstone-project-unveiled-51c1)
+- [Capstone Project Update: Utilizing Active Storage with AWS S3 Service in Rails](https://dev.to/janicera2880/capstone-project-update-utilizing-active-storage-with-aws-s3-service-in-rails-3391)
 - [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
 - [Render Databases Guide](https://render.com/docs/databases)
 

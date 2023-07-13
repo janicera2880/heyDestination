@@ -20,7 +20,7 @@ user1 = UserAdmin.new(
   first_name: "Janice",
   last_name: "Alecha",
   password: "adminjanz",
-  email: "janiceralecha@gmail.com",
+  email: "janicealecha@gmail.com",
   admin: true 
 )
 
